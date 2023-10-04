@@ -11,4 +11,117 @@ package Entidades;
  */
 public class Huesped {
     
+    private int idHuesp;
+    private String apellidoHuesp;
+    private String nombreHuesp;
+    private String dniHuesp;
+    private String emailHuesp;
+    private String telefonoHuesp;
+    private String domicilioHuesp;
+    private boolean estadoHuesp;
+    
+    
+    //////////////////////// Constructores //////////////////////////////////////
+
+    public Huesped() {
+    }
+
+    public Huesped(int idHuesp, String apellidoHuesp, String nombreHuesp, String dniHuesp, String emailHuesp, String telefonoHuesp, String domicilioHuesp, boolean estadoHuesp) {
+        this.idHuesp = idHuesp;
+        this.apellidoHuesp = apellidoHuesp;
+        this.nombreHuesp = nombreHuesp;
+        this.dniHuesp = dniHuesp;
+        this.emailHuesp = emailHuesp;
+        this.telefonoHuesp = telefonoHuesp;
+        this.domicilioHuesp = domicilioHuesp;
+        this.estadoHuesp = estadoHuesp;
+    }
+
+    public Huesped(String apellidoHuesp, String nombreHuesp, String dniHuesp, String emailHuesp, String telefonoHuesp, String domicilioHuesp, boolean estadoHuesp) {
+        this.apellidoHuesp = apellidoHuesp;
+        this.nombreHuesp = nombreHuesp;
+        this.dniHuesp = dniHuesp;
+        this.emailHuesp = emailHuesp;
+        this.telefonoHuesp = telefonoHuesp;
+        this.domicilioHuesp = domicilioHuesp;
+        this.estadoHuesp = estadoHuesp;
+    }
+    
+    
+    /////////////////////////////////////////////////////////////////////////////
+
+    public int getIdHuesp() {
+        return idHuesp;
+    }
+
+    public void setIdHuesp(int idHuesp) {
+        this.idHuesp = idHuesp;
+    }
+
+    public String getApellidoHuesp() {
+        return apellidoHuesp;
+    }
+
+    public void setApellidoHuesp(String apellidoHuesp) {
+        this.apellidoHuesp = apellidoHuesp;
+    }
+
+    public String getNombreHuesp() {
+        return nombreHuesp;
+    }
+
+    public void setNombreHuesp(String nombreHuesp) {
+        this.nombreHuesp = nombreHuesp;
+    }
+
+    public String getDniHuesp() {
+        return dniHuesp;
+    }
+
+    public void setDniHuesp(String dniHuesp) {
+        this.dniHuesp = dniHuesp;
+    }
+
+    public String getEmailHuesp() {
+        return emailHuesp;
+    }
+
+    public void setEmailHuesp(String emailHuesp) {
+        this.emailHuesp = emailHuesp;
+    }
+
+    public String getTelefonoHuesp() {
+        return telefonoHuesp;
+    }
+
+    public void setTelefonoHuesp(String telefonoHuesp) {
+        this.telefonoHuesp = telefonoHuesp;
+    }
+
+    public String getDomicilioHuesp() {
+        return domicilioHuesp;
+    }
+
+    public void setDomicilioHuesp(String domicilioHuesp) {
+        this.domicilioHuesp = domicilioHuesp;
+    }
+
+    public boolean isEstadoHuesp() {
+        return estadoHuesp;
+    }
+
+    public void setEstadoHuesp(boolean estadoHuesp) {
+        this.estadoHuesp = estadoHuesp;
+    }
+
+    @Override
+    public String toString() {
+        return "Huesped{" + "idHuesp=" + idHuesp + ", apellidoHuesp=" + apellidoHuesp + ", nombreHuesp=" + nombreHuesp + ", dniHuesp=" + dniHuesp + ", emailHuesp=" + emailHuesp + ", telefonoHuesp=" + telefonoHuesp + ", domicilioHuesp=" + domicilioHuesp + ", estadoHuesp=" + estadoHuesp + '}';
+    }
+    
+    
+    
+    
+    
+    
 }
