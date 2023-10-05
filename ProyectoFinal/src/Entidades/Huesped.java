@@ -15,9 +15,9 @@ public class Huesped {
     private String apellidoHuesp;
     private String nombreHuesp;
     private String dniHuesp;
+    private String domicilioHuesp;
     private String emailHuesp;
     private String telefonoHuesp;
-    private String domicilioHuesp;
     private boolean estadoHuesp;
     
     
@@ -26,18 +26,18 @@ public class Huesped {
     public Huesped() {
     }
 
-    public Huesped(int idHuesp, String apellidoHuesp, String nombreHuesp, String dniHuesp, String emailHuesp, String telefonoHuesp, String domicilioHuesp, boolean estadoHuesp) {
+    public Huesped(int idHuesp, String apellidoHuesp, String nombreHuesp, String dniHuesp, String domicilioHuesp, String emailHuesp, String telefonoHuesp, boolean estadoHuesp) {
         this.idHuesp = idHuesp;
         this.apellidoHuesp = apellidoHuesp;
         this.nombreHuesp = nombreHuesp;
         this.dniHuesp = dniHuesp;
+        this.domicilioHuesp = domicilioHuesp;
         this.emailHuesp = emailHuesp;
         this.telefonoHuesp = telefonoHuesp;
-        this.domicilioHuesp = domicilioHuesp;
         this.estadoHuesp = estadoHuesp;
     }
 
-    public Huesped(String apellidoHuesp, String nombreHuesp, String dniHuesp, String emailHuesp, String telefonoHuesp, String domicilioHuesp, boolean estadoHuesp) {
+    public Huesped(String apellidoHuesp, String nombreHuesp, String dniHuesp, String domicilioHuesp, String emailHuesp, String telefonoHuesp,  boolean estadoHuesp) {
         this.apellidoHuesp = apellidoHuesp;
         this.nombreHuesp = nombreHuesp;
         this.dniHuesp = dniHuesp;
