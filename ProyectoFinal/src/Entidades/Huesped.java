@@ -15,9 +15,9 @@ public class Huesped {
     private String apellidoHuesp;
     private String nombreHuesp;
     private String dniHuesp;
+    private String domicilioHuesp;
     private String emailHuesp;
     private String telefonoHuesp;
-    private String domicilioHuesp;
     private boolean estadoHuesp;
     
     
@@ -26,29 +26,28 @@ public class Huesped {
     public Huesped() {
     }
 
-    public Huesped(int idHuesp, String apellidoHuesp, String nombreHuesp, String dniHuesp, String emailHuesp, String telefonoHuesp, String domicilioHuesp, boolean estadoHuesp) {
+    public Huesped(int idHuesp, String apellidoHuesp, String nombreHuesp, String dniHuesp, String domicilioHuesp, String emailHuesp, String telefonoHuesp, boolean estadoHuesp) {
         this.idHuesp = idHuesp;
         this.apellidoHuesp = apellidoHuesp;
         this.nombreHuesp = nombreHuesp;
         this.dniHuesp = dniHuesp;
+        this.domicilioHuesp = domicilioHuesp;
         this.emailHuesp = emailHuesp;
         this.telefonoHuesp = telefonoHuesp;
-        this.domicilioHuesp = domicilioHuesp;
         this.estadoHuesp = estadoHuesp;
     }
 
-    public Huesped(String apellidoHuesp, String nombreHuesp, String dniHuesp, String emailHuesp, String telefonoHuesp, String domicilioHuesp, boolean estadoHuesp) {
+    public Huesped(String apellidoHuesp, String nombreHuesp, String dniHuesp, String domicilioHuesp, String emailHuesp, String telefonoHuesp, boolean estadoHuesp) {
         this.apellidoHuesp = apellidoHuesp;
         this.nombreHuesp = nombreHuesp;
         this.dniHuesp = dniHuesp;
+        this.domicilioHuesp = domicilioHuesp;
         this.emailHuesp = emailHuesp;
         this.telefonoHuesp = telefonoHuesp;
-        this.domicilioHuesp = domicilioHuesp;
         this.estadoHuesp = estadoHuesp;
     }
     
-    
-    /////////////////////////////////////////////////////////////////////////////
+    //metodos getter y setter
 
     public int getIdHuesp() {
         return idHuesp;
@@ -82,6 +81,14 @@ public class Huesped {
         this.dniHuesp = dniHuesp;
     }
 
+    public String getDomicilioHuesp() {
+        return domicilioHuesp;
+    }
+
+    public void setDomicilioHuesp(String domicilioHuesp) {
+        this.domicilioHuesp = domicilioHuesp;
+    }
+
     public String getEmailHuesp() {
         return emailHuesp;
     }
@@ -98,14 +105,6 @@ public class Huesped {
         this.telefonoHuesp = telefonoHuesp;
     }
 
-    public String getDomicilioHuesp() {
-        return domicilioHuesp;
-    }
-
-    public void setDomicilioHuesp(String domicilioHuesp) {
-        this.domicilioHuesp = domicilioHuesp;
-    }
-
     public boolean isEstadoHuesp() {
         return estadoHuesp;
     }
@@ -113,13 +112,8 @@ public class Huesped {
     public void setEstadoHuesp(boolean estadoHuesp) {
         this.estadoHuesp = estadoHuesp;
     }
+    
 
-    @Override
-    public String toString() {
-        return "Huesped{" + "idHuesp=" + idHuesp + ", apellidoHuesp=" + apellidoHuesp + ", nombreHuesp=" + nombreHuesp + ", dniHuesp=" + dniHuesp + ", emailHuesp=" + emailHuesp + ", telefonoHuesp=" + telefonoHuesp + ", domicilioHuesp=" + domicilioHuesp + ", estadoHuesp=" + estadoHuesp + '}';
-    }
-    
-    
     
     
     
