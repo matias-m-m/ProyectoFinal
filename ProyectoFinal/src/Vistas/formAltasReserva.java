@@ -27,6 +27,10 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setClosable(true);
+        setTitle("Altas Huesped");
+        setPreferredSize(new java.awt.Dimension(650, 450));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

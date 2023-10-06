@@ -46,9 +46,10 @@ public class ProyectoFinal {
        new ProyectoFinal().conectar(h3);
     }
     
-    //creo un metodo para conectarme a la base de datos
+    //creo un metodo para conectarme a la base de datos y llamar a un metodo que esta en la clase HuespedData
     private void conectar(Huesped huesped){
         conex = new Conexion().getConectar("jdbc:mariadb://localhost/bdhotel","root","");
+        //le paso la conexion creada a la variable huespeddata para traer un metodo
         huespeddata = new HuespedData(conex);
         //huespeddata.insertarHuesped(huesped);
         //huespeddata.borrarHuesped(v);

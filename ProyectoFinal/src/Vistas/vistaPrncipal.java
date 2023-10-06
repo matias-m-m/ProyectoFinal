@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.awt.Color;
+
 /**
  *
  * @author matias
@@ -48,6 +50,11 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 140, 70));
 
         jButton2.setText("huespedes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 140, 70));
 
         jButton3.setText("habitaciones");
@@ -99,6 +106,15 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jescritorio.add(reserva);
         jescritorio.moveToFront(reserva);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        formAltasReserva altasHues = new formAltasReserva();
+        altasHues.setVisible(true);
+        //colocar color de fondo al formulario
+        altasHues.getContentPane().setBackground(new Color(251,128,82));
+        jescritorio.add(altasHues);
+        jescritorio.moveToFront(altasHues);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
