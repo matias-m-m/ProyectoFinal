@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2023 a las 00:05:59
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 06-10-2023 a las 23:43:24
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bdhotel`
 --
+CREATE DATABASE IF NOT EXISTS `bdhotel` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bdhotel`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +32,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `habitacion` (
   `idHabitacion` int(11) NOT NULL,
-  `nroHabitacion` int(11) NOT NULL,
   `idTipoHabitacion` int(11) NOT NULL,
   `piso` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
@@ -43,14 +45,23 @@ CREATE TABLE `habitacion` (
 
 CREATE TABLE `huesped` (
   `idHuesp` int(11) NOT NULL,
-  `ApellidoHuesp` varchar(50) NOT NULL,
-  `NombreHuesp` varchar(50) NOT NULL,
-  `dniHuesp` varchar(8) NOT NULL,
-  `emailHuesp` varchar(50) NOT NULL,
-  `telefonoHuesp` varchar(20) NOT NULL,
-  `estadoHuesp` tinyint(1) NOT NULL,
-  `domicilioHuesp` varchar(80) NOT NULL
+  `apellidoHuesp` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `nombreHuesp` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `dniHuesp` varchar(8) COLLATE utf8_spanish_ci NOT NULL,
+  `domicilioHuesp` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
+  `emailHuesp` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `telefonoHuesp` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `estadoHuesp` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `huesped`
+--
+
+INSERT INTO `huesped` (`idHuesp`, `apellidoHuesp`, `nombreHuesp`, `dniHuesp`, `domicilioHuesp`, `emailHuesp`, `telefonoHuesp`, `estadoHuesp`) VALUES
+(1, 'Salinas', 'Raul', '21555888', 'Salta 111', 'raul@hotmail.com', '0111589991', 1),
+(2, 'Castro', 'Gabriel', '19741555', 'Av. Luro 890', 'castro@hotmail.com', '34158236', 0),
+(3, 'Videlo', 'Gabriel', '29741569', 'Av. Luro 101', 'videla@hotmail.com', '888888', 1);
 
 -- --------------------------------------------------------
 
@@ -76,9 +87,9 @@ CREATE TABLE `reserva` (
 
 CREATE TABLE `tipohabitacion` (
   `idTipoHabit` int(11) NOT NULL,
-  `nombreTipo` char(1) NOT NULL,
+  `nombreTipo` char(1) COLLATE utf8_spanish_ci NOT NULL,
   `maxHuespedes` int(11) NOT NULL,
-  `importepornoche` double NOT NULL
+  `importePorNoche` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -90,7 +101,6 @@ CREATE TABLE `tipohabitacion` (
 --
 ALTER TABLE `habitacion`
   ADD PRIMARY KEY (`idHabitacion`),
-  ADD UNIQUE KEY `nroHabitacion` (`nroHabitacion`),
   ADD KEY `idTipoHabitacion` (`idTipoHabitacion`);
 
 --
@@ -130,7 +140,7 @@ ALTER TABLE `habitacion`
 -- AUTO_INCREMENT de la tabla `huesped`
 --
 ALTER TABLE `huesped`
-  MODIFY `idHuesp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idHuesp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
