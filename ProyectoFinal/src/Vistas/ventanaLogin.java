@@ -7,20 +7,17 @@ package Vistas;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.Timer;
 
 /**
  *
  * @author matias
  */
-public class pantallaCarga extends javax.swing.JFrame {
-public int animacionDuracionEnMilisegundos = 14000; // Duración de la animación en milisegundos
- private boolean animacionCompletada = false; // Declaración de la variable
+public class ventanaLogin extends javax.swing.JFrame {
+
     /**
-     * Creates new form pantallaCarga
+     * Creates new form ventanaLogin
      */
-    public pantallaCarga() {
+    public ventanaLogin() {
         initComponents();
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
     }
@@ -34,52 +31,56 @@ public int animacionDuracionEnMilisegundos = 14000; // Duración de la animació
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jfondo = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pantallaCargaLista.gif"))); // NOI18N
+        jfondo.setBackground(new java.awt.Color(0, 0, 0));
+        jfondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("USUARIO");
+        jfondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 650, 170, 40));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("CONTRASEÑA");
+        jfondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 740, 260, -1));
+        jfondo.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 790, 190, 40));
+        jfondo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 700, 190, 40));
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoventanausuario.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 jLabel1ComponentResized(evt);
             }
         });
+        jfondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(jfondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+            .addComponent(jfondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel1ComponentResized
-     
-        
-        if (!animacionCompletada) {
-        Timer timer = new Timer(animacionDuracionEnMilisegundos, e -> {
-            // Esta parte se ejecutará cuando termine la animación
-
-            // Puedes crear y mostrar la nueva ventana aquí
-            vistaPrncipal nuevaVentana = new vistaPrncipal();
-            nuevaVentana.setVisible(true);
-
-            // Cierra la ventana actual si es necesario
-            dispose(); // Esto cerrará la ventana actual
-        });
-        timer.setRepeats(false); // Hacer que el temporizador se ejecute solo una vez
-        timer.start();
-        
-        animacionCompletada = true; // Marcar que la animación ha sido completada
-    }
-    // Obtén el tamaño actual del JLabel 
+     // Obtén el tamaño actual del JLabel 
     int width = jLabel1.getWidth();
     int height = jLabel1.getHeight();
 
@@ -97,6 +98,7 @@ public int animacionDuracionEnMilisegundos = 14000; // Duración de la animació
 
     // Establece el nuevo ImageIcon en el JLabel
     jLabel1.setIcon(redimensionado);
+                                            
     }//GEN-LAST:event_jLabel1ComponentResized
 
     /**
@@ -116,25 +118,30 @@ public int animacionDuracionEnMilisegundos = 14000; // Duración de la animació
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pantallaCarga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pantallaCarga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pantallaCarga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pantallaCarga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pantallaCarga().setVisible(true);
+                new ventanaLogin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel jfondo;
     // End of variables declaration//GEN-END:variables
 }
