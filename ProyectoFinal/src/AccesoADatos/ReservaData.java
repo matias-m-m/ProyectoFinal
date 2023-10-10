@@ -16,14 +16,11 @@ public class ReservaData {
     //atributos
     private Connection con;
 
-    //constructor
-    public ReservaData() {
-
-    }
+    
 
     //recibo la conexion creada en la clase prueba del metodo conectar y la agrego a la variable conexion
-    public ReservaData(Connection conexion) {
-        this.con = conexion;
+    public ReservaData() {
+        this.con = Conexion.getConectar();
     }
 
     

@@ -16,14 +16,9 @@ public class TipoHabitacionData {
     private Connection con;
 
 
-    //Constructor
-    public TipoHabitacionData() {
-
-    }
-
     //recibo la conexion creada en la clase prueba del metodo conectar y la agrego a la variable conexion
-    public TipoHabitacionData(Connection conexion) {
-        this.con = conexion;
+    public TipoHabitacionData() {
+        this.con = Conexion.getConectar();
     }   
 
     
