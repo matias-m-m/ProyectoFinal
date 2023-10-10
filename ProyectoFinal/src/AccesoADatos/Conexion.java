@@ -1,47 +1,43 @@
 package AccesoADatos;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Conexion {
 
     //atributos
-    private String url;
-    private String user;
-    private String pass;
-    private static Connection conex = null;
+    private static String url = "jdbc:mariadb://localhost/bdhotel";
+    private static String user = "root";
+    private static String pass = "";
+    private static Connection conexion = null;
 
     //constructor
-    public Conexion() {
+    private Conexion() { //para no instanciar un objecto Conexion
 
-    }
-
-    public Conexion(String url, String user, String pass) {
-        this.url = url;
-        this.user = user;
-        this.pass = pass;
     }
 
     //creo el metodo conectar
-    public Connection getConectar(String url, String user, String pass) {
+    public static Connection getConectar() {
 
-        if (conex == null) {
+        if (conexion == null) {
+
             try {
                 //cargo el driver
                 Class.forName("org.mariadb.jdbc.Driver");
                 //creo la conexion a la base de datos
-                conex = DriverManager.getConnection(url, user, pass);
-                
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al cargar la base de datos..." + ex.getMessage());
-               // Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-
+                conexion = DriverManager.getConnection(url, user, pass);
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error al cargar el driver..." + ex.getMessage());
                 //Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar la base de datos..." + ex.getMessage());
+                //Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return conex;
+        return conexion;
+
     }
 
 }
