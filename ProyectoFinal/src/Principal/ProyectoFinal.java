@@ -9,15 +9,18 @@ public class ProyectoFinal {
     //atributos
     private Connection conex;
     private HuespedData huespeddata;
+    private TipoHabitacionData tipoHabitacion;
     
     public static void main(String[] args) {
         // TODO code application logic here
         
         
-       //TipoHabitacion t1 = new TipoHabitacion( 'S',1,3000);
-        //TipoHabitacion t2 = new TipoHabitacion( 'D',2,7000);
-        //TipoHabitacion t3 = new TipoHabitacion( 'T',3,12000);
-        //TipoHabitacion t4 = new TipoHabitacion( 'L',2,12000);
+       TipoHabitacion t1 = new TipoHabitacion( 'S',1,3000);
+       TipoHabitacion t2 = new TipoHabitacion( 'D',2,7000);
+       TipoHabitacion t3 = new TipoHabitacion( 'T',3,12000);
+       TipoHabitacion t4 = new TipoHabitacion( 'L',2,12000);
+       
+       TipoHabitacion t5 = new TipoHabitacion(6, 'X',7,20000);
         
         
         
@@ -41,20 +44,31 @@ public class ProyectoFinal {
         //creo un objecto Huesped
         //Huesped h4 = new Huesped("Videlo","Gabriel","29741569","Av. Luro 101","videla@hotmail.com","888888",true);
        
-       Huesped h3 = new Huesped(2,"Castro","Gabriel","19741555","Av. Luro 890","castro@hotmail.com","34158236",true);
+       //Huesped h3 = new Huesped(2,"Castro","Gabriel","19741555","Av. Luro 890","castro@hotmail.com","34158236",true);
         
-       new ProyectoFinal().conectar(h3);
+       new ProyectoFinal().conectar(t5);
+       
     }
     
     //creo un metodo para conectarme a la base de datos y llamar a un metodo que esta en la clase HuespedData
-    private void conectar(Huesped huesped){
+//    private void conectar(Huesped huesped){
+//        conex = new Conexion().getConectar("jdbc:mariadb://localhost/bdhotel","root","");
+//        //le paso la conexion creada a la variable huespeddata para traer un metodo
+//        huespeddata = new HuespedData(conex);
+//        //huespeddata.insertarHuesped(huesped);
+//        //huespeddata.borrarHuesped(v);
+//        huespeddata.editarHuesped(huesped);
+//        
+//    }
+    
+    
+     private void conectar(TipoHabitacion tipohab){
         conex = new Conexion().getConectar("jdbc:mariadb://localhost/bdhotel","root","");
         //le paso la conexion creada a la variable huespeddata para traer un metodo
-        huespeddata = new HuespedData(conex);
-        //huespeddata.insertarHuesped(huesped);
-        //huespeddata.borrarHuesped(v);
-        huespeddata.editarHuesped(huesped);
+        tipoHabitacion = new TipoHabitacionData(conex);
+        //tipoHabitacion.insertarTipoHabitacion(tipohab);
+        //tipoHabitacion.borrarTipoHabitacion(5);
+       tipoHabitacion.editarTipoHabitacion(tipohab);
         
     }
-    
 }
