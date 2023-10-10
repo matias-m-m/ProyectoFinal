@@ -28,7 +28,12 @@ public class TipoHabitacion {
         this.importePorNoche = importePorNoche;
     }
 
-    
+    public TipoHabitacion(int idTipoHabit, char nombreTipo, int maxHuespedes, double importePorNoche) {
+        this.idTipoHabit = idTipoHabit;
+        this.nombreTipo = nombreTipo;
+        this.maxHuespedes = maxHuespedes;
+        this.importePorNoche = importePorNoche;
+    }
     //////////////////////////////////////////////////////////////////////////////////////////
     
     public int getIdTipoHabit() {
