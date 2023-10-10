@@ -7,14 +7,14 @@ package Vistas;
 
 /**
  *
- * @author matias
+ * @author Usuario
  */
-public class formAltasReserva extends javax.swing.JInternalFrame {
+public class formAltasHuesped extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form formAltasReserva
+     * Creates new form formAltasHuesped
      */
-    public formAltasReserva() {
+    public formAltasHuesped() {
         initComponents();
     }
 
@@ -27,20 +27,19 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setClosable(true);
+        setTitle("Altas de Huesped");
+        setPreferredSize(new java.awt.Dimension(500, 400));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+            .addGap(0, 394, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            .addGap(0, 274, Short.MAX_VALUE)
         );
 
         pack();
@@ -48,6 +47,5 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

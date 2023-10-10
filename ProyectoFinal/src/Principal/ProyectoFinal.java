@@ -8,7 +8,7 @@ public class ProyectoFinal {
 
     //atributos
     private Connection conex;
-    private HuespedData huespeddata;
+    private HuespedData huespeddata = new HuespedData();
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -41,7 +41,7 @@ public class ProyectoFinal {
         //creo un objecto Huesped
         //Huesped h4 = new Huesped("Videlo","Gabriel","29741569","Av. Luro 101","videla@hotmail.com","888888",true);
        
-       Huesped h3 = new Huesped(2,"Castro","Gabriel","19741555","Av. Luro 890","castro@hotmail.com","34158236",true);
+       Huesped h3 = new Huesped(2,"Fortuna","Marcelo","27444111","Av. Saenz 890","fortuna@hotmail.com","34004758",true);
         
        new ProyectoFinal().conectar(h3);
     }
@@ -51,9 +51,9 @@ public class ProyectoFinal {
         //conex = new Conexion
         //le paso la conexion creada a la variable huespeddata para traer un metodo
         //huespeddata = new HuespedData();
-        //huespeddata.insertarHuesped(huesped);
+        huespeddata.insertarHuesped(huesped);
         //huespeddata.borrarHuesped(v);
-        huespeddata.editarHuesped(huesped);
+        //huespeddata.editarHuesped(huesped);
         
     }
     
