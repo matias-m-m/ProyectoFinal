@@ -63,7 +63,7 @@ public class ProyectoFinal {
     
     
      private void conectar(TipoHabitacion tipohab){
-        conex = new Conexion().getConectar("jdbc:mariadb://localhost/bdhotel","root","");
+      //  conex = new Conexion().getConectar("jdbc:mariadb://localhost/bdhotel","root","");
         //le paso la conexion creada a la variable huespeddata para traer un metodo
         tipoHabitacion = new TipoHabitacionData(conex);
         //tipoHabitacion.insertarTipoHabitacion(tipohab);

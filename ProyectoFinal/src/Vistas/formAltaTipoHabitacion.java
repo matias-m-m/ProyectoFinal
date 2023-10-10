@@ -5,17 +5,32 @@
  */
 package Vistas;
 
+import AccesoADatos.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Maquina3
  */
 public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form formAltaTipoHabitacion
-     */
+    
+    private Connection cnn;
+    private TipoHabitacionData tipohabdata;
+    private DefaultTableModel modeloListaTipoHab = new DefaultTableModel();
+    
+        
+    
+    
     public formAltaTipoHabitacion() {
         initComponents();
+        crearCabecera();
+        rellenarTabla();
+        
     }
 
     /**
@@ -137,4 +152,52 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtMaxHuespedes;
     private javax.swing.JTextField txtNombreTipoHabitacion;
     // End of variables declaration//GEN-END:variables
+
+
+    public void crearCabecera() {
+        
+        modeloListaTipoHab.addColumn("id TipoHabitacion");
+        modeloListaTipoHab.addColumn("Nombre");
+        modeloListaTipoHab.addColumn("Max. Huéspedes");
+        modeloListaTipoHab.addColumn("Importe por noche");
+        
+    }
+    
+    
+    public void borrarTabla() {
+    
+        int filas = modeloListaTipoHab.getRowCount() - 1;
+        
+        for (; filas >= 0; filas--) {
+            modeloListaTipoHab.removeRow(filas);
+        }
+        
+    }
+    
+    
+    public void rellenarTabla() {
+        
+       // cnn =   ;
+        
+        String sql = "select idTipoHabit, nombreTipo, maxHuespedes, importepornoche from tipohabitacion order by idTipoHabit";
+        
+        PreparedStatement ps;
+        try {
+            ps = cnn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                //modeloListaTipoHab.addRow();
+            }
+            
+        }
+        catch (SQLException ex){
+            
+        }
+        
+        
+    }
+
+
+
 }
