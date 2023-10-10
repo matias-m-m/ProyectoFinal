@@ -11,14 +11,13 @@ public class HuespedData {
     //atributos
     private Connection con;
 
-    //constructor
-    public HuespedData() {
-
-    }
+    
+    
 
     //recibo la conexion creada en la clase prueba del metodo conectar y la agrego a la variable conexion
-    public HuespedData(Connection conexion) {
-        this.con = conexion;
+    public HuespedData(){
+        //llamo al metodo getConectar desde la clase Conexion
+        this.con = Conexion.getConectar();
     }
 
     //metodos
