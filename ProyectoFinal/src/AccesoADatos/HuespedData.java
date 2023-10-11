@@ -2,6 +2,8 @@ package AccesoADatos;
 
 import Entidades.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -37,13 +39,13 @@ public class HuespedData {
             ps.close();
             JOptionPane.showMessageDialog(null, "Registro cargado con exito...");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al ejecutar la consulta...");
+            JOptionPane.showMessageDialog(null, "Error al ejecutar la consulta..."+ex.getMessage());
             //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     //metodo para dar de baja un huesped a traves del id
-    public void borrarHuesped(int vid) {
+    public void bajasHuesped(int vid) {
         String sql = "update huesped set estadoHuesp=0 where idHuesp=?";
         try {
             //preparo la consulta
@@ -59,7 +61,7 @@ public class HuespedData {
     }
 
     //metodo editar huesped a traves del objecto huesped
-    public void editarHuesped(Huesped huesped) {
+    public void modificarHuesped(Huesped huesped) {
         String sql = "update huesped set apellidoHuesp=?,nombreHuesp=?,dniHuesp=?,domicilioHuesp=?,emailHuesp=?,telefonoHuesp=? where idHuesp=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -78,5 +80,56 @@ public class HuespedData {
             //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    //metodo listar Huesped activos
+    public List<Huesped> listarHuesped(){
+        Huesped huesped = null;
+        ArrayList<Huesped> lista = new ArrayList<>();
+        String sql = "select idHuesp,apellidoHuesp,nombreHuesp,dniHuesp,domicilioHuesp,emailHuesp,telefonoHuesp from huesped where estadoHuesp = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                huesped = new Huesped();
+                huesped.setIdHuesp(rs.getInt("idHuesp"));
+                huesped.setApellidoHuesp(rs.getString("apellidoHuesp"));
+                huesped.setNombreHuesp(rs.getString("nombreHuesp"));
+                huesped.setDniHuesp(rs.getString("dniHuesp"));
+                huesped.setDomicilioHuesp(rs.getString("domicilioHuesp"));
+                huesped.setEmailHuesp(rs.getString("emailHuesp"));
+                huesped.setTelefonoHuesp(rs.getString("telefonoHuesp"));
+                lista.add(huesped);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecturar la consulta ..."+ex.getMessage());
+            //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
+    
+    //metodo buscar Huesped por dni
+    public Huesped buscarHuespPorDni(String vDni){
+        Huesped huesped = null;
+        String sql = "Select idHuesp,apellidoHuesp,nombreHuesp,dniHuesp,domicilioHuesp,emailHuesp,telefonoHuesp from huesped where dniHuesp=? and estadoHuesp = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, vDni);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                huesped = new Huesped();
+                huesped.setIdHuesp(rs.getInt("idHuesp"));
+                huesped.setApellidoHuesp(rs.getString("apellidoHuesp"));
+                huesped.setNombreHuesp(rs.getString("nombreHuesp"));
+                huesped.setDniHuesp(rs.getString("dniHuesp"));
+                huesped.setDomicilioHuesp(rs.getString("domicilioHuesp"));
+                huesped.setEmailHuesp(rs.getString("emailHuesp"));
+                huesped.setTelefonoHuesp(rs.getString("telefonoHuesp"));
+                huesped.setEstadoHuesp(true);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecutar la consulta..."+ex.getMessage());
+            //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return huesped;
     }
 }

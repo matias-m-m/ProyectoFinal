@@ -7,6 +7,7 @@ package Vistas;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +37,7 @@ public class ventanaLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,6 +56,15 @@ public class ventanaLogin extends javax.swing.JFrame {
         jfondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 740, 260, -1));
         jfondo.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 790, 190, 40));
         jfondo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 700, 190, 40));
+
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jButton2.setText("Conectar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jfondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 870, 190, 50));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoventanausuario.jpg"))); // NOI18N
@@ -101,6 +112,39 @@ public class ventanaLogin extends javax.swing.JFrame {
                                             
     }//GEN-LAST:event_jLabel1ComponentResized
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String usuario = jTextField1.getText();
+        String contraseña = jTextField2.getText(); // Suponiendo que jPasswordField1 es tu campo de contraseña
+
+    this.setVisible(false);
+
+    // Verificar el usuario y condiciones
+    if ("matias".equals(usuario) && "muzzopappa".equals(contraseña)) {
+        pantallaCarga ventanaSecundaria = new pantallaCarga();
+        ventanaSecundaria.setVisible(true);
+        this.dispose(); // Cierra la ventana actual
+    } else if ("andres".equals(usuario) && "muñoz".equals(contraseña)){
+        pantallaCarga ventanaSecundaria = new pantallaCarga(); 
+        ventanaSecundaria.setVisible(true);
+        this.dispose(); // Cierra la ventana actual
+    } else if ("juan".equals(usuario) && "botaro".equals(contraseña)) {
+        pantallaCarga ventanaSecundaria = new pantallaCarga(); 
+        ventanaSecundaria.setVisible(true);
+        this.dispose(); // Cierra la ventana actual
+    } else if ("david".equals(usuario) && "moreira".equals(contraseña)) {
+       pantallaCarga ventanaSecundaria = new pantallaCarga(); 
+        ventanaSecundaria.setVisible(true);
+        this.dispose(); // Cierra la ventana actual
+    } else {
+        ventanaLogin ventanacarga = new ventanaLogin();
+        ventanacarga.setVisible(true);
+        jTextField1.setText(""); // Limpiar el campo de texto
+        JOptionPane.showMessageDialog(this, "Usuario incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+        this.setVisible(true); // Volver a mostrar la ventana actual
+         this.dispose(); // Cierra la ventana actual
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -137,6 +181,7 @@ public class ventanaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

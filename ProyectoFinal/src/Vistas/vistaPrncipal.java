@@ -40,9 +40,10 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMAltaTipoHab = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,7 +68,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 170, 70));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 170, 70));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -132,21 +133,29 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Habitaciones");
-
-        jMAltaTipoHab.setText("Alta de Tipo de Habitación");
-        jMAltaTipoHab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAltaTipoHabActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMAltaTipoHab);
-
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Consultas");
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Huespedes");
+
+        jMenuItem2.setText("Altas");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem2);
+
+        jMenuItem3.setText("Bajas/Editar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem3);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -239,19 +248,22 @@ public class vistaPrncipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2MouseExited
 
-    private void jMAltaTipoHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAltaTipoHabActionPerformed
-        
-        
-        formAltaTipoHabitacion fAltaTipoHab = new formAltaTipoHabitacion();
-        
-        fAltaTipoHab.setVisible(true);
-        
-        jescritorio.add( fAltaTipoHab );
-        jescritorio.moveToFront( fAltaTipoHab );
-        
-        
-        
-    }//GEN-LAST:event_jMAltaTipoHabActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+      //jescritorio.removeAll();
+      //jescritorio.repaint();
+      formAltasHuesped fAltas =  new formAltasHuesped();
+      fAltas.setVisible(true);
+      jescritorio.add(fAltas);
+      jescritorio.moveToFront(fAltas);
+       
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        formBajasyModificacionHuesped fBaMo = new formBajasyModificacionHuesped();
+        fBaMo.setVisible(true);
+        jescritorio.add(fBaMo);
+        jescritorio.moveToFront(fBaMo);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,12 +305,13 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JMenuItem jMAltaTipoHab;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JDesktopPane jescritorio;
     // End of variables declaration//GEN-END:variables
