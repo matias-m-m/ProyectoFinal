@@ -3,6 +3,8 @@ package Principal;
 
 import Entidades.*;
 import AccesoADatos.*;
+import Vistas.pantallaCarga;
+import Vistas.ventanaLogin;
 import java.sql.*;
 public class ProyectoFinal {
 
@@ -12,7 +14,13 @@ public class ProyectoFinal {
     
     public static void main(String[] args) {
         // TODO code application logic here
+        ventanaLogin principal = new ventanaLogin();
         
+         // Establecer la operación de cierre predeterminada cuando se cierre el formulario
+        principal.setDefaultCloseOperation(ventanaLogin.EXIT_ON_CLOSE);
+        
+        // Hacer visible el formulario
+        principal.setVisible(true);
         
        //TipoHabitacion t1 = new TipoHabitacion( 'S',1,3000);
         //TipoHabitacion t2 = new TipoHabitacion( 'D',2,7000);
@@ -40,7 +48,9 @@ public class ProyectoFinal {
         
         //creo un objecto Huesped
         //Huesped h4 = new Huesped("Videlo","Gabriel","29741569","Av. Luro 101","videla@hotmail.com","888888",true);
-       
+       /*
+
+
        Huesped h3 = new Huesped(2,"Fortuna","Marcelo","27444111","Av. Saenz 890","fortuna@hotmail.com","34004758",true);
         
        new ProyectoFinal().conectar(h3);
@@ -56,5 +66,6 @@ public class ProyectoFinal {
         //huespeddata.editarHuesped(huesped);
         
     }
-    
+    */
+    }
 }
