@@ -23,15 +23,25 @@ public class TipoHabitacionData {
 
     
     //metodos
+
+    public Connection getCon() {
+        return con;
+    }
+    
+    
+    
+    
+    
     //insertar reserva a traves de un object reserva
     public void insertarTipoHabitacion(TipoHabitacion tipohab) {
-        String sql = "insert into tipohabitacion (nombreTipo,maxHuespedes,importepornoche) values (?,?,?)";
+        String sql = "insert into tipohabitacion (nombreTipo, letraTipo, maxHuespedes, importepornoche) values (?,?,?,?)";
         try {
             //preparo la consulta
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, tipohab.getNombreTipo()+"");
-            ps.setInt(2, tipohab.getMaxHuespedes());
-            ps.setDouble(3, tipohab.getImportePorNoche() );
+            ps.setString(1, tipohab.getNombreTipo());
+            ps.setString(2, tipohab.getLetraTipo()+"");
+            ps.setInt(3, tipohab.getMaxHuespedes());
+            ps.setDouble(4, tipohab.getImportePorNoche() );
            
             ps.executeUpdate();
             ps.close();
@@ -61,14 +71,16 @@ public class TipoHabitacionData {
     
     
     public void editarTipoHabitacion(TipoHabitacion tipohab) {
-        String sql = "update tipohabitacion set nombreTipo=?,maxHuespedes=?,importepornoche=? where idTipoHabit=?";
+        String sql = "update tipohabitacion set nombreTipo=?, letraTipo=?, maxHuespedes=?,importepornoche=? where idTipoHabit=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
            
-            ps.setString(1, tipohab.getNombreTipo()+"");
-            ps.setInt(2, tipohab.getMaxHuespedes());
-            ps.setDouble(3, tipohab.getImportePorNoche() );
-            ps.setInt(4, tipohab.getIdTipoHabit());
+            ps.setString(1, tipohab.getNombreTipo());
+            ps.setString(2, tipohab.getLetraTipo()+"");
+            ps.setInt(3, tipohab.getMaxHuespedes());
+            ps.setDouble(4, tipohab.getImportePorNoche() );
+            
+            ps.setInt(5, tipohab.getIdTipoHabit());
             
                       
             ps.executeUpdate();

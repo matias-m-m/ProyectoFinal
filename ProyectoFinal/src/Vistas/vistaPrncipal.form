@@ -13,6 +13,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Habitaciones"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMAltaTipoHab">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alta de Tipo de Habitaci&#xf3;n"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMAltaTipoHabActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>

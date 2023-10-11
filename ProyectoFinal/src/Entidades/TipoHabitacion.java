@@ -12,7 +12,8 @@ package Entidades;
 public class TipoHabitacion {
     
     private int idTipoHabit;
-    private char nombreTipo;
+    private String nombreTipo;
+    private char letraTipo;
     private int maxHuespedes;
     private double importePorNoche;
 
@@ -22,15 +23,17 @@ public class TipoHabitacion {
     public TipoHabitacion() {
     }
 
-    public TipoHabitacion(char nombreTipo, int maxHuespedes, double importePorNoche) {
+    public TipoHabitacion(String nombreTipo, char letraTipo, int maxHuespedes, double importePorNoche) {
         this.nombreTipo = nombreTipo;
+        this.letraTipo = letraTipo;
         this.maxHuespedes = maxHuespedes;
         this.importePorNoche = importePorNoche;
     }
 
-    public TipoHabitacion(int idTipoHabit, char nombreTipo, int maxHuespedes, double importePorNoche) {
+    public TipoHabitacion(int idTipoHabit, String nombreTipo, char letraTipo, int maxHuespedes, double importePorNoche) {
         this.idTipoHabit = idTipoHabit;
         this.nombreTipo = nombreTipo;
+        this.letraTipo = letraTipo;
         this.maxHuespedes = maxHuespedes;
         this.importePorNoche = importePorNoche;
     }
@@ -44,14 +47,24 @@ public class TipoHabitacion {
         this.idTipoHabit = idTipoHabit;
     }
 
-    public char getNombreTipo() {
+    public String getNombreTipo() {
         return nombreTipo;
     }
 
-    public void setNombreTipo(char nombreTipo) {
+    public void setNombreTipo(String nombreTipo) {
         this.nombreTipo = nombreTipo;
     }
 
+    public char getLetraTipo() {
+        return letraTipo;
+    }
+
+    public void setLetraTipo(char letraTipo) {
+        this.letraTipo = letraTipo;
+    }
+
+    
+    
     public int getMaxHuespedes() {
         return maxHuespedes;
     }
@@ -70,9 +83,10 @@ public class TipoHabitacion {
 
     @Override
     public String toString() {
-        return "TipoHabitacion{" + "nombreTipo=" + nombreTipo + ", maxHuespedes=" + maxHuespedes + ", importePorNoche=" + importePorNoche + '}';
+        return "TipoHabitacion{" + "idTipoHabit=" + idTipoHabit + ", nombreTipo=" + nombreTipo + ", letraTipo=" + letraTipo + ", maxHuespedes=" + maxHuespedes + ", importePorNoche=" + importePorNoche + '}';
     }
-    
+
+   
     
     
     

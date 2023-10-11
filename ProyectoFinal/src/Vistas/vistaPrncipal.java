@@ -40,6 +40,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMAltaTipoHab = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -131,6 +132,15 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Habitaciones");
+
+        jMAltaTipoHab.setText("Alta de Tipo de Habitación");
+        jMAltaTipoHab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAltaTipoHabActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMAltaTipoHab);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Consultas");
@@ -229,6 +239,20 @@ public class vistaPrncipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2MouseExited
 
+    private void jMAltaTipoHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAltaTipoHabActionPerformed
+        
+        
+        formAltaTipoHabitacion fAltaTipoHab = new formAltaTipoHabitacion();
+        
+        fAltaTipoHab.setVisible(true);
+        
+        jescritorio.add( fAltaTipoHab );
+        jescritorio.moveToFront( fAltaTipoHab );
+        
+        
+        
+    }//GEN-LAST:event_jMAltaTipoHabActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,6 +293,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JMenuItem jMAltaTipoHab;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
