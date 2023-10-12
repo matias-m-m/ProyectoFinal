@@ -5,7 +5,10 @@
  */
 package Vistas;
 
+import AccesoADatos.UsuarioData;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -14,10 +17,9 @@ import javax.swing.JOptionPane;
  * @author matias
  */
 public class ventanaLogin extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ventanaLogin
-     */
+    UsuarioData udata =new UsuarioData();
+    
+    
     public ventanaLogin() {
         initComponents();
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
@@ -33,9 +35,9 @@ public class ventanaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jfondo = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -45,16 +47,28 @@ public class ventanaLogin extends javax.swing.JFrame {
         jfondo.setBackground(new java.awt.Color(0, 0, 0));
         jfondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("CONTRASEÑA");
+        jfondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 740, 260, -1));
+
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("USUARIO");
         jfondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 650, 170, 40));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("CONTRASEÑA");
-        jfondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 740, 260, -1));
-        jfondo.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 790, 190, 40));
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyTyped(evt);
+            }
+        });
+        jfondo.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 790, 190, 40));
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
         jfondo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 700, 190, 40));
 
         jButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -64,7 +78,7 @@ public class ventanaLogin extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jfondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 870, 190, 50));
+        jfondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 860, 190, 50));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoventanausuario.jpg"))); // NOI18N
@@ -114,37 +128,39 @@ public class ventanaLogin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String usuario = jTextField1.getText();
-        String contraseña = jTextField2.getText(); // Suponiendo que jPasswordField1 es tu campo de contraseña
-
-    this.setVisible(false);
-
-    // Verificar el usuario y condiciones
-    if ("matias".equals(usuario) && "muzzopappa".equals(contraseña)) {
+        char[] contrasenaCharArray = jPasswordField1.getPassword();
+        String contraseña = new String(contrasenaCharArray);
+        System.out.println(contraseña);
+        udata.Login(usuario, contraseña);
+        if (udata.Login(usuario, contraseña)==true) {
         pantallaCarga ventanaSecundaria = new pantallaCarga();
         ventanaSecundaria.setVisible(true);
         this.dispose(); // Cierra la ventana actual
-    } else if ("andres".equals(usuario) && "muñoz".equals(contraseña)){
-        pantallaCarga ventanaSecundaria = new pantallaCarga(); 
-        ventanaSecundaria.setVisible(true);
-        this.dispose(); // Cierra la ventana actual
-    } else if ("juan".equals(usuario) && "botaro".equals(contraseña)) {
-        pantallaCarga ventanaSecundaria = new pantallaCarga(); 
-        ventanaSecundaria.setVisible(true);
-        this.dispose(); // Cierra la ventana actual
-    } else if ("david".equals(usuario) && "moreira".equals(contraseña)) {
-       pantallaCarga ventanaSecundaria = new pantallaCarga(); 
-        ventanaSecundaria.setVisible(true);
-        this.dispose(); // Cierra la ventana actual
-    } else {
-        ventanaLogin ventanacarga = new ventanaLogin();
+    } else
+        {
+          ventanaLogin ventanacarga = new ventanaLogin();
         ventanacarga.setVisible(true);
         jTextField1.setText(""); // Limpiar el campo de texto
         JOptionPane.showMessageDialog(this, "Usuario incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
         this.setVisible(true); // Volver a mostrar la ventana actual
          this.dispose(); // Cierra la ventana actual
-    }
+  
+        } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+       char c= evt.getKeyChar();
+        if((Character.isDigit(c) || c == KeyEvent.VK_SPACE )){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jPasswordField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyTyped
+         char c= evt.getKeyChar();
+        if( c == KeyEvent.VK_SPACE ){
+            evt.consume();
+    }//GEN-LAST:event_jPasswordField1KeyTyped
+    }
     /**
      * @param args the command line arguments
      */
@@ -185,8 +201,8 @@ public class ventanaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel jfondo;
     // End of variables declaration//GEN-END:variables
 }
