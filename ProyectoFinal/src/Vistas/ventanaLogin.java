@@ -38,7 +38,6 @@ public class ventanaLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField2 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -63,14 +62,7 @@ public class ventanaLogin extends javax.swing.JFrame {
                 jPasswordField1KeyTyped(evt);
             }
         });
-        jfondo.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 850, 190, 30));
-
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField2KeyTyped(evt);
-            }
-        });
-        jfondo.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 790, 190, 40));
+        jfondo.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 790, 190, 40));
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -86,7 +78,7 @@ public class ventanaLogin extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jfondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 900, 190, 50));
+        jfondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 860, 190, 50));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoventanausuario.jpg"))); // NOI18N
@@ -136,7 +128,7 @@ public class ventanaLogin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String usuario = jTextField1.getText();
-       char[] contrasenaCharArray = jPasswordField1.getPassword();
+        char[] contrasenaCharArray = jPasswordField1.getPassword();
         String contraseña = new String(contrasenaCharArray);
         System.out.println(contraseña);
         udata.Login(usuario, contraseña);
@@ -162,13 +154,6 @@ public class ventanaLogin extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField1KeyTyped
-
-    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
-        char c= evt.getKeyChar();
-        if( c == KeyEvent.VK_SPACE ){
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jPasswordField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyTyped
          char c= evt.getKeyChar();
@@ -218,7 +203,6 @@ public class ventanaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel jfondo;
     // End of variables declaration//GEN-END:variables
 }
