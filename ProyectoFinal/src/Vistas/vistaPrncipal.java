@@ -157,7 +157,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 800, 90, 50));
 
         jButton7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton7.setText("BAJAS");
+        jButton7.setText("ALTAS");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -175,7 +175,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 800, 90, 50));
 
         jButton9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton9.setText("BAJAS");
+        jButton9.setText("ALTAS");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -193,7 +193,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 800, 90, 50));
 
         jButton11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton11.setText("BAJAS");
+        jButton11.setText("ALTAS");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
@@ -211,7 +211,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1750, 800, 90, 50));
 
         jButton5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton5.setText("BAJAS");
+        jButton5.setText("ALTAS");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
