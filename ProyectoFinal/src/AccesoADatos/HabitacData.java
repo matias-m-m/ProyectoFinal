@@ -59,4 +59,19 @@ public class HabitacData {
         }
     }
     
+    public void bajarhabitacion(int id){
+        String sqlBaja="UPDATE habitacion SET estado=0 WHERE idHabitacion=?";
+        try{
+          PreparedStatement psBaja = con.prepareStatement(sqlBaja);
+            psBaja.setInt(1,id);
+            
+            psBaja.executeUpdate();
+            psBaja.close();
+            JOptionPane.showMessageDialog(null, "Habitación deshabilitada con exito");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al editar la habitación: "+ex.getMessage());
+            //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
