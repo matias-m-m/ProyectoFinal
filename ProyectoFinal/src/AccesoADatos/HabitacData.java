@@ -59,4 +59,9 @@ public class HabitacData {
         }
     }
     
+    public void bajarhabitacion(int id){
+        String sqlBaja="UPDATE habitacion SET estado=0 WHERE idHabitacion=?";
+        
+    }
+    
 }
