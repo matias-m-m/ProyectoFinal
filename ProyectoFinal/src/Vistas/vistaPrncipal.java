@@ -40,6 +40,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMAltaTipoHab = new javax.swing.JMenuItem();
+        jMBajaModifTipoHabit = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -133,6 +135,23 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Habitaciones");
+
+        jMAltaTipoHab.setText("Alta Tipo de Habitacion");
+        jMAltaTipoHab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAltaTipoHabActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMAltaTipoHab);
+
+        jMBajaModifTipoHabit.setText("Baja/Modificacion Tipo de Habitación");
+        jMBajaModifTipoHabit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMBajaModifTipoHabitActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMBajaModifTipoHabit);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Consultas");
@@ -265,6 +284,24 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jescritorio.moveToFront(fBaMo);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMAltaTipoHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAltaTipoHabActionPerformed
+        // TODO add your handling code here:
+      formAltaTipoHabitacion fAltTipHab =  new formAltaTipoHabitacion();
+      fAltTipHab.setVisible(true);
+      jescritorio.add(fAltTipHab);
+      jescritorio.moveToFront(fAltTipHab);
+        
+    }//GEN-LAST:event_jMAltaTipoHabActionPerformed
+
+    private void jMBajaModifTipoHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBajaModifTipoHabitActionPerformed
+        // TODO add your handling code here:
+      formBajayModificacionTipoHabitacion fBajayModiftTipHab =  new formBajayModificacionTipoHabitacion();
+      fBajayModiftTipHab.setVisible(true);
+      jescritorio.add(fBajayModiftTipHab);
+      jescritorio.moveToFront(fBajayModiftTipHab); 
+        
+    }//GEN-LAST:event_jMBajaModifTipoHabitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -305,6 +342,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JMenuItem jMAltaTipoHab;
+    private javax.swing.JMenuItem jMBajaModifTipoHabit;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
