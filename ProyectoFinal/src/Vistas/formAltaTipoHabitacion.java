@@ -125,20 +125,20 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
                             .addComponent(txtMaxHuespedes, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(52, 52, 52)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(160, 160, 160)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addComponent(jLabel4)
-                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
@@ -163,11 +163,12 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel3))
                             .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(61, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -187,6 +188,7 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
             nuevaHab.setLetraTipo( txtLetraTipo.getText().charAt(0));
             nuevaHab.setMaxHuespedes((Integer.parseInt(txtMaxHuespedes.getText())) );
             nuevaHab.setImportePorNoche(Integer.parseInt(txtImporte.getText()));
+            nuevaHab.setEstado(true);
             
             //Inserto el nuevo tipo de Habitacion
             tipohabdata.insertarTipoHabitacion(nuevaHab);
@@ -232,6 +234,7 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
         modeloListaTipoHab.addColumn("Letra Tipo");
         modeloListaTipoHab.addColumn("Max. Huéspedes");
         modeloListaTipoHab.addColumn("Importe por noche");
+        modeloListaTipoHab.addColumn("Estado");
         
         jTable1.setModel(modeloListaTipoHab);
     }
@@ -252,7 +255,7 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
         
         
         
-        String sql = "select idTipoHabit, nombreTipo, letraTipo, maxHuespedes, importepornoche from tipohabitacion order by idTipoHabit";
+        String sql = "select idTipoHabit, nombreTipo, letraTipo, maxHuespedes, importepornoche, estado from tipohabitacion order by idTipoHabit";
         
         PreparedStatement ps;
         try {
@@ -260,7 +263,13 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
-                modeloListaTipoHab.addRow(new Object[] { rs.getInt("idTipoHabit"), rs.getString("nombreTipo"),rs.getString("letraTipo"), rs.getInt("maxHuespedes"),rs.getDouble("importepornoche") } );
+                String est = rs.getBoolean("estado")+"";
+                if (est.equals("true")) {
+                    modeloListaTipoHab.addRow(new Object[] { rs.getInt("idTipoHabit"), rs.getString("nombreTipo"),rs.getString("letraTipo"), rs.getInt("maxHuespedes"),rs.getDouble("importepornoche"), "Habilitada" } );
+                }
+                else {
+                   modeloListaTipoHab.addRow(new Object[] { rs.getInt("idTipoHabit"), rs.getString("nombreTipo"),rs.getString("letraTipo"), rs.getInt("maxHuespedes"),rs.getDouble("importepornoche"), "Inhabilitada"} );
+                }
             }
             ps.close();
         }

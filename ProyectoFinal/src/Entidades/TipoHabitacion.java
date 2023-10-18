@@ -16,6 +16,7 @@ public class TipoHabitacion {
     private char letraTipo;
     private int maxHuespedes;
     private double importePorNoche;
+    private boolean estado;
 
     
     /////////////////////////////  Constructores ///////////////////////////////////////////
@@ -23,19 +24,21 @@ public class TipoHabitacion {
     public TipoHabitacion() {
     }
 
-    public TipoHabitacion(String nombreTipo, char letraTipo, int maxHuespedes, double importePorNoche) {
+    public TipoHabitacion(String nombreTipo, char letraTipo, int maxHuespedes, double importePorNoche, boolean estado) {
         this.nombreTipo = nombreTipo;
         this.letraTipo = letraTipo;
         this.maxHuespedes = maxHuespedes;
         this.importePorNoche = importePorNoche;
+        this.estado = estado;
     }
 
-    public TipoHabitacion(int idTipoHabit, String nombreTipo, char letraTipo, int maxHuespedes, double importePorNoche) {
+    public TipoHabitacion(int idTipoHabit, String nombreTipo, char letraTipo, int maxHuespedes, double importePorNoche, boolean estado) {
         this.idTipoHabit = idTipoHabit;
         this.nombreTipo = nombreTipo;
         this.letraTipo = letraTipo;
         this.maxHuespedes = maxHuespedes;
         this.importePorNoche = importePorNoche;
+        this.estado = estado;
     }
     //////////////////////////////////////////////////////////////////////////////////////////
     
@@ -81,10 +84,22 @@ public class TipoHabitacion {
         this.importePorNoche = importePorNoche;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return "TipoHabitacion{" + "idTipoHabit=" + idTipoHabit + ", nombreTipo=" + nombreTipo + ", letraTipo=" + letraTipo + ", maxHuespedes=" + maxHuespedes + ", importePorNoche=" + importePorNoche + '}';
+        return "TipoHabitacion{" + "idTipoHabit=" + idTipoHabit + ", nombreTipo=" + nombreTipo + ", letraTipo=" + letraTipo + ", maxHuespedes=" + maxHuespedes + ", importePorNoche=" + importePorNoche + ", estado=" + estado + '}';
     }
+
+    
+    
+  
 
    
     

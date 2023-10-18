@@ -34,7 +34,7 @@ public class TipoHabitacionData {
     
     //insertar reserva a traves de un object reserva
     public void insertarTipoHabitacion(TipoHabitacion tipohab) {
-        String sql = "insert into tipohabitacion (nombreTipo, letraTipo, maxHuespedes, importepornoche) values (?,?,?,?)";
+        String sql = "insert into tipohabitacion (nombreTipo, letraTipo, maxHuespedes, importepornoche, estado) values (?,?,?,?,1)";
         try {
             //preparo la consulta
             PreparedStatement ps = con.prepareStatement(sql);
@@ -42,6 +42,7 @@ public class TipoHabitacionData {
             ps.setString(2, tipohab.getLetraTipo()+"");
             ps.setInt(3, tipohab.getMaxHuespedes());
             ps.setDouble(4, tipohab.getImportePorNoche() );
+            //ps.setBoolean(5,true);
            
             ps.executeUpdate();
             ps.close();
@@ -53,19 +54,19 @@ public class TipoHabitacionData {
     }
      
     
-    //metodo para dar de baja una reserva a traves del id
+    //metodo para dar de baja un tipohabitacion a traves del id
     public void borrarTipoHabitacion(int idtipohab) {
         
-       // String sql_H = "delete from habitacion where idtipohabitacion = ?";
+        String sql_H = "update habitacion set estado = 0 where idtipohabitacion = ?";
         
-        String sql = "delete from tipohabitacion where idTipoHabit=?";
+        String sql = "update tipohabitacion set estado = 0 where idTipoHabit = ?";
         try {
             //borrado logico de habitaciones con el tipo enviado
-//            PreparedStatement ps = con.prepareStatement(sql_H);
-//            ps.setInt(1, idtipohab);
-//            ps.executeUpdate();
+            PreparedStatement ps = con.prepareStatement(sql_H);
+            ps.setInt(1, idtipohab);
+            ps.executeUpdate();
             
-            PreparedStatement ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
             ps.setInt(1, idtipohab);
             ps.executeUpdate();
             
@@ -79,7 +80,7 @@ public class TipoHabitacionData {
     
     
     public void editarTipoHabitacion(TipoHabitacion tipohab) {
-        String sql = "update tipohabitacion set nombreTipo=?, letraTipo=?, maxHuespedes=?,importepornoche=? where idTipoHabit=?";
+        String sql = "update tipohabitacion set nombreTipo=?, letraTipo=?, maxHuespedes=?,importepornoche=?, estado = ? where idTipoHabit=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
            
@@ -88,7 +89,9 @@ public class TipoHabitacionData {
             ps.setInt(3, tipohab.getMaxHuespedes());
             ps.setDouble(4, tipohab.getImportePorNoche() );
             
-            ps.setInt(5, tipohab.getIdTipoHabit());
+            ps.setBoolean(5, tipohab.isEstado());    
+          
+            ps.setInt(6, tipohab.getIdTipoHabit());
             
                       
             ps.executeUpdate();
