@@ -180,19 +180,27 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Faltan agregar datos...");
         }
         else {
-            TipoHabitacion nuevaHab = new TipoHabitacion();
             
+            //creo y cargo la entidad tipohabitacion para pasar como parametro al tipohabdata
+            TipoHabitacion nuevaHab = new TipoHabitacion();
             nuevaHab.setNombreTipo(txtNombreTipoHabitacion.getText());
             nuevaHab.setLetraTipo( txtLetraTipo.getText().charAt(0));
             nuevaHab.setMaxHuespedes((Integer.parseInt(txtMaxHuespedes.getText())) );
             nuevaHab.setImportePorNoche(Integer.parseInt(txtImporte.getText()));
+            
+            //Inserto el nuevo tipo de Habitacion
             tipohabdata.insertarTipoHabitacion(nuevaHab);
             
+            //Borro los campos para una nueva inserción
             txtNombreTipoHabitacion.setText("");
             txtLetraTipo.setText("");
             txtMaxHuespedes.setText("");
             txtImporte.setText("");
             txtNombreTipoHabitacion.requestFocus();
+            
+            //Recargo la tabla con los tipo de habitacion existentes
+            borrarTabla();
+            rellenarTabla();
         }
         
         

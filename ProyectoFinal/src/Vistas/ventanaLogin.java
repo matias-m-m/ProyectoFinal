@@ -18,7 +18,10 @@ import javax.swing.JOptionPane;
  */
 public class ventanaLogin extends javax.swing.JFrame {
     UsuarioData udata =new UsuarioData();
-    
+    boolean passwordVisible = false; // Variable para rastrear el estado de la contraseña
+private final ImageIcon showPasswordIcon = new ImageIcon(getClass().getResource("/imagenes/ojo cerrado.png"));
+private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource("/imagenes/icono ojo abierto.png"));
+
     
     public ventanaLogin() {
         initComponents();
@@ -37,6 +40,7 @@ public class ventanaLogin extends javax.swing.JFrame {
         jfondo = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -56,6 +60,16 @@ public class ventanaLogin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("USUARIO");
         jfondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 650, 170, 40));
+
+        jButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono ojo abierto.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jfondo.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 790, 60, 40));
 
         jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -161,6 +175,18 @@ public class ventanaLogin extends javax.swing.JFrame {
             evt.consume();
     }//GEN-LAST:event_jPasswordField1KeyTyped
     }
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         if (passwordVisible) {
+        jPasswordField1.setEchoChar('*'); // Ocultar la contraseña
+        jButton3.setIcon(showPasswordIcon); // Cambiar al ícono "Mostrar contraseña"
+        passwordVisible = false;
+    } else {
+        jPasswordField1.setEchoChar((char) 0); // Mostrar la contraseña
+        jButton3.setIcon(hidePasswordIcon); // Cambiar al ícono "Ocultar contraseña"
+        passwordVisible = true;
+    }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -198,6 +224,7 @@ public class ventanaLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

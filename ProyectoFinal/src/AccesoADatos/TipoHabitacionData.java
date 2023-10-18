@@ -55,12 +55,20 @@ public class TipoHabitacionData {
     
     //metodo para dar de baja una reserva a traves del id
     public void borrarTipoHabitacion(int idtipohab) {
+        
+       // String sql_H = "delete from habitacion where idtipohabitacion = ?";
+        
         String sql = "delete from tipohabitacion where idTipoHabit=?";
         try {
-            //preparo la consulta
+            //borrado logico de habitaciones con el tipo enviado
+//            PreparedStatement ps = con.prepareStatement(sql_H);
+//            ps.setInt(1, idtipohab);
+//            ps.executeUpdate();
+            
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idtipohab);
             ps.executeUpdate();
+            
             ps.close();
             JOptionPane.showMessageDialog(null, "Tipo de Habitacion dada de baja con exito....");
         } catch (SQLException ex) {

@@ -7,6 +7,8 @@ package Vistas;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
 /**
@@ -20,6 +22,14 @@ public class vistaPrncipal extends javax.swing.JFrame {
      */
     public vistaPrncipal() {
         initComponents();
+        jButton5.setVisible(false);
+        jButton6.setVisible(false);
+        jButton7.setVisible(false);
+        jButton8.setVisible(false);
+        jButton9.setVisible(false);
+        jButton10.setVisible(false);
+        jButton11.setVisible(false);
+        jButton12.setVisible(false);
     }
 
     /**
@@ -37,9 +47,19 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMAltaTipoHab = new javax.swing.JMenuItem();
+        jMBajaModifTipoHabit = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -68,7 +88,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 170, 70));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 860, 200, 70));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -82,7 +102,12 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 jButton2MouseExited(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, 180, 70));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 860, 200, 70));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -96,7 +121,12 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 jButton3MouseExited(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 510, 200, 70));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 860, 200, 70));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -110,7 +140,84 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 jButton4MouseExited(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 510, 180, 70));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 860, 210, 70));
+
+        jButton6.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jButton6.setText("BAJA/EDITAR");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 800, 90, 50));
+
+        jButton7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton7.setText("ALTAS");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 800, 100, 50));
+
+        jButton8.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jButton8.setText("BAJA/EDITAR");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 800, 90, 50));
+
+        jButton9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton9.setText("ALTAS");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 800, 100, 50));
+
+        jButton10.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jButton10.setText("BAJA/EDITAR");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 800, 90, 50));
+
+        jButton11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton11.setText("ALTAS");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 800, 100, 50));
+
+        jButton12.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jButton12.setText("BAJA/EDITAR");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1750, 800, 90, 50));
+
+        jButton5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton5.setText("ALTAS");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 802, 100, 50));
 
         jescritorio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -119,13 +226,13 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jescritorioLayout.setHorizontalGroup(
             jescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jescritorioLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1920, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jescritorioLayout.setVerticalGroup(
             jescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jescritorioLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -133,6 +240,23 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Habitaciones");
+
+        jMAltaTipoHab.setText("Alta Tipo de Habitacion");
+        jMAltaTipoHab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAltaTipoHabActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMAltaTipoHab);
+
+        jMBajaModifTipoHabit.setText("Baja/Modificacion Tipo de Habitación");
+        jMBajaModifTipoHabit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMBajaModifTipoHabitActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMBajaModifTipoHabit);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Consultas");
@@ -170,9 +294,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jescritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jescritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -181,22 +303,29 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // jescritorio.removeAll();
         // jescritorio.repaint();
-        formReserva reserva = new formReserva();
-        reserva.setVisible(true);
-        jescritorio.add(reserva);
-        jescritorio.moveToFront(reserva);
+        jButton5.setVisible(true);
+        jButton6.setVisible(true);
+
+        // formReserva reserva = new formReserva();
+        // reserva.setVisible(true);
+        //jescritorio.add(reserva);
+        //jescritorio.moveToFront(reserva);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        formAltasReserva altasHues = new formAltasReserva();
-        altasHues.setVisible(true);
+
+        jButton11.setVisible(true);
+        jButton12.setVisible(true);
+        //movi este formulario al jbutton11actionperformed
+        //formAltasReserva altasHues = new formAltasReserva();
+        //altasHues.setVisible(true);
         //colocar color de fondo al formulario
-        altasHues.getContentPane().setBackground(new Color(251, 128, 82));
-        jescritorio.add(altasHues);
-        jescritorio.moveToFront(altasHues);
+        //altasHues.getContentPane().setBackground(new Color(251, 128, 82));
+        //jescritorio.add(altasHues);
+        //jescritorio.moveToFront(altasHues);
     }//GEN-LAST:event_jButton2ActionPerformed
 // estos eventos los uso para cambiar de color los botones al pasar por encima de ellos
-    
+//jbutton 1 pertenece al reserva
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
         jButton1.setForeground(Color.BLACK); // Cambia el color del texto a blanco
@@ -206,10 +335,10 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
         jButton1.setBackground(Color.BLACK);
         jButton1.setForeground(Color.WHITE);
-        jButton1.setSize(new Dimension(170, 70)); // Restaura el tamaño original
+        jButton1.setSize(new Dimension(200, 70)); // Restaura el tamaño original
 
     }//GEN-LAST:event_jButton1MouseExited
-
+//el jbutton 3 pertenece a habitaciones
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
         jButton3.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
         jButton3.setForeground(Color.BLACK); // Cambia el color del texto a blanco
@@ -219,10 +348,10 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
         jButton3.setBackground(Color.BLACK);
         jButton3.setForeground(Color.WHITE);
-         jButton3.setSize(new Dimension(200, 70)); // Restaura el tamaño original
+        jButton3.setSize(new Dimension(200, 70)); // Restaura el tamaño original
 
     }//GEN-LAST:event_jButton3MouseExited
-
+//el jbutton 4 pertenece a consulta
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
         jButton4.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
         jButton4.setForeground(Color.BLACK); // Cambia el color del texto a blanco
@@ -232,30 +361,30 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
         jButton4.setBackground(Color.BLACK);
         jButton4.setForeground(Color.WHITE);
-        jButton4.setSize(new Dimension(180, 70)); // Restaura el tamaño original
+        jButton4.setSize(new Dimension(210, 70)); // Restaura el tamaño original
     }//GEN-LAST:event_jButton4MouseExited
-
+//el jbutton 2 pertenece a huesped
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
         jButton2.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
         jButton2.setForeground(Color.BLACK); // Cambia el color del texto a blanco
-         jButton2.setSize(new Dimension(170, 60)); // Cambia el tamaño al 80% del tamaño original
+        jButton2.setSize(new Dimension(170, 60)); // Cambia el tamaño al 80% del tamaño original
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-       jButton2.setBackground(Color.BLACK);
+        jButton2.setBackground(Color.BLACK);
         jButton2.setForeground(Color.WHITE);
-        jButton2.setSize(new Dimension(180, 70)); // Restaura el tamaño original
-        
+        jButton2.setSize(new Dimension(200, 70)); // Restaura el tamaño original
+
     }//GEN-LAST:event_jButton2MouseExited
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-      //jescritorio.removeAll();
-      //jescritorio.repaint();
-      formAltasHuesped fAltas =  new formAltasHuesped();
-      fAltas.setVisible(true);
-      jescritorio.add(fAltas);
-      jescritorio.moveToFront(fAltas);
-       
+        //jescritorio.removeAll();
+        //jescritorio.repaint();
+        formAltasHuesped fAltas = new formAltasHuesped();
+        fAltas.setVisible(true);
+        jescritorio.add(fAltas);
+        jescritorio.moveToFront(fAltas);
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -264,6 +393,94 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jescritorio.add(fBaMo);
         jescritorio.moveToFront(fBaMo);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMAltaTipoHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAltaTipoHabActionPerformed
+        // TODO add your handling code here:
+        formAltaTipoHabitacion fAltTipHab = new formAltaTipoHabitacion();
+        fAltTipHab.setVisible(true);
+        jescritorio.add(fAltTipHab);
+        jescritorio.moveToFront(fAltTipHab);
+
+    }//GEN-LAST:event_jMAltaTipoHabActionPerformed
+
+    private void jMBajaModifTipoHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBajaModifTipoHabitActionPerformed
+        // TODO add your handling code here:
+        formBajayModificacionTipoHabitacion fBajayModiftTipHab = new formBajayModificacionTipoHabitacion();
+        fBajayModiftTipHab.setVisible(true);
+        jescritorio.add(fBajayModiftTipHab);
+        jescritorio.moveToFront(fBajayModiftTipHab);
+
+    }//GEN-LAST:event_jMBajaModifTipoHabitActionPerformed
+// estos son los botones para que se muestren al accionar en ellos  son 8 botones 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jButton5.setVisible(false);
+        formReserva reserva = new formReserva();
+        reserva.setVisible(true);
+        jescritorio.add(reserva);
+        jescritorio.moveToFront(reserva);
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        jButton6.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        jButton7.setVisible(false);
+        formAltaTipoHabitacion fAltTipHab = new formAltaTipoHabitacion();
+        fAltTipHab.setVisible(true);
+        jescritorio.add(fAltTipHab);
+        jescritorio.moveToFront(fAltTipHab);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        jButton8.setVisible(false);
+        formBajayModificacionTipoHabitacion fBajayModiftTipHab = new formBajayModificacionTipoHabitacion();
+        fBajayModiftTipHab.setVisible(true);
+        jescritorio.add(fBajayModiftTipHab);
+        jescritorio.moveToFront(fBajayModiftTipHab);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        jButton9.setVisible(false);
+    }//GEN-LAST:event_jButton9ActionPerformed
+// estos botones hay  que ordenarlo pertenecen arriba alos action de reserva habitacion consulta  y huesped
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        jButton9.setVisible(true);
+        jButton10.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jButton7.setVisible(true);
+        jButton8.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        jButton10.setVisible(false);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+
+        jButton11.setVisible(false);
+        formAltasHuesped fAltas = new formAltasHuesped();
+        fAltas.setVisible(true);
+        jescritorio.add(fAltas);
+        jescritorio.moveToFront(fAltas);
+        //este es otro formulario tambien para altas?
+        // formAltasReserva altasHues = new formAltasReserva();
+        //altasHues.setVisible(true);
+        // altasHues.getContentPane().setBackground(new Color(251, 128, 82));
+        //jescritorio.add(altasHues);
+        //jescritorio.moveToFront(altasHues);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        jButton12.setVisible(false);
+        formBajasyModificacionHuesped fBaMo = new formBajasyModificacionHuesped();
+        fBaMo.setVisible(true);
+        jescritorio.add(fBaMo);
+        jescritorio.moveToFront(fBaMo);
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,9 +519,19 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JMenuItem jMAltaTipoHab;
+    private javax.swing.JMenuItem jMBajaModifTipoHabit;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
