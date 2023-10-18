@@ -57,6 +57,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        imNvaReserva = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMAltaTipoHab = new javax.swing.JMenuItem();
         jMBajaModifTipoHabit = new javax.swing.JMenuItem();
@@ -237,6 +238,15 @@ public class vistaPrncipal extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Reserva");
+
+        imNvaReserva.setText("Nueva reserva");
+        imNvaReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imNvaReservaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(imNvaReserva);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Habitaciones");
@@ -414,10 +424,10 @@ public class vistaPrncipal extends javax.swing.JFrame {
 // estos son los botones para que se muestren al accionar en ellos  son 8 botones 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jButton5.setVisible(false);
-        formReserva reserva = new formReserva();
-        reserva.setVisible(true);
-        jescritorio.add(reserva);
-        jescritorio.moveToFront(reserva);
+        formAltasReserva nvaReserva = new formAltasReserva();
+        nvaReserva.setVisible(true);
+        jescritorio.add(nvaReserva);
+        jescritorio.moveToFront(nvaReserva);
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -482,6 +492,14 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jescritorio.moveToFront(fBaMo);
     }//GEN-LAST:event_jButton12ActionPerformed
 
+    private void imNvaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imNvaReservaActionPerformed
+        // TODO add your handling code here:
+        formAltasReserva nvaReserva = new formAltasReserva();
+        nvaReserva.setVisible(true);
+        jescritorio.add(nvaReserva);
+        jescritorio.moveToFront(nvaReserva);
+    }//GEN-LAST:event_imNvaReservaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -518,6 +536,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem imNvaReserva;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
