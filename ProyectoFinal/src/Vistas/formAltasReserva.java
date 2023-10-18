@@ -28,6 +28,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
     public formAltasReserva() {
         initComponents();
         crearCabeceras();
+        setResizable(true);
     }
 
     private DefaultTableModel modeloTablaHabs = new DefaultTableModel() {
@@ -60,6 +61,11 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Alta de Reserva");
         setPreferredSize(new java.awt.Dimension(650, 450));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Fecha de  Ingreso:");
@@ -102,7 +108,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -167,6 +173,10 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+//para ajustar el tamaño de el j internal frame 
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+         setSize(800, 600);
+    }//GEN-LAST:event_formComponentResized
 
     public void crearCabeceras() {
 
