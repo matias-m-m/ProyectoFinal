@@ -11,6 +11,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +36,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
     public formAltasReserva() {
         initComponents();
         crearCabeceras();
+        rellenarTabla();
         setResizable(true);
     }
 
@@ -50,13 +59,14 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        fechaIngreso = new com.toedter.calendar.JDateChooser();
+        fechaIngresoChooser = new com.toedter.calendar.JDateChooser();
         fechaSalidaChooser = new com.toedter.calendar.JDateChooser();
         nroHuespedes = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaHabitaciones = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        totalReserva = new javax.swing.JLabel();
+        valorTotalPesos = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Alta de Reserva");
@@ -77,10 +87,16 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         jLabel3.setText("Cantidad de Huéspedes: ");
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setText("Buscar Habitaciones");
+        jButton1.setText("Consultar disponibilidad");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        nroHuespedes.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                nroHuespedesStateChanged(evt);
             }
         });
 
@@ -95,64 +111,76 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaHabitaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaHabitacionesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaHabitaciones);
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton2.setText("Hacer reserva");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel4.setText("Titular de la reserva:");
+        totalReserva.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        totalReserva.setText("Total de la Reserva");
+
+        valorTotalPesos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        valorTotalPesos.setText("$0000");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fechaSalidaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaIngresoChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nroHuespedes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2)
-                                .addComponent(fechaSalidaChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(17, 17, 17))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(totalReserva)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(valorTotalPesos)
+                .addGap(61, 61, 61))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nroHuespedes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fechaIngresoChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fechaSalidaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nroHuespedes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addGap(28, 28, 28)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(totalReserva)
+                    .addComponent(valorTotalPesos))
+                .addGap(20, 20, 20)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -160,23 +188,101 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Date fechaEntrada = (Date) fechaIngreso.getDate();
-        Date fechaSalida = (Date) fechaSalidaChooser.getDate();
         
-       String SQLBuscarhabs="SELECT H.IdHabitacion, H.nrohabitacion, H.piso, H.estado,\n" +
-"T.maxHuespedes, T.importepornoche, T.letraTipo\n" +
-"FROM HABITACION H\n" +
-"LEFT JOIN RESERVA R ON H.IdHabitacion = R.idHabitacion\n" +
-"LEFT JOIN TIPOHABITACION T ON H.idTipoHabitacion = T.idTipohabit\n" +
-"WHERE\n" +
-"? <= R.`FechaSalida` AND ? >= R.`FechaIngreso`;";
+//        SELECT idReserva FROM reserva 
+//WHERE  (FechaSalida BETWEEN '2023/11/08' AND '2023/11/12') OR 
+//       (FechaIngreso BETWEEN '2023/11/08' AND '2023/11/12') OR
+//       (FechaIngreso <= '2023/11/08' AND FechaSalida >= '2023/11/12');
+        int idhab;
+        if(tablaHabitaciones.getSelectedRow() !=-1){
+             idhab = (Integer) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 0);
+        String sqlObtenerfechas="SELECT idReserva FROM reserva \n" +
+"WHERE  ((FechaSalida BETWEEN ? AND ?) OR \n" +
+"       (FechaIngreso BETWEEN ? AND ?) OR\n" +
+"       (FechaIngreso <= ? AND FechaSalida >= ?)) AND\n" +
+"       (idHabitacion=?);";
+        PreparedStatement psFechas;
+        LocalDate vFech1;
+        LocalDate vFech2;
+        Date fechaEntradaSQL;
+        Date fechaSalidaSQL;
+        
+        
+        
+        if(fechaIngresoChooser.getDate() != null && fechaSalidaChooser.getDate() != null ){
+            vFech1 = fechaIngresoChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            vFech2 = fechaSalidaChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            if(vFech1.compareTo(vFech2)==1){
+            System.out.println("El ingreso es mayor a la salida. Mal");
+        } else if(vFech1.compareTo(vFech2)==0){
+            System.out.println("Las fechas son las mismas. Mal");
+        } else {
+            System.out.println("ingreso menor a salida. Bien");
+        }
+
+        fechaEntradaSQL = Date.valueOf(String.valueOf(vFech1));
+        fechaSalidaSQL = Date.valueOf(String.valueOf(vFech2));
+        try{
+           psFechas = reservadata.getCon().prepareStatement(sqlObtenerfechas);
+          // psFechas.setInt(1,nrohab);
+          //PRIMERA COMPARACION
+           psFechas.setDate(1,fechaEntradaSQL);
+           psFechas.setDate(2, fechaSalidaSQL);
+           //SEGUNDA COMPARACION
+           psFechas.setDate(3,fechaEntradaSQL);
+           psFechas.setDate(4, fechaSalidaSQL);
+           //TERCERA COMPARACION
+           psFechas.setDate(5,fechaEntradaSQL);
+           psFechas.setDate(6, fechaSalidaSQL);
+           psFechas.setInt(7,idhab);
+           ResultSet rsfechas = psFechas.executeQuery();
+           
+           if(rsfechas.next()){
+               System.out.println(rsfechas);
+               JOptionPane.showMessageDialog(null,"El rango de fecha ya contiene reservas. Habitacion ocupada");
+           } else {
+               JOptionPane.showMessageDialog(null,"Hay disponibilidad!");
+               int diasTotales = (int) ChronoUnit.DAYS.between(vFech1,vFech2);
+               double precioTotal= diasTotales* ((Double) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 5));
+               valorTotalPesos.setText("$"+precioTotal);
+               
+           }
+           psFechas.close();
+           
+    } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla" + ex.getMessage());
+        }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se seleccionaron fechas");
+        }    
+        } else {
+            JOptionPane.showMessageDialog(null,"Seleccione una habitacion");
+        }
+
+        
+       
+        
+        
+        
+        
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
 //para ajustar el tamaño de el j internal frame 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
-         setSize(800, 600);
+         
     }//GEN-LAST:event_formComponentResized
+
+    private void tablaHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaHabitacionesMouseClicked
+        
+        
+        
+        
+    }//GEN-LAST:event_tablaHabitacionesMouseClicked
+
+    private void nroHuespedesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_nroHuespedesStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nroHuespedesStateChanged
 
     public void crearCabeceras() {
 
@@ -201,7 +307,8 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
                 + "    T.importepornoche,\n"
                 + "    T.letraTipo\n"
                 + "FROM HABITACION H\n"
-                + "JOIN TIPOHABITACION T ON H.idTipoHabitacion = T.idTipohabit;";
+                + "JOIN TIPOHABITACION T ON H.idTipoHabitacion = T.idTipohabit\n"
+                + "WHERE H.estado=1;";
 
         PreparedStatement ps;
         try {
@@ -209,7 +316,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                modeloTablaHabs.addRow(new Object[]{rs.getInt("H.IdHabitacion"), rs.getInt("H.nrohabitacion"), rs.getInt("H.piso"), rs.getString("T.letraTipo"), rs.getInt("T.maxHuespedes"), rs.getDouble("T.importepornoche")});
+                modeloTablaHabs.addRow(new Object[]{rs.getInt("H.IdHabitacion"), "N°"+rs.getInt("H.nrohabitacion"), rs.getInt("H.piso"), rs.getString("T.letraTipo"), rs.getInt("T.maxHuespedes"), rs.getDouble("T.importepornoche")});
             }
             ps.close();
         } catch (SQLException ex) {
@@ -220,16 +327,17 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser fechaIngreso;
+    private com.toedter.calendar.JDateChooser fechaIngresoChooser;
     private com.toedter.calendar.JDateChooser fechaSalidaChooser;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner nroHuespedes;
     private javax.swing.JTable tablaHabitaciones;
+    private javax.swing.JLabel totalReserva;
+    private javax.swing.JLabel valorTotalPesos;
     // End of variables declaration//GEN-END:variables
 }
