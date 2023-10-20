@@ -8,6 +8,7 @@ package Vistas;
 import AccesoADatos.HuespedData;
 import AccesoADatos.ReservaData;
 import Entidades.Huesped;
+import Entidades.Reserva;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -133,10 +134,15 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tablaHabitaciones);
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setText("Hacer reserva");
+        jButton2.setText("Confirmar reserva");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         totalReserva.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        totalReserva.setText("Total de la Reserva");
+        totalReserva.setText("Total de la Reserva $");
 
         valorTotalPesos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         valorTotalPesos.setText("$0000");
@@ -294,7 +300,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
                JOptionPane.showMessageDialog(null,"Hay disponibilidad!");
                int diasTotales = (int) ChronoUnit.DAYS.between(vFech1,vFech2);
                double precioTotal= diasTotales* ((Double) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 5));
-               valorTotalPesos.setText("$"+precioTotal);
+               valorTotalPesos.setText(precioTotal+"");
                
            }
            psFechas.close();
@@ -341,16 +347,41 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         if(inputBuscarDNI.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Ingrese un DNI a buscar");
         } else {
+            
+            
             String dniString = inputBuscarDNI.getText();
             Huesped huesp = new Huesped();
             huesp = huespeddata.buscarHuespPorDni(dniString);
-            labelIDHuesp.setText(huesp.getIdHuesp()+"");
+            
+            if(huesp!=null){
+                labelIDHuesp.setText(huesp.getIdHuesp()+"");
             labelNombreApellido.setText(huesp.getApellidoHuesp()+", "+huesp.getNombreHuesp());
+            } else {
+                labelIDHuesp.setText("00");
+                labelNombreApellido.setText("Huesped no encontrado");
+            }
+            
+            
             
             
             
         }
     }//GEN-LAST:event_buscarHuespedActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Reserva res = new Reserva();
+        res.setEstado(true);
+        LocalDate vFech1,vFech2;
+        vFech1 = fechaIngresoChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        vFech2 = fechaSalidaChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        res.setFechaIngreso(vFech1);
+        res.setFechaSalida(vFech2);
+        res.setMontoTotal(Double.parseDouble(valorTotalPesos.getText()));
+        res.setIdHuesped(Integer.parseInt(labelIDHuesp.getText()));
+        res.setIdHabitacion((int) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(),0));
+        reservadata.insertarReserva(res);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public void borrarTabla() {
     

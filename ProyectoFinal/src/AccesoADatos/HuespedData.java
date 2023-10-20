@@ -99,7 +99,7 @@ public class HuespedData {
                 huesped.setEmailHuesp(rs.getString("emailHuesp"));
                 huesped.setTelefonoHuesp(rs.getString("telefonoHuesp"));
                 lista.add(huesped);
-            }
+            } 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al ejecturar la consulta ..."+ex.getMessage());
             //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
@@ -125,6 +125,8 @@ public class HuespedData {
                 huesped.setEmailHuesp(rs.getString("emailHuesp"));
                 huesped.setTelefonoHuesp(rs.getString("telefonoHuesp"));
                 huesped.setEstadoHuesp(true);
+            } else {
+                JOptionPane.showMessageDialog(null,"El huesped no está regsitrado o el DNI es incorrecto");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al ejecutar la consulta..."+ex.getMessage());
