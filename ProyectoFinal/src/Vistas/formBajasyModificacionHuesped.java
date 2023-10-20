@@ -9,6 +9,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class formBajasyModificacionHuesped extends javax.swing.JInternalFrame {
 
+    static void showDialog() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     private DefaultTableModel modelo = new DefaultTableModel();
     private HuespedData huespeddata = new HuespedData();
     private Huesped huesped = null;
