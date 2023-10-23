@@ -279,7 +279,8 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
 "WHERE  ((FechaSalida BETWEEN ? AND ?) OR \n" +
 "       (FechaIngreso BETWEEN ? AND ?) OR\n" +
 "       (FechaIngreso <= ? AND FechaSalida >= ?)) AND\n" +
-"       (idHabitacion=?);";
+"       (idHabitacion=?) AND estado=1;";
+        //Agregamos Estado=1 para que tome las reservas activas
         PreparedStatement psFechas;
         LocalDate vFech1;
         LocalDate vFech2;
@@ -291,13 +292,13 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         if(fechaIngresoChooser.getDate() != null && fechaSalidaChooser.getDate() != null ){
             vFech1 = fechaIngresoChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             vFech2 = fechaSalidaChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            if(vFech1.compareTo(vFech2)==1){
-            System.out.println("El ingreso es mayor a la salida. Mal");
-        } else if(vFech1.compareTo(vFech2)==0){
-            System.out.println("Las fechas son las mismas. Mal");
-        } else {
-            System.out.println("ingreso menor a salida. Bien");
-        }
+//            if(vFech1.compareTo(vFech2)==1){
+//            System.out.println("El ingreso es mayor a la salida. Mal");
+//        } else if(vFech1.compareTo(vFech2)==0){
+//            System.out.println("Las fechas son las mismas. Mal");
+//        } else {
+//            System.out.println("ingreso menor a salida. Bien");
+//        }
 
         fechaEntradaSQL = Date.valueOf(String.valueOf(vFech1));
         fechaSalidaSQL = Date.valueOf(String.valueOf(vFech2));
