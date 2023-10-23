@@ -5,9 +5,12 @@ import Entidades.*;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class TipoHabitacionData {
@@ -101,10 +104,73 @@ public class TipoHabitacionData {
             JOptionPane.showMessageDialog(null, "Error al ejecutar la consulta..."+ex.getMessage());
            
         }
+    }
+
+
+     
     
-       
-}
+    public List<TipoHabitacion> listarTipoHab(){
+        
+        TipoHabitacion tipohab = null;
+        ArrayList<TipoHabitacion> lista = new ArrayList<>();
+        String sql = "select idTipoHabit, nombreTipo, letraTipo, maxHuespedes, importepornoche from tipohabitacion where estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                tipohab = new TipoHabitacion();
+                tipohab.setIdTipoHabit(rs.getInt("idTipoHabit"));
+                tipohab.setNombreTipo(rs.getString("nombreTipo"));
+                tipohab.setLetraTipo(rs.getString("letraTipo").charAt(0));
+                tipohab.setMaxHuespedes(rs.getInt("maxHuespedes"));
+                tipohab.setImportePorNoche(rs.getDouble("importepornoche"));
+                
+                lista.add(tipohab);
+            }    
+            ps.close();
+        } 
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecturar la consulta ..."+ex.getMessage());
+            //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lista ;
+    }
 
-
+    
+    
+    
+    public TipoHabitacion devolver1TipoHab(int id){
+        
+        TipoHabitacion tipohab = null;
+        
+        String sql = "select * from tipohabitacion where estado = 1 and idTipoHabit = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+        //    while(rs.next()){
+                tipohab = new TipoHabitacion();
+                tipohab.setIdTipoHabit(rs.getInt("idTipoHabit"));
+                tipohab.setNombreTipo(rs.getString("nombreTipo"));
+                tipohab.setLetraTipo(rs.getString("letraTipo").charAt(0));
+                tipohab.setMaxHuespedes(rs.getInt("maxHuespedes"));
+                tipohab.setImportePorNoche(rs.getDouble("importepornoche"));
+                tipohab.setEstado(true);
+            //    lista.add(tipohab);
+          //  }    
+            ps.close();
+        } 
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecturar la consulta ..."+ex.getMessage());
+            //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return tipohab ;
+    }
+    
 
 }

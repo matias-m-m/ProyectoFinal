@@ -6,8 +6,12 @@ import Entidades.*;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 
@@ -95,8 +99,53 @@ public class ReservaData {
     }
 
   
+    //////////////////////////////////////////////////////////////////////////////////////////////////
     
+   
+    public List<Reserva> listarReservasPorHabit(int idHab) {
+        
+             
+        Reserva  res = null;
+        LocalDate vFech1,vFech2;
+        ArrayList<Reserva> listares = new ArrayList<>();
+
+        String sql = "select idReserva,FechaIngreso,FechaSalida,montoTotal from reserva where idHabitacion = ?" ;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idHab);
+
+            ResultSet rs = ps.executeQuery();
+
+            
+            while(rs.next()){
+   
+              res = new Reserva();
     
+             // vFech1 = rs.getDate("FechaIngreso").toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+             // vFech2 = rs.getDate("FechaSalida").toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+             //JOptionPane.showMessageDialog(null, rs.getDate("FechaIngreso").toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+             // JOptionPane.showMessageDialog(null,vFech1);
+              
+                res.setIdReserva(rs.getInt("idReserva"));
+               // res.setFechaIngreso(vFech1);
+                
+               // res.setFechaSalida(rs.getDate("FechaSalida").toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                res.setMontoTotal(rs.getDouble("montoTotal"));
+                                
+                listares.add(res);
+   
+            } 
+          
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecturar la consulta ..."+ex.getMessage());
+            //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        return listares;
+    }
     
     
     

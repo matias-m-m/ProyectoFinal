@@ -6,6 +6,8 @@
 package AccesoADatos;
 import Entidades.*;import Entidades.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -73,5 +75,74 @@ public class HabitacData {
             //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+   
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    
+  
+    public List<Habitacion> listarHabPorTipo(int idTipo) {
+        
+        
+        
+        Habitacion  hab = null;
+        ArrayList<Habitacion> listahab = new ArrayList<>();
+        
+        TipoHabitacion th =  null;
+       
+        
+        
+        
+        String sql0 = "select idTipoHabit,nombreTipo, letraTipo, maxHuespedes, importepornoche from tipohabitacion where estado = 1 and idTipoHabit = ?";
+         
+            
+        String sql = "select idHabitacion,nroHabitacion,idTipoHabitacion,piso from habitacion where estado = 1 and idTipoHabitacion = ?";
+        
+     
+        try {
+      
+            PreparedStatement ps0 = con.prepareStatement(sql0);
+            ps0.setInt(1, idTipo);
+            ResultSet rs0 = ps0.executeQuery();
+            
+            if (rs0.next()){
+                th = new TipoHabitacion();
+                th.setIdTipoHabit(rs0.getInt("idTipoHabit"));
+                th.setNombreTipo(rs0.getString("nombreTipo"));
+                th.setLetraTipo(rs0.getString("letraTipo").charAt(0));
+                th.setMaxHuespedes(rs0.getInt("maxHuespedes"));
+                th.setImportePorNoche(rs0.getDouble("importepornoche"));
+                th.setEstado(true);
+            }
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idTipo);
+            ResultSet rs = ps.executeQuery();
+                     
+            while(rs.next()){
+                hab = new Habitacion();
+                
+                hab.setIdHabitacion(rs.getInt("idHabitacion"));
+                hab.setNroHabitacion(rs.getInt("nroHabitacion"));
+               
+                hab.setTipoHabitacion(th);
+               
+                hab.setPiso(rs.getInt("piso"));
+                hab.setEstado(true);
+                
+                listahab.add(hab);
+                 
+            }
+            ps0.close();
+            ps.close();
+        } 
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ejecturar la consulta ..."+ex.getMessage());
+            //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listahab;
+    }
+    
+    
     
 }
