@@ -5,17 +5,72 @@
  */
 package Vistas;
 
+import AccesoADatos.HabitacData;
+import AccesoADatos.ReservaData;
+import AccesoADatos.TipoHabitacionData;
+import AccesoADatos.HuespedData;
+import Entidades.Habitacion;
+import Entidades.Huesped;
+import Entidades.Reserva;
+import Entidades.TipoHabitacion;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Maquina3
  */
 public class formReservasPorHuesped extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form formReservasPorHuesped
-     */
+    
+    private HuespedData hData = new HuespedData();  
+    private ArrayList<Huesped> listaHuespedes;
+    
+    
+    //private TipoHabitacionData tipohabdata = new TipoHabitacionData();
+    //private HabitacData habdata = new HabitacData();
+    
+    private ReservaData resdata = new ReservaData();
+    private ArrayList<Reserva> listaResPorHuesped;
+    
+    
+    //private ArrayList<TipoHabitacion> listarTipos;
+    //private ArrayList<Habitacion> habitacionesPorTipo;
+   
+    
+    
+    
+    
+    
+    private DefaultTableModel modeloListaHuespedes = new DefaultTableModel() {
+        //Hacer que la tabla no sea editable haciendo doble click
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Hacer que todas las celdas no sean editables
+        }
+    };
+    
+     private DefaultTableModel modeloListaResPorHuesped = new DefaultTableModel() {
+        //Hacer que la tabla no sea editable haciendo doble click
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Hacer que todas las celdas no sean editables
+        }
+    };
+    
+    
+    
     public formReservasPorHuesped() {
         initComponents();
+        crearCabecera();
+        borrarTablaHuespedes();
+        borrarTablaReservas();
+        rellenarTablaHuespedes();
+        
     }
 
     /**
@@ -30,9 +85,9 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTHuespedes = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTResPorHuesped = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("Reservas por Huesped");
@@ -43,7 +98,7 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Reservas:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTHuespedes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -54,9 +109,14 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTHuespedes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTHuespedesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTHuespedes);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTResPorHuesped.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -67,7 +127,7 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTResPorHuesped);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,13 +163,117 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTHuespedesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTHuespedesMouseClicked
+        // TODO add your handling code here:
+        
+        int idHuesp = (Integer) (modeloListaHuespedes.getValueAt(jTHuespedes.getSelectedRow(), 0)) ;
+        //int idHab =  (jTHabitaciones.getSelectedRow(), 0);
+        borrarTablaReservas();
+      
+        rellenarTablaResPorHuesped(idHuesp);
+        
+        
+        
+    }//GEN-LAST:event_jTHuespedesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTHuespedes;
+    private javax.swing.JTable jTResPorHuesped;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+  public void crearCabecera() {
+        
+        modeloListaHuespedes.addColumn("idHuesp");
+        modeloListaHuespedes.addColumn("Apellido");
+        modeloListaHuespedes.addColumn("Nombre");
+        modeloListaHuespedes.addColumn("DNI");
+        modeloListaHuespedes.addColumn("email");
+        modeloListaHuespedes.addColumn("Telefono");
+        modeloListaHuespedes.addColumn("Domicilio");
+        
+                
+        jTHuespedes.setModel(modeloListaHuespedes);
+        
+        modeloListaResPorHuesped.addColumn("idRes");
+        modeloListaResPorHuesped.addColumn("idHabit");
+        modeloListaResPorHuesped.addColumn("NroHabit");
+        modeloListaResPorHuesped.addColumn("Fecha Ingreso");
+        modeloListaResPorHuesped.addColumn("Fecha Salida");
+        modeloListaResPorHuesped.addColumn("Monto Total");
+       
+        jTResPorHuesped.setModel(modeloListaResPorHuesped);
+        
+    }
+    
+    
+    public void borrarTablaHuespedes() {
+        int filas = modeloListaHuespedes.getRowCount() - 1;
+        
+        for (; filas >= 0; filas--) {
+            modeloListaHuespedes.removeRow(filas);
+        }
+    }
+    
+    public void borrarTablaReservas() {
+        int filas = modeloListaResPorHuesped.getRowCount() - 1;
+        
+        for (; filas >= 0; filas--) {
+            modeloListaResPorHuesped.removeRow(filas);
+        }
+    }
+        
+
+    public void rellenarTablaHuespedes() {
+        
+       // select idHuesp,apellidoHuesp,nombreHuesp,dniHuesp,domicilioHuesp,emailHuesp,telefonoHuesp from huesped where estadoHuesp = 1
+    
+       
+        listaHuespedes = (ArrayList) hData.listarHuesped();
+    
+        for (Huesped h : listaHuespedes) {
+            
+            modeloListaHuespedes.addRow(new Object[]{h.getIdHuesp(),h.getApellidoHuesp(),h.getNombreHuesp(),h.getDniHuesp(),h.getEmailHuesp(),h.getTelefonoHuesp(),h.getDomicilioHuesp()    });
+        
+        }  
+       
+    }
+
+    
+    
+    public void rellenarTablaResPorHuesped( int idHuesp ) {
+        
+        
+       // listaResPorHuesped = (ArrayList)  resdata.listarReservasPorHuesped( int idHuesp );
+        
+       String sql = "select r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n" +
+                    "from reserva as r join habitacion as h on (r.idHabitacion = h.idHabitacion) \n" +
+                    "where idHuesped = ? order by FechaIngreso;";
+       
+        PreparedStatement ps;
+        try {
+            ps = resdata.getCon().prepareStatement(sql);
+            ps.setInt(1, idHuesp);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                 modeloListaResPorHuesped.addRow(new Object[] { rs.getInt("idReserva"), rs.getInt("idHabitacion"), rs.getInt("nroHabitacion"), rs.getDate("FechaIngreso"),rs.getDate("FechaSalida"), rs.getDouble("montoTotal") } );
+                
+            }
+            ps.close();
+        }
+        catch (SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error al cargar la tabla" + ex.getMessage());
+        }
+    }    
+        
+    
+
 }

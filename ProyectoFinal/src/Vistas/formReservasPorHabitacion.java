@@ -67,6 +67,7 @@ public class formReservasPorHabitacion extends javax.swing.JInternalFrame {
         borrarTablaReservas();
         int i = 1;
         rellenarTablaHabitacionesPorTipo(i);
+        txtCantHab.setText(modeloListaHab.getRowCount()+"");
         
     }
 
@@ -84,6 +85,8 @@ public class formReservasPorHabitacion extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtCantHab = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Reservas Por Habitación");
@@ -138,6 +141,12 @@ public class formReservasPorHabitacion extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Reservas");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("Cantidad de Habitaciones:");
+
+        txtCantHab.setEditable(false);
+        txtCantHab.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,6 +154,10 @@ public class formReservasPorHabitacion extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCantHab, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -174,7 +187,11 @@ public class formReservasPorHabitacion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtCantHab, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,6 +202,7 @@ public class formReservasPorHabitacion extends javax.swing.JInternalFrame {
         
         borrarTablaTipos();
         rellenarTablaHabitacionesPorTipo(id);
+        txtCantHab.setText(modeloListaHab.getRowCount()+"");
         borrarTablaReservas();
         
     }//GEN-LAST:event_jCNombresTipoActionPerformed
@@ -202,6 +220,7 @@ public class formReservasPorHabitacion extends javax.swing.JInternalFrame {
         borrarTablaReservas();
       
         rellenarTablaReservasPorHabit(idHab);
+        
     }//GEN-LAST:event_jTHabitacionesMouseClicked
 
 
@@ -210,10 +229,12 @@ public class formReservasPorHabitacion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTHabitaciones;
     private javax.swing.JTable jTReservas;
+    private javax.swing.JTextField txtCantHab;
     // End of variables declaration//GEN-END:variables
 
 
