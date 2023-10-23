@@ -58,6 +58,12 @@ public class formBajasyModificacionHuesped extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Ingrese el DNI:");
 
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDniKeyTyped(evt);
+            }
+        });
+
         jtHuesped.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -82,13 +88,31 @@ public class formBajasyModificacionHuesped extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Apellido");
 
+        txtApe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApeKeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Nombre:");
+
+        txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Domicilio:");
 
         jLabel6.setText("Email:");
 
         jLabel7.setText("Celular - Teléfono:");
+
+        txtTel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelKeyTyped(evt);
+            }
+        });
 
         jLabel8.setText("Estado:");
 
@@ -253,6 +277,36 @@ public class formBajasyModificacionHuesped extends javax.swing.JInternalFrame {
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
+           char c = evt.getKeyChar();
+    if (!Character.isDigit(c)) {
+        evt.consume(); // Consumir el evento si no es un número.
+
+    }
+    }//GEN-LAST:event_txtDniKeyTyped
+
+    private void txtApeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApeKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume(); // Consumir el evento, evitando que se ingrese el número.
+        }
+    }//GEN-LAST:event_txtApeKeyTyped
+
+    private void txtNomKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomKeyTyped
+         char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume(); // Consumir el evento, evitando que se ingrese el número.
+        }
+    }//GEN-LAST:event_txtNomKeyTyped
+
+    private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
+               char c = evt.getKeyChar();
+    if (!Character.isDigit(c)) {
+        evt.consume(); // Consumir el evento si no es un número.
+
+    }
+    }//GEN-LAST:event_txtTelKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

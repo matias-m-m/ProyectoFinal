@@ -20,8 +20,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
 
-    
-    
     private TipoHabitacionData tipohabdata = new TipoHabitacionData();
     private DefaultTableModel modeloListaTipoHab = new DefaultTableModel() {
         //Hacer que la tabla no sea editable haciendo doble click
@@ -30,15 +28,12 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
             return false; // Hacer que todas las celdas no sean editables
         }
     };
-    
-        
-    
-    
+
     public formAltaTipoHabitacion() {
         initComponents();
         crearCabecera();
         rellenarTabla();
-        
+
     }
 
     /**
@@ -72,6 +67,24 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Importe por noche:");
 
+        txtNombreTipoHabitacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreTipoHabitacionKeyTyped(evt);
+            }
+        });
+
+        txtMaxHuespedes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaxHuespedesKeyTyped(evt);
+            }
+        });
+
+        txtImporte.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtImporteKeyTyped(evt);
+            }
+        });
+
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +108,12 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
         jLabel4.setText("Tipos de Habitaciones existentes:");
 
         jLabel5.setText("Letra Identificatoria del Tipo:");
+
+        txtLetraTipo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLetraTipoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,40 +195,63 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (txtNombreTipoHabitacion.getText().isEmpty() || txtLetraTipo.getText().isEmpty() || 
-                txtMaxHuespedes.getText().isEmpty() || txtImporte.getText().isEmpty()) {
+        if (txtNombreTipoHabitacion.getText().isEmpty() || txtLetraTipo.getText().isEmpty()
+                || txtMaxHuespedes.getText().isEmpty() || txtImporte.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Faltan agregar datos...");
-        }
-        else {
-            
+        } else {
+
             //creo y cargo la entidad tipohabitacion para pasar como parametro al tipohabdata
             TipoHabitacion nuevaHab = new TipoHabitacion();
             nuevaHab.setNombreTipo(txtNombreTipoHabitacion.getText());
-            nuevaHab.setLetraTipo( txtLetraTipo.getText().charAt(0));
-            nuevaHab.setMaxHuespedes((Integer.parseInt(txtMaxHuespedes.getText())) );
+            nuevaHab.setLetraTipo(txtLetraTipo.getText().charAt(0));
+            nuevaHab.setMaxHuespedes((Integer.parseInt(txtMaxHuespedes.getText())));
             nuevaHab.setImportePorNoche(Integer.parseInt(txtImporte.getText()));
             nuevaHab.setEstado(true);
-            
+
             //Inserto el nuevo tipo de Habitacion
             tipohabdata.insertarTipoHabitacion(nuevaHab);
-            
+
             //Borro los campos para una nueva inserción
             txtNombreTipoHabitacion.setText("");
             txtLetraTipo.setText("");
             txtMaxHuespedes.setText("");
             txtImporte.setText("");
             txtNombreTipoHabitacion.requestFocus();
-            
+
             //Recargo la tabla con los tipo de habitacion existentes
             borrarTabla();
             rellenarTabla();
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtNombreTipoHabitacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreTipoHabitacionKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume(); // Consumir el evento, evitando que se ingrese el número.
+    }//GEN-LAST:event_txtNombreTipoHabitacionKeyTyped
+    }
+    private void txtLetraTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLetraTipoKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume(); // Consumir el evento, evitando que se ingrese el número.
+    }//GEN-LAST:event_txtLetraTipoKeyTyped
+    }
+    private void txtMaxHuespedesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaxHuespedesKeyTyped
+        char c = evt.getKeyChar();
+    if (!Character.isDigit(c)) {
+        evt.consume(); // Consumir el evento si no es un número.
+
+    }//GEN-LAST:event_txtMaxHuespedesKeyTyped
+    }
+    private void txtImporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImporteKeyTyped
+       char c = evt.getKeyChar();
+    if (!Character.isDigit(c)) {
+        evt.consume(); // Consumir el evento si no es un número.
+
+    }//GEN-LAST:event_txtImporteKeyTyped
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -226,60 +268,50 @@ public class formAltaTipoHabitacion extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNombreTipoHabitacion;
     // End of variables declaration//GEN-END:variables
 
-
     public void crearCabecera() {
-        
+
         modeloListaTipoHab.addColumn("id TipoHabitacion");
         modeloListaTipoHab.addColumn("Nombre Tipo");
         modeloListaTipoHab.addColumn("Letra Tipo");
         modeloListaTipoHab.addColumn("Max. Huéspedes");
         modeloListaTipoHab.addColumn("Importe por noche");
         modeloListaTipoHab.addColumn("Estado");
-        
+
         jTable1.setModel(modeloListaTipoHab);
     }
-    
-    
+
     public void borrarTabla() {
-    
+
         int filas = modeloListaTipoHab.getRowCount() - 1;
-        
+
         for (; filas >= 0; filas--) {
             modeloListaTipoHab.removeRow(filas);
         }
-        
+
     }
-    
-    
+
     public void rellenarTabla() {
-        
-        
-        
+
         String sql = "select idTipoHabit, nombreTipo, letraTipo, maxHuespedes, importepornoche, estado from tipohabitacion order by idTipoHabit";
-        
+
         PreparedStatement ps;
         try {
             ps = tipohabdata.getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
-                String est = rs.getBoolean("estado")+"";
+                String est = rs.getBoolean("estado") + "";
                 if (est.equals("true")) {
-                    modeloListaTipoHab.addRow(new Object[] { rs.getInt("idTipoHabit"), rs.getString("nombreTipo"),rs.getString("letraTipo"), rs.getInt("maxHuespedes"),rs.getDouble("importepornoche"), "Habilitada" } );
-                }
-                else {
-                   modeloListaTipoHab.addRow(new Object[] { rs.getInt("idTipoHabit"), rs.getString("nombreTipo"),rs.getString("letraTipo"), rs.getInt("maxHuespedes"),rs.getDouble("importepornoche"), "Inhabilitada"} );
+                    modeloListaTipoHab.addRow(new Object[]{rs.getInt("idTipoHabit"), rs.getString("nombreTipo"), rs.getString("letraTipo"), rs.getInt("maxHuespedes"), rs.getDouble("importepornoche"), "Habilitada"});
+                } else {
+                    modeloListaTipoHab.addRow(new Object[]{rs.getInt("idTipoHabit"), rs.getString("nombreTipo"), rs.getString("letraTipo"), rs.getInt("maxHuespedes"), rs.getDouble("importepornoche"), "Inhabilitada"});
                 }
             }
             ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla" + ex.getMessage());
         }
-        catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error al cargar la tabla" + ex.getMessage());
-        }
-        
-        
+
     }
-
-
 
 }

@@ -45,6 +45,8 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         //SpinnerNumberModel(valorInicial,ValorMenor,valorMayor,Paso)
         SpinnerModel model = new SpinnerNumberModel(1,1,100,1);
         
+        btnConfirmar.setEnabled(false);
+        
         nroHuespedes.setModel(model);
         crearCabeceras();
         rellenarTabla();
@@ -115,6 +117,11 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
                 nroHuespedesStateChanged(evt);
             }
         });
+        nroHuespedes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nroHuespedesKeyTyped(evt);
+            }
+        });
 
         tablaHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,6 +158,12 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Titular:");
 
+        inputBuscarDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputBuscarDNIKeyTyped(evt);
+            }
+        });
+
         buscarHuesped.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-búsqueda-16.png"))); // NOI18N
         buscarHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,11 +188,11 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fechaSalidaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(fechaIngresoChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nroHuespedes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaIngresoChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -233,7 +246,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
                     .addComponent(valorTotalPesos))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                         .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
@@ -389,6 +402,22 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         res.setIdHabitacion((int) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(),0));
         reservadata.insertarReserva(res);
     }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void nroHuespedesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nroHuespedesKeyTyped
+           char c = evt.getKeyChar();
+    if (!Character.isDigit(c)) {
+        evt.consume(); // Consumir el evento si no es un número.
+
+    }
+    }//GEN-LAST:event_nroHuespedesKeyTyped
+
+    private void inputBuscarDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputBuscarDNIKeyTyped
+                   char c = evt.getKeyChar();
+    if (!Character.isDigit(c)) {
+        evt.consume(); // Consumir el evento si no es un número.
+
+    }
+    }//GEN-LAST:event_inputBuscarDNIKeyTyped
 
     public void borrarTabla() {
     

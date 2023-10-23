@@ -192,12 +192,24 @@
     <Component class="javax.swing.JTextField" name="txtid">
     </Component>
     <Component class="javax.swing.JTextField" name="txtnombre">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtnombreKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtletra">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtletraKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtmax">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtmaxKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtimporte">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtimporteKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRBaja">
       <Properties>

@@ -96,6 +96,30 @@ public class formBajayModificacionTipoHabitacion extends javax.swing.JInternalFr
 
         jLabel6.setText("importepornoche:");
 
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnombreKeyTyped(evt);
+            }
+        });
+
+        txtletra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtletraKeyTyped(evt);
+            }
+        });
+
+        txtmax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtmaxKeyTyped(evt);
+            }
+        });
+
+        txtimporte.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtimporteKeyTyped(evt);
+            }
+        });
+
         jRBaja.setText("Dar de Baja");
         jRBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,6 +331,36 @@ public class formBajayModificacionTipoHabitacion extends javax.swing.JInternalFr
         // TODO add your handling code here:
        
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
+          char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume(); // Consumir el evento, evitando que se ingrese el número.
+        }
+    }//GEN-LAST:event_txtnombreKeyTyped
+
+    private void txtletraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtletraKeyTyped
+          char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume(); // Consumir el evento, evitando que se ingrese el número.
+        }
+    }//GEN-LAST:event_txtletraKeyTyped
+
+    private void txtmaxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmaxKeyTyped
+                 char c = evt.getKeyChar();
+    if (!Character.isDigit(c)) {
+        evt.consume(); // Consumir el evento si no es un número.
+
+    }
+    }//GEN-LAST:event_txtmaxKeyTyped
+
+    private void txtimporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtimporteKeyTyped
+                   char c = evt.getKeyChar();
+    if (!Character.isDigit(c)) {
+        evt.consume(); // Consumir el evento si no es un número.
+
+    }
+    }//GEN-LAST:event_txtimporteKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

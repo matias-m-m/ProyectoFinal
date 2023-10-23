@@ -150,16 +150,28 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtApe">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtApeKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDom">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNom">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEma">
     </Component>
     <Component class="javax.swing.JTextField" name="txtDni">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDniKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTel">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="txtNuevo">
       <Properties>
