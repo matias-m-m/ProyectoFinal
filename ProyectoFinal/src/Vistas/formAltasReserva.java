@@ -41,6 +41,18 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
      */
     public formAltasReserva() {
         initComponents();
+        
+        // Obtén la fecha actual
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date fechaActual = calendar.getTime();
+        System.out.println(calendar);
+        System.out.println(fechaActual);
+        // Establece la fecha actual como la fecha mínima seleccionable
+        fechaIngresoChooser.setMinSelectableDate(fechaActual);
+        fechaSalidaChooser.setMinSelectableDate(fechaActual);
+        
+        
+        
         btnConfirmar.setEnabled(false);
         //SpinnerNumberModel(valorInicial,ValorMenor,valorMayor,Paso)
         SpinnerModel model = new SpinnerNumberModel(1,1,100,1);
@@ -107,6 +119,12 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        fechaIngresoChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fechaIngresoChooserPropertyChange(evt);
             }
         });
 
@@ -345,6 +363,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarTabla();
         rellenarTablaSpinner();
+        
     }//GEN-LAST:event_nroHuespedesStateChanged
 
     private void buscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarHuespedActionPerformed
@@ -389,6 +408,19 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         res.setIdHabitacion((int) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(),0));
         reservadata.insertarReserva(res);
     }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void fechaIngresoChooserPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaIngresoChooserPropertyChange
+        // TODO add your handling code here:
+        
+ 
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date fechaActual = calendar.getTime();
+
+
+        
+        
+        fechaSalidaChooser.setMinSelectableDate(fechaIngresoChooser.getDate());
+    }//GEN-LAST:event_fechaIngresoChooserPropertyChange
 
     public void borrarTabla() {
     
