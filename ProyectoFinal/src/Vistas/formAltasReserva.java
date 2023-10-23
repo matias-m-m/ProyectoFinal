@@ -41,11 +41,21 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
      */
     public formAltasReserva() {
         initComponents();
+        
+        // Obtén la fecha actual
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date fechaActual = calendar.getTime();
+        System.out.println(calendar);
+        System.out.println(fechaActual);
+        // Establece la fecha actual como la fecha mínima seleccionable
+        fechaIngresoChooser.setMinSelectableDate(fechaActual);
+        fechaSalidaChooser.setMinSelectableDate(fechaActual);
+        
+        
+        
         btnConfirmar.setEnabled(false);
         //SpinnerNumberModel(valorInicial,ValorMenor,valorMayor,Paso)
         SpinnerModel model = new SpinnerNumberModel(1,1,100,1);
-        
-        btnConfirmar.setEnabled(false);
         
         nroHuespedes.setModel(model);
         crearCabeceras();
@@ -112,14 +122,15 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
             }
         });
 
+        fechaIngresoChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fechaIngresoChooserPropertyChange(evt);
+            }
+        });
+
         nroHuespedes.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 nroHuespedesStateChanged(evt);
-            }
-        });
-        nroHuespedes.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                nroHuespedesKeyTyped(evt);
             }
         });
 
@@ -158,12 +169,6 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Titular:");
 
-        inputBuscarDNI.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputBuscarDNIKeyTyped(evt);
-            }
-        });
-
         buscarHuesped.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-búsqueda-16.png"))); // NOI18N
         buscarHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,11 +193,11 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fechaSalidaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
+                            .addComponent(fechaIngresoChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nroHuespedes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fechaIngresoChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -246,7 +251,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
                     .addComponent(valorTotalPesos))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
@@ -274,7 +279,8 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
 "WHERE  ((FechaSalida BETWEEN ? AND ?) OR \n" +
 "       (FechaIngreso BETWEEN ? AND ?) OR\n" +
 "       (FechaIngreso <= ? AND FechaSalida >= ?)) AND\n" +
-"       (idHabitacion=?);";
+"       (idHabitacion=?) AND estado=1;";
+        //Agregamos Estado=1 para que tome las reservas activas
         PreparedStatement psFechas;
         LocalDate vFech1;
         LocalDate vFech2;
@@ -286,13 +292,13 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         if(fechaIngresoChooser.getDate() != null && fechaSalidaChooser.getDate() != null ){
             vFech1 = fechaIngresoChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             vFech2 = fechaSalidaChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            if(vFech1.compareTo(vFech2)==1){
-            System.out.println("El ingreso es mayor a la salida. Mal");
-        } else if(vFech1.compareTo(vFech2)==0){
-            System.out.println("Las fechas son las mismas. Mal");
-        } else {
-            System.out.println("ingreso menor a salida. Bien");
-        }
+//            if(vFech1.compareTo(vFech2)==1){
+//            System.out.println("El ingreso es mayor a la salida. Mal");
+//        } else if(vFech1.compareTo(vFech2)==0){
+//            System.out.println("Las fechas son las mismas. Mal");
+//        } else {
+//            System.out.println("ingreso menor a salida. Bien");
+//        }
 
         fechaEntradaSQL = Date.valueOf(String.valueOf(vFech1));
         fechaSalidaSQL = Date.valueOf(String.valueOf(vFech2));
@@ -358,6 +364,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarTabla();
         rellenarTablaSpinner();
+        
     }//GEN-LAST:event_nroHuespedesStateChanged
 
     private void buscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarHuespedActionPerformed
@@ -403,21 +410,18 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         reservadata.insertarReserva(res);
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
-    private void nroHuespedesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nroHuespedesKeyTyped
-           char c = evt.getKeyChar();
-    if (!Character.isDigit(c)) {
-        evt.consume(); // Consumir el evento si no es un número.
+    private void fechaIngresoChooserPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaIngresoChooserPropertyChange
+        // TODO add your handling code here:
+        
+ 
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date fechaActual = calendar.getTime();
 
-    }
-    }//GEN-LAST:event_nroHuespedesKeyTyped
 
-    private void inputBuscarDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputBuscarDNIKeyTyped
-                   char c = evt.getKeyChar();
-    if (!Character.isDigit(c)) {
-        evt.consume(); // Consumir el evento si no es un número.
-
-    }
-    }//GEN-LAST:event_inputBuscarDNIKeyTyped
+        
+        
+        fechaSalidaChooser.setMinSelectableDate(fechaIngresoChooser.getDate());
+    }//GEN-LAST:event_fechaIngresoChooserPropertyChange
 
     public void borrarTabla() {
     
