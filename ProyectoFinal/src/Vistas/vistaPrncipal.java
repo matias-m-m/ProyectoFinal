@@ -588,7 +588,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMHabitPorTipoActionPerformed
 
-<<<<<<< Updated upstream
+
     private void jButton8ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jButton8ComponentHidden
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ComponentHidden
@@ -605,7 +605,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jButton3.setForeground(Color.BLACK); // Cambia el color del texto a blanco
         jButton3.setSize(new Dimension(190, 60)); // Cambia el tamaño al 80% del tamaño original
     }//GEN-LAST:event_jButton3MouseEntered
-=======
+
     private void jMResEntreFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMResEntreFechasActionPerformed
         // TODO add your handling code here:
         formReservasEntreFechas fResEntreFech = new formReservasEntreFechas();
@@ -615,7 +615,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jMResEntreFechasActionPerformed
->>>>>>> Stashed changes
+
 
     /**
      * @param args the command line arguments
