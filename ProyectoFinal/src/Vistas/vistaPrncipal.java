@@ -152,77 +152,106 @@ public class vistaPrncipal extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 860, 210, 70));
 
-        jButton6.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jButton6.setBackground(new java.awt.Color(0, 0, 0));
+        jButton6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono editar.png"))); // NOI18N
         jButton6.setText("BAJA/EDITAR");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 800, 90, 50));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 810, 200, 50));
 
+        jButton7.setBackground(new java.awt.Color(0, 0, 0));
         jButton7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton7.setText("ALTAS");
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono agregar.png"))); // NOI18N
+        jButton7.setText("    ALTAS  ");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 800, 100, 50));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 760, 200, 50));
 
-        jButton8.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jButton8.setBackground(new java.awt.Color(0, 0, 0));
+        jButton8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono editar.png"))); // NOI18N
         jButton8.setText("BAJA/EDITAR");
+        jButton8.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                jButton8ComponentHidden(evt);
+            }
+        });
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 800, 90, 50));
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 810, 200, 50));
 
+        jButton9.setBackground(new java.awt.Color(0, 0, 0));
         jButton9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton9.setText("ALTAS");
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono agregar.png"))); // NOI18N
+        jButton9.setText("    ALTAS  ");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 800, 100, 50));
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 760, 210, 50));
 
-        jButton10.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jButton10.setBackground(new java.awt.Color(0, 0, 0));
+        jButton10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono editar.png"))); // NOI18N
         jButton10.setText("BAJA/EDITAR");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 800, 90, 50));
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 810, 210, 50));
 
+        jButton11.setBackground(new java.awt.Color(0, 0, 0));
         jButton11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono agregar.png"))); // NOI18N
         jButton11.setText("ALTAS");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 800, 100, 50));
+        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 760, 200, 50));
 
-        jButton12.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jButton12.setBackground(new java.awt.Color(0, 0, 0));
+        jButton12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono editar.png"))); // NOI18N
         jButton12.setText("BAJA/EDITAR");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1750, 800, 90, 50));
+        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 810, 200, 50));
 
+        jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton5.setText("ALTAS");
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono agregar.png"))); // NOI18N
+        jButton5.setText("    ALTAS  ");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 802, 100, 50));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 760, 200, 50));
 
         jescritorio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -371,7 +400,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
         jButton1.setForeground(Color.BLACK); // Cambia el color del texto a blanco
-        jButton1.setSize(new Dimension(160, 60)); // Cambia el tamaño al 80% del tamaño original
+        jButton1.setSize(new Dimension(190, 60)); // Cambia el tamaño al 80% del tamaño original
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
@@ -380,24 +409,11 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jButton1.setSize(new Dimension(200, 70)); // Restaura el tamaño original
 
     }//GEN-LAST:event_jButton1MouseExited
-//el jbutton 3 pertenece a habitaciones
-    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        jButton3.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
-        jButton3.setForeground(Color.BLACK); // Cambia el color del texto a blanco
-        jButton3.setSize(new Dimension(190, 60)); // Cambia el tamaño al 80% del tamaño original
-    }//GEN-LAST:event_jButton3MouseEntered
-
-    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        jButton3.setBackground(Color.BLACK);
-        jButton3.setForeground(Color.WHITE);
-        jButton3.setSize(new Dimension(200, 70)); // Restaura el tamaño original
-
-    }//GEN-LAST:event_jButton3MouseExited
 //el jbutton 4 pertenece a consulta
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
         jButton4.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
         jButton4.setForeground(Color.BLACK); // Cambia el color del texto a blanco
-        jButton4.setSize(new Dimension(170, 60)); // Cambia el tamaño al 80% del tamaño original
+        jButton4.setSize(new Dimension(200, 60)); // Cambia el tamaño al 80% del tamaño original
     }//GEN-LAST:event_jButton4MouseEntered
 
     private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
@@ -409,7 +425,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
         jButton2.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
         jButton2.setForeground(Color.BLACK); // Cambia el color del texto a blanco
-        jButton2.setSize(new Dimension(170, 60)); // Cambia el tamaño al 80% del tamaño original
+        jButton2.setSize(new Dimension(190, 60)); // Cambia el tamaño al 80% del tamaño original
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
@@ -469,6 +485,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         jButton7.setVisible(false);
+        
         formAltaTipoHabitacion fAltTipHab = new formAltaTipoHabitacion();
         fAltTipHab.setVisible(true);
         jescritorio.add(fAltTipHab);
@@ -485,6 +502,10 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         jButton9.setVisible(false);
+        formReservasPorHabitacion fBajayModiftTipHab = new formReservasPorHabitacion();
+        fBajayModiftTipHab.setVisible(true);
+        jescritorio.add(fBajayModiftTipHab);
+        jescritorio.moveToFront(fBajayModiftTipHab);
     }//GEN-LAST:event_jButton9ActionPerformed
 // estos botones hay  que ordenarlo pertenecen arriba alos action de reserva habitacion consulta  y huesped
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -561,6 +582,23 @@ public class vistaPrncipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jMHabitPorTipoActionPerformed
+
+    private void jButton8ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jButton8ComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ComponentHidden
+
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+        jButton3.setBackground(Color.BLACK);
+        jButton3.setForeground(Color.WHITE);
+        jButton3.setSize(new Dimension(200, 70)); // Restaura el tamaño original
+    }//GEN-LAST:event_jButton3MouseExited
+
+//el jbutton 3 pertenece a habitaciones
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        jButton3.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
+        jButton3.setForeground(Color.BLACK); // Cambia el color del texto a blanco
+        jButton3.setSize(new Dimension(190, 60)); // Cambia el tamaño al 80% del tamaño original
+    }//GEN-LAST:event_jButton3MouseEntered
 
     /**
      * @param args the command line arguments

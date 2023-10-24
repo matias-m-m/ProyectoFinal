@@ -103,8 +103,6 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Reservas:");
 
-        jTHuespedes.setBackground(new java.awt.Color(26, 26, 26));
-        jTHuespedes.setForeground(new java.awt.Color(255, 255, 255));
         jTHuespedes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -123,8 +121,6 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTHuespedes);
 
-        jTResPorHuesped.setBackground(new java.awt.Color(26, 26, 26));
-        jTResPorHuesped.setForeground(new java.awt.Color(255, 255, 255));
         jTResPorHuesped.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
