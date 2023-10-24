@@ -38,4 +38,18 @@ public class UsuarioData {
        
       return respuesta;
     }
+    public boolean registrarUsuario(String usr, String pass) {
+        String consulta = "INSERT INTO usuarios (usuario, password) VALUES (?, ?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(consulta);
+            ps.setString(1, usr);
+            ps.setString(2, pass);
+            int resultado = ps.executeUpdate();
+
+            return resultado > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioData.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 }
