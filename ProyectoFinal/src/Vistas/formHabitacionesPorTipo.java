@@ -5,17 +5,45 @@
  */
 package Vistas;
 
+import AccesoADatos.HabitacData;
+import AccesoADatos.TipoHabitacionData;
+import Entidades.Habitacion;
+import Entidades.TipoHabitacion;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Maquina3
  */
 public class formHabitacionesPorTipo extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form formHabitacionesPorTipo
-     */
+    private TipoHabitacionData tipohabdata = new TipoHabitacionData();
+    private ArrayList<TipoHabitacion> listarTipos;
+    
+    
+    private HabitacData habdata = new HabitacData();
+    private ArrayList<Habitacion> habitacionesPorTipo;
+    
+    
+    
+    private DefaultTableModel modeloListaHab = new DefaultTableModel() {
+        //Hacer que la tabla no sea editable haciendo doble click
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Hacer que todas las celdas no sean editables
+        }
+    };
+    
+       
     public formHabitacionesPorTipo() {
         initComponents();
+        cargarComboTipos();
+        crearCabecera();
+        borrarTablaTipos();
+        int i = 1;
+        rellenarTablaHabitacionesPorTipo(i);
+        txtCantHab.setText(modeloListaHab.getRowCount()+"");
     }
 
     /**
@@ -87,7 +115,7 @@ public class formHabitacionesPorTipo extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(28, 28, 28)
+                        .addGap(18, 18, 18)
                         .addComponent(txtCantHab, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,9 +135,9 @@ public class formHabitacionesPorTipo extends javax.swing.JInternalFrame {
                     .addComponent(jCNombresTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtCantHab, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -129,18 +157,18 @@ public class formHabitacionesPorTipo extends javax.swing.JInternalFrame {
         borrarTablaTipos();
         rellenarTablaHabitacionesPorTipo(id);
         txtCantHab.setText(modeloListaHab.getRowCount()+"");
-        borrarTablaReservas();
+        
 
     }//GEN-LAST:event_jCNombresTipoActionPerformed
 
     private void jTHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTHabitacionesMouseClicked
         // TODO add your handling code here:
 
-        int idHab = (Integer) (modeloListaHab.getValueAt(jTHabitaciones.getSelectedRow(), 0)) ;
-        //int idHab =  (jTHabitaciones.getSelectedRow(), 0);
-        borrarTablaReservas();
-
-        rellenarTablaReservasPorHabit(idHab);
+//        int idHab = (Integer) (modeloListaHab.getValueAt(jTHabitaciones.getSelectedRow(), 0)) ;
+//        //int idHab =  (jTHabitaciones.getSelectedRow(), 0);
+//        borrarTablaReservas();
+//
+//        rellenarTablaReservasPorHabit(idHab);
 
     }//GEN-LAST:event_jTHabitacionesMouseClicked
 
@@ -154,4 +182,59 @@ public class formHabitacionesPorTipo extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTHabitaciones;
     private javax.swing.JTextField txtCantHab;
     // End of variables declaration//GEN-END:variables
+
+
+  public void cargarComboTipos() {
+       
+     
+        listarTipos = (ArrayList) tipohabdata.listarTipoHab();
+        for (TipoHabitacion lista : listarTipos) {
+            jCNombresTipo.addItem(lista.getIdTipoHabit()+" - "+lista.getNombreTipo());
+        }  
+        
+       
+    }
+    
+    
+    public void crearCabecera() {
+        
+        modeloListaHab.addColumn("id Habit");
+        modeloListaHab.addColumn("Nro Habit");
+        modeloListaHab.addColumn("Nombre Tipo");
+        modeloListaHab.addColumn("Piso");
+        modeloListaHab.addColumn("Max.Huésp");
+        modeloListaHab.addColumn("Imp./noche");
+                
+        jTHabitaciones.setModel(modeloListaHab);
+       
+    }
+    
+    
+    public void borrarTablaTipos() {
+        int filas = modeloListaHab.getRowCount() - 1;
+        
+        for (; filas >= 0; filas--) {
+            modeloListaHab.removeRow(filas);
+        }
+    }
+    
+            
+    
+    
+    public void rellenarTablaHabitacionesPorTipo(int idTipo) {
+        
+        
+        
+        habitacionesPorTipo = (ArrayList) habdata.listarHabPorTipo(idTipo);
+    
+        for (Habitacion h : habitacionesPorTipo) {
+            
+            modeloListaHab.addRow(new Object[]{h.getIdHabitacion(),h.getNroHabitacion(),h.getTipoHabitacion().getNombreTipo(),h.getPiso(),h.getTipoHabitacion().getMaxHuespedes(),h.getTipoHabitacion().getImportePorNoche()});
+        
+        }  
+    }
+    
+    
+
+
 }

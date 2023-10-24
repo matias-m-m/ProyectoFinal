@@ -65,7 +65,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jMResPorHab = new javax.swing.JMenuItem();
         jMResPorHuesp = new javax.swing.JMenuItem();
         jMResEntreFechas = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMHabitPorTipo = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -294,8 +294,13 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jMResEntreFechas.setText("Reservas entre Fechas");
         jMHabPorTipo.add(jMResEntreFechas);
 
-        jMenuItem1.setText("Habitaciones por Tipo Habitación");
-        jMHabPorTipo.add(jMenuItem1);
+        jMHabitPorTipo.setText("Habitaciones por Tipo Habitación");
+        jMHabitPorTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMHabitPorTipoActionPerformed(evt);
+            }
+        });
+        jMHabPorTipo.add(jMHabitPorTipo);
 
         jMenuBar1.add(jMHabPorTipo);
 
@@ -547,6 +552,16 @@ public class vistaPrncipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMResPorHuespActionPerformed
 
+    private void jMHabitPorTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHabitPorTipoActionPerformed
+        // TODO add your handling code here:
+        formHabitacionesPorTipo fHabPorTipo = new formHabitacionesPorTipo();
+        fHabPorTipo.setVisible(true);
+        jescritorio.add(fHabPorTipo);
+        jescritorio.moveToFront(fHabPorTipo);
+        
+        
+    }//GEN-LAST:event_jMHabitPorTipoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -599,6 +614,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMAltaTipoHab;
     private javax.swing.JMenuItem jMBajaModifTipoHabit;
     private javax.swing.JMenu jMHabPorTipo;
+    private javax.swing.JMenuItem jMHabitPorTipo;
     private javax.swing.JMenuItem jMResEntreFechas;
     private javax.swing.JMenuItem jMResPorHab;
     private javax.swing.JMenuItem jMResPorHuesp;
@@ -606,7 +622,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;

@@ -68,10 +68,13 @@
                 <Property name="text" type="java.lang.String" value="Reservas entre Fechas"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jMHabitPorTipo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Habitaciones por Tipo Habitaci&#xf3;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMHabitPorTipoActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
