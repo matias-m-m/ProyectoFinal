@@ -65,7 +65,7 @@ private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource(
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(51, 189, 255));
         jLabel4.setText("NO TENES CUENTA");
         jfondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 910, 180, 20));
 
