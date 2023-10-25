@@ -178,8 +178,10 @@ public class formReservasEntreFechas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
         LocalDate FechInicio, FechFin;
+        //System.out.println(jDateChooserFechaIn.getDate().toString());
         
-        if (jDateChooserFechaIn.getDate().toString().isEmpty() || jDateChooserFechaFin.getDate().toString().isEmpty() ) {
+        
+        if (jDateChooserFechaIn.getDate() == null || jDateChooserFechaFin.getDate() == null ) {
             JOptionPane.showMessageDialog(null,"Debe seleccionar las dos fechas para realizar la consulta");
         }
         else {
