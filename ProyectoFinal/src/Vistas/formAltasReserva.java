@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -314,8 +315,8 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
              // Obtener la fecha actual o la fecha deseada (por ejemplo, la fecha mínima)
         java.util.Calendar currentDate = java.util.GregorianCalendar.getInstance();
          if (fechaIngresoChooser.getDate().before(currentDate.getTime()) || fechaSalidaChooser.getDate().before(currentDate.getTime())) {
-             
-            JOptionPane.showMessageDialog(null,"Las fechas ingresadas no son válidas. Fecha minima: HOY");
+             LocalDate fechaAct = LocalDate.now();
+            JOptionPane.showMessageDialog(null,"Las fechas ingresadas no son válidas. Fecha minima: "+ fechaAct);
              
              
         } else {
