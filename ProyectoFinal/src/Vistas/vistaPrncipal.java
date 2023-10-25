@@ -486,6 +486,12 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         jButton6.setVisible(false);
+        formBajasyModificacionReserva modifReserva = new formBajasyModificacionReserva();
+        modifReserva.setVisible(true);
+        jescritorio.add(modifReserva);
+        jescritorio.moveToFront(modifReserva);
+        
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
