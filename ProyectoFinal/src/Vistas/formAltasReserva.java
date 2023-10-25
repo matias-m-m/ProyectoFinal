@@ -128,12 +128,19 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
             }
         });
 
+        fechaIngresoChooser.setFocusTraversalPolicyProvider(true);
+        fechaIngresoChooser.setNextFocusableComponent(fechaSalidaChooser);
         fechaIngresoChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 fechaIngresoChooserPropertyChange(evt);
             }
         });
 
+        fechaSalidaChooser.setFocusTraversalPolicyProvider(true);
+        fechaSalidaChooser.setNextFocusableComponent(btnConsultar);
+
+        nroHuespedes.setFocusTraversalPolicyProvider(true);
+        nroHuespedes.setNextFocusableComponent(fechaIngresoChooser);
         nroHuespedes.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 nroHuespedesStateChanged(evt);
