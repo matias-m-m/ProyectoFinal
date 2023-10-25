@@ -82,7 +82,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         fechaIngresoChooser = new com.toedter.calendar.JDateChooser();
         fechaSalidaChooser = new com.toedter.calendar.JDateChooser();
         nroHuespedes = new javax.swing.JSpinner();
@@ -120,11 +120,11 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cantidad de Huéspedes: ");
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setText("Consultar disponibilidad");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnConsultar.setText("Consultar disponibilidad");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnConsultarActionPerformed(evt);
             }
         });
 
@@ -223,7 +223,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
                                 .addComponent(nroHuespedes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel2)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(fechaIngresoChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(35, 35, 35)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,7 +270,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(fechaSalidaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(18, 18, 18)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
@@ -292,7 +292,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,14 +302,17 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
-        
-//        SELECT idReserva FROM reserva 
-//WHERE  (FechaSalida BETWEEN '2023/11/08' AND '2023/11/12') OR 
-//       (FechaIngreso BETWEEN '2023/11/08' AND '2023/11/12') OR
-//       (FechaIngreso <= '2023/11/08' AND FechaSalida >= '2023/11/12');
-        int idhab;
+             // Obtener la fecha actual o la fecha deseada (por ejemplo, la fecha mínima)
+        java.util.Calendar currentDate = java.util.GregorianCalendar.getInstance();
+         if (fechaIngresoChooser.getDate().before(currentDate.getTime()) || fechaSalidaChooser.getDate().before(currentDate.getTime())) {
+             
+            JOptionPane.showMessageDialog(null,"Las fechas ingresadas no son válidas. Fecha minima: HOY");
+             
+             
+        } else {
+             int idhab;
         if(tablaHabitaciones.getSelectedRow() !=-1){
              idhab = (Integer) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 0);
         String sqlObtenerfechas="SELECT idReserva FROM reserva \n" +
@@ -375,6 +378,9 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null,"Seleccione una habitacion");
         }
+         }
+        
+        
 
         
        
@@ -384,7 +390,7 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
         
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnConsultarActionPerformed
 //para ajustar el tamaño de el j internal frame 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
          
@@ -561,11 +567,11 @@ public class formAltasReserva extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton buscarHuesped;
     private com.toedter.calendar.JDateChooser fechaIngresoChooser;
     private com.toedter.calendar.JDateChooser fechaSalidaChooser;
     private javax.swing.JTextField inputBuscarDNI;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
