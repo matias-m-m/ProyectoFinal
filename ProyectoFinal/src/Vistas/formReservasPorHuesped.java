@@ -70,6 +70,8 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
         borrarTablaHuespedes();
         borrarTablaReservas();
         rellenarTablaHuespedes();
+        txtDNI.setText("");
+        
         
     }
 
@@ -89,6 +91,8 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
         jTHuespedes = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTResPorHuesped = new javax.swing.JTable();
+        txtDNI = new javax.swing.JTextField();
+        jBBuscarHuesped = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Reservas por Huesped");
@@ -97,7 +101,7 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Seleccione un Huésped:");
+        jLabel1.setText("Seleccione un Huésped o Ingrese un DNI:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -134,12 +138,23 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTResPorHuesped);
 
+        jBBuscarHuesped.setText("Buscar");
+        jBBuscarHuesped.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarHuespedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(557, Short.MAX_VALUE)
+                .addContainerGap(320, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jBBuscarHuesped, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                    .addComponent(txtDNI))
+                .addGap(95, 95, 95)
                 .addComponent(jLabel2)
                 .addGap(486, 486, 486))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,8 +172,12 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(469, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBBuscarHuesped)
+                .addContainerGap(445, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -197,8 +216,32 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jTHuespedesMouseClicked
 
+    private void jBBuscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarHuespedActionPerformed
+        // TODO add your handling code here:
+        if ( txtDNI.getText().isEmpty() ) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero de DNI en el campo de texto");
+        }
+        else {
+           
+            Huesped h = hData.buscarHuespPorDni( txtDNI.getText() );
+            
+            if (h != null) {
+                borrarTablaHuespedes();
+                borrarTablaReservas();
+                modeloListaHuespedes.addRow(new Object[]{h.getIdHuesp(),h.getApellidoHuesp(),h.getNombreHuesp(),h.getDniHuesp(),h.getEmailHuesp(),h.getTelefonoHuesp(),h.getDomicilioHuesp()    });
+            }
+            
+             
+            txtDNI.setText("");
+            
+            
+        }
+        
+    }//GEN-LAST:event_jBBuscarHuespedActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBBuscarHuesped;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -206,6 +249,7 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTHuespedes;
     private javax.swing.JTable jTResPorHuesped;
+    private javax.swing.JTextField txtDNI;
     // End of variables declaration//GEN-END:variables
 
 
