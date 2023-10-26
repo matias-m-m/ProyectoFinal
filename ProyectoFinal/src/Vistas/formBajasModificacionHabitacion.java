@@ -5,17 +5,31 @@
  */
 package Vistas;
 
+import AccesoADatos.HabitacData;
+import AccesoADatos.TipoHabitacionData;
+import Entidades.Habitacion;
+import Entidades.TipoHabitacion;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author matias
  */
 public class formBajasModificacionHabitacion extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form formBajasModificacionHabitacion
-     */
+    private DefaultTableModel modeloListaHab = new DefaultTableModel();
+    private ArrayList<TipoHabitacion> listarTipos;
+    private ArrayList<Habitacion> habitacionesPorTipo;
+    private HabitacData habdata = new HabitacData();
+    private TipoHabitacionData tipohabdata = new TipoHabitacionData();
+
     public formBajasModificacionHabitacion() {
         initComponents();
+        crearCabecera();
+        borrarTablaTipos();
+        cargarComboTipos();
+    
     }
 
     /**
@@ -28,9 +42,215 @@ public class formBajasModificacionHabitacion extends javax.swing.JInternalFrame 
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jConfirmar = new javax.swing.JButton();
+        jTipoHabitación = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTHabitaciones = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtNumeroHabitación = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtPisoHabitación = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jComboTipoHabitación = new javax.swing.JComboBox<>();
+        jRBaja = new javax.swing.JRadioButton();
+        jRModificacion = new javax.swing.JRadioButton();
+
+        setClosable(true);
+        setResizable(true);
+        setTitle("Bajas Modificación De Habitaciónes");
 
         jPanel1.setBackground(new java.awt.Color(27, 27, 27));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jConfirmar.setText("Confirmar");
+        jConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConfirmarActionPerformed(evt);
+            }
+        });
+
+        jTipoHabitación.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jTipoHabitaciónItemStateChanged(evt);
+            }
+        });
+        jTipoHabitación.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTipoHabitaciónActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Seleccione Tipo de Habitación: ");
+
+        jTHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTHabitaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTHabitacionesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTHabitaciones);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Habitaciones");
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Numero De Habitación");
+
+        txtNumeroHabitación.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroHabitaciónActionPerformed(evt);
+            }
+        });
+        txtNumeroHabitación.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroHabitaciónKeyTyped(evt);
+            }
+        });
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Piso");
+
+        txtPisoHabitación.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPisoHabitaciónKeyTyped(evt);
+            }
+        });
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Estado");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Habilitada", "Inhabilitada" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Tipo De Habitación");
+
+        jComboTipoHabitación.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboTipoHabitaciónActionPerformed(evt);
+            }
+        });
+
+        jRBaja.setForeground(new java.awt.Color(255, 255, 255));
+        jRBaja.setText("Dar de Baja");
+        jRBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBajaActionPerformed(evt);
+            }
+        });
+
+        jRModificacion.setForeground(new java.awt.Color(255, 255, 255));
+        jRModificacion.setText("Editar");
+        jRModificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRModificacionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTipoHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(9, 9, 9)
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jComboTipoHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtNumeroHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtPisoHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                                        .addComponent(jRBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRModificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(47, 47, 47))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTipoHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRBaja)
+                            .addComponent(jRModificacion))
+                        .addGap(18, 18, 18)
+                        .addComponent(jConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboTipoHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNumeroHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtPisoHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(19, Short.MAX_VALUE))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,8 +266,129 @@ public class formBajasModificacionHabitacion extends javax.swing.JInternalFrame 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfirmarActionPerformed
+
+    }//GEN-LAST:event_jConfirmarActionPerformed
+
+    private void jTipoHabitaciónItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jTipoHabitaciónItemStateChanged
+
+    }//GEN-LAST:event_jTipoHabitaciónItemStateChanged
+
+    private void jTipoHabitaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTipoHabitaciónActionPerformed
+        int id = Integer.parseInt(jTipoHabitación.getSelectedItem().toString().substring(0, jTipoHabitación.getSelectedItem().toString().indexOf(" ")));
+
+        borrarTablaTipos();
+        rellenarTablaHabitacionesPorTipo(id);
+        
+        
+
+    }//GEN-LAST:event_jTipoHabitaciónActionPerformed
+
+    private void jTHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTHabitacionesMouseClicked
+        // TODO add your handling code here:
+
+        int idHab = (Integer) (modeloListaHab.getValueAt(jTHabitaciones.getSelectedRow(), 0));
+        //int idHab =  (jTHabitaciones.getSelectedRow(), 0);
+  
+
+       
+
+    }//GEN-LAST:event_jTHabitacionesMouseClicked
+
+    private void txtNumeroHabitaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroHabitaciónActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroHabitaciónActionPerformed
+
+    private void txtNumeroHabitaciónKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroHabitaciónKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Consumir el evento, evitando que se ingrese el número.
+        }
+    }//GEN-LAST:event_txtNumeroHabitaciónKeyTyped
+
+    private void txtPisoHabitaciónKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPisoHabitaciónKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Consumir el evento si no es un número.
+
+        }
+    }//GEN-LAST:event_txtPisoHabitaciónKeyTyped
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboTipoHabitaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoHabitaciónActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboTipoHabitaciónActionPerformed
+
+    private void jRBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBajaActionPerformed
+        // TODO add your handling code here:
+        jRModificacion.setSelected(false);
+
+    }//GEN-LAST:event_jRBajaActionPerformed
+
+    private void jRModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRModificacionActionPerformed
+        // TODO add your handling code here:
+        jRBaja.setSelected(false);
+     
+    }//GEN-LAST:event_jRModificacionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<TipoHabitacion> jComboTipoHabitación;
+    private javax.swing.JButton jConfirmar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRBaja;
+    private javax.swing.JRadioButton jRModificacion;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTHabitaciones;
+    private javax.swing.JComboBox<String> jTipoHabitación;
+    private javax.swing.JTextField txtNumeroHabitación;
+    private javax.swing.JTextField txtPisoHabitación;
     // End of variables declaration//GEN-END:variables
+
+    public void borrarTablaTipos() {
+        int filas = modeloListaHab.getRowCount() - 1;
+
+        for (; filas >= 0; filas--) {
+            modeloListaHab.removeRow(filas);
+        }
+    }
+
+    public void rellenarTablaHabitacionesPorTipo(int idTipo) {
+
+        habitacionesPorTipo = (ArrayList) habdata.listarHabPorTipo(idTipo);
+
+        for (Habitacion h : habitacionesPorTipo) {
+
+            modeloListaHab.addRow(new Object[]{h.getIdHabitacion(), h.getNroHabitacion(), h.getTipoHabitacion().getNombreTipo(), h.getPiso(), h.getTipoHabitacion().getMaxHuespedes(), h.getTipoHabitacion().getImportePorNoche()});
+
+        }
+    }
+    public void cargarComboTipos() {
+       
+     
+        listarTipos = (ArrayList) tipohabdata.listarTipoHab();
+        for (TipoHabitacion lista : listarTipos) {
+            jTipoHabitación.addItem(lista.getIdTipoHabit()+" - "+lista.getNombreTipo());
+        }  
+}
+     public void crearCabecera() {
+        
+        modeloListaHab.addColumn("id Habit");
+        modeloListaHab.addColumn("Nro Habit");
+        modeloListaHab.addColumn("Nombre Tipo");
+        modeloListaHab.addColumn("Piso");
+                
+        jTHabitaciones.setModel(modeloListaHab);
+        
+    }
 }

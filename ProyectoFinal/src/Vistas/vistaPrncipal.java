@@ -653,7 +653,10 @@ public class vistaPrncipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jBajasModificacionHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBajasModificacionHabitacionActionPerformed
-        
+         formBajasModificacionHabitacion fResEntreFech = new formBajasModificacionHabitacion();
+        fResEntreFech.setVisible(true);
+        jescritorio.add(fResEntreFech);
+        jescritorio.moveToFront(fResEntreFech);
     }//GEN-LAST:event_jBajasModificacionHabitacionActionPerformed
 
     private void jAltasHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAltasHabitacionActionPerformed
