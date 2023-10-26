@@ -94,7 +94,8 @@ public class TipoHabitacion {
 
     @Override
     public String toString() {
-        return "TipoHabitacion{" + "idTipoHabit=" + idTipoHabit + ", nombreTipo=" + nombreTipo + ", letraTipo=" + letraTipo + ", maxHuespedes=" + maxHuespedes + ", importePorNoche=" + importePorNoche + ", estado=" + estado + '}';
+        //return "TipoHabitacion{" + "idTipoHabit=" + idTipoHabit + ", nombreTipo=" + nombreTipo + ", letraTipo=" + letraTipo + ", maxHuespedes=" + maxHuespedes + ", importePorNoche=" + importePorNoche + ", estado=" + estado + '}';
+        return idTipoHabit +" - " + nombreTipo;
     }
 
     

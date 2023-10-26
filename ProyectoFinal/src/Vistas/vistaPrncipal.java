@@ -58,9 +58,13 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         imNvaReserva = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMAltaTipoHab = new javax.swing.JMenuItem();
         jMBajaModifTipoHabit = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jAltasHabitacion = new javax.swing.JMenuItem();
+        jBajasModificacionHabitacion = new javax.swing.JMenuItem();
         jMHabPorTipo = new javax.swing.JMenu();
         jMResPorHab = new javax.swing.JMenuItem();
         jMResPorHuesp = new javax.swing.JMenuItem();
@@ -272,13 +276,21 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
         jMenu1.setText("Reserva");
 
-        imNvaReserva.setText("Nueva reserva");
+        imNvaReserva.setText("Altas");
         imNvaReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imNvaReservaActionPerformed(evt);
             }
         });
         jMenu1.add(imNvaReserva);
+
+        jMenuItem1.setText("Bajas/Editar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
@@ -299,6 +311,23 @@ public class vistaPrncipal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMBajaModifTipoHabit);
+        jMenu2.add(jSeparator1);
+
+        jAltasHabitacion.setText("Altas De Habitación");
+        jAltasHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAltasHabitacionActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jAltasHabitacion);
+
+        jBajasModificacionHabitacion.setText("Bajas/Modificacion De Habitación");
+        jBajasModificacionHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBajasModificacionHabitacionActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jBajasModificacionHabitacion);
 
         jMenuBar1.add(jMenu2);
 
@@ -497,18 +526,12 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         jButton7.setVisible(false);
         
-        formAltaTipoHabitacion fAltTipHab = new formAltaTipoHabitacion();
-        fAltTipHab.setVisible(true);
-        jescritorio.add(fAltTipHab);
-        jescritorio.moveToFront(fAltTipHab);
+       
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         jButton8.setVisible(false);
-        formBajayModificacionTipoHabitacion fBajayModiftTipHab = new formBajayModificacionTipoHabitacion();
-        fBajayModiftTipHab.setVisible(true);
-        jescritorio.add(fBajayModiftTipHab);
-        jescritorio.moveToFront(fBajayModiftTipHab);
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -622,6 +645,24 @@ public class vistaPrncipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMResEntreFechasActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+      formBajasyModificacionReserva fResEntreFech = new formBajasyModificacionReserva();
+        fResEntreFech.setVisible(true);
+        jescritorio.add(fResEntreFech);
+        jescritorio.moveToFront(fResEntreFech);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jBajasModificacionHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBajasModificacionHabitacionActionPerformed
+        
+    }//GEN-LAST:event_jBajasModificacionHabitacionActionPerformed
+
+    private void jAltasHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAltasHabitacionActionPerformed
+       formAltasHabitacion fResEntreFech = new formAltasHabitacion();
+        fResEntreFech.setVisible(true);
+        jescritorio.add(fResEntreFech);
+        jescritorio.moveToFront(fResEntreFech);
+    }//GEN-LAST:event_jAltasHabitacionActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -660,6 +701,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem imNvaReserva;
+    private javax.swing.JMenuItem jAltasHabitacion;
+    private javax.swing.JMenuItem jBajasModificacionHabitacion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -683,9 +726,11 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JDesktopPane jescritorio;
     // End of variables declaration//GEN-END:variables
 }
