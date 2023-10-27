@@ -36,7 +36,7 @@ public class HabitacData {
             psIns.setBoolean(4,true);
             psIns.executeUpdate();
             psIns.close();
-            JOptionPane.showMessageDialog(null, "Habitación "+ h.getTipoHabitacion().toString()+" cargada con éxito");
+            JOptionPane.showMessageDialog(null, "Habitación cargada con éxito");
         } catch (SQLException x){
             JOptionPane.showMessageDialog(null, "Error al cargar la habitacion");
         }

@@ -28,14 +28,14 @@ public class formAltasHabitacion extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCEstadoHab = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtNumeroHabitación = new javax.swing.JTextField();
+        txtNumeroHabitacion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        txtPisoHabitación = new javax.swing.JTextField();
-        jComboTipoHabitación = new javax.swing.JComboBox<>();
+        jBConfirmar = new javax.swing.JButton();
+        txtPisoHabitacion = new javax.swing.JTextField();
+        jComboTipoHabitacion = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -44,10 +44,10 @@ public class formAltasHabitacion extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(27, 27, 27));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Habilitada", "Inhabilitada" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jCEstadoHab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Habilitada", "Inhabilitada" }));
+        jCEstadoHab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jCEstadoHabActionPerformed(evt);
             }
         });
 
@@ -57,36 +57,36 @@ public class formAltasHabitacion extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tipo De Habitación");
 
-        txtNumeroHabitación.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroHabitaciónActionPerformed(evt);
+                txtNumeroHabitacionActionPerformed(evt);
             }
         });
-        txtNumeroHabitación.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtNumeroHabitacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNumeroHabitaciónKeyTyped(evt);
+                txtNumeroHabitacionKeyTyped(evt);
             }
         });
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Piso");
 
-        jButton1.setText("Confirmar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBConfirmar.setText("Confirmar");
+        jBConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBConfirmarActionPerformed(evt);
             }
         });
 
-        txtPisoHabitación.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPisoHabitacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPisoHabitaciónKeyTyped(evt);
+                txtPisoHabitacionKeyTyped(evt);
             }
         });
 
-        jComboTipoHabitación.addActionListener(new java.awt.event.ActionListener() {
+        jComboTipoHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboTipoHabitaciónActionPerformed(evt);
+                jComboTipoHabitacionActionPerformed(evt);
             }
         });
 
@@ -104,24 +104,24 @@ public class formAltasHabitacion extends javax.swing.JInternalFrame {
                         .addGap(9, 9, 9)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCEstadoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(136, 136, 136)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(56, 56, 56))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumeroHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNumeroHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtPisoHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtPisoHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboTipoHabitación, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jComboTipoHabitacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -129,23 +129,23 @@ public class formAltasHabitacion extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboTipoHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboTipoHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNumeroHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumeroHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(txtPisoHabitación, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPisoHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jCEstadoHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
 
@@ -163,65 +163,71 @@ public class formAltasHabitacion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jCEstadoHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEstadoHabActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jCEstadoHabActionPerformed
 
-    private void txtNumeroHabitaciónKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroHabitaciónKeyTyped
+    private void txtNumeroHabitacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroHabitacionKeyTyped
         char c = evt.getKeyChar();
         if (!Character.isDigit(c)) {
             evt.consume(); // Consumir el evento, evitando que se ingrese el número.
         }
-    }//GEN-LAST:event_txtNumeroHabitaciónKeyTyped
+    }//GEN-LAST:event_txtNumeroHabitacionKeyTyped
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (txtNumeroHabitación.getText().isEmpty() || txtPisoHabitación.getText().isEmpty()) {
+    private void jBConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmarActionPerformed
+        if (txtNumeroHabitacion.getText().isEmpty() || txtPisoHabitacion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Faltan agregar datos...");
         } else {
             Habitacion habitacion = new Habitacion();
-            habitacion.setTipoHabitacion((TipoHabitacion) jComboTipoHabitación.getSelectedItem());
-            habitacion.setNroHabitacion(Integer.parseInt(txtNumeroHabitación.getText()));
-            habitacion.setPiso(Integer.parseInt(txtPisoHabitación.getText()));
+            habitacion.setTipoHabitacion((TipoHabitacion) jComboTipoHabitacion.getSelectedItem());
+            habitacion.setNroHabitacion(Integer.parseInt(txtNumeroHabitacion.getText()));
+            habitacion.setPiso(Integer.parseInt(txtPisoHabitacion.getText()));
             habitacion.setEstado(true);
             habitacData.nuevaHabitac(habitacion);
-    }//GEN-LAST:event_jButton1ActionPerformed
+            
+            txtNumeroHabitacion.setText("");
+            txtPisoHabitacion.setText("");
+            jComboTipoHabitacion.setSelectedIndex(0);
+            jCEstadoHab.setSelectedIndex(0);
+            
+    }//GEN-LAST:event_jBConfirmarActionPerformed
     }
-    private void txtPisoHabitaciónKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPisoHabitaciónKeyTyped
+    private void txtPisoHabitacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPisoHabitacionKeyTyped
         char c = evt.getKeyChar();
         if (!Character.isDigit(c)) {
             evt.consume(); // Consumir el evento si no es un número.
 
         }
-    }//GEN-LAST:event_txtPisoHabitaciónKeyTyped
+    }//GEN-LAST:event_txtPisoHabitacionKeyTyped
 
-    private void jComboTipoHabitaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoHabitaciónActionPerformed
+    private void jComboTipoHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoHabitacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboTipoHabitaciónActionPerformed
+    }//GEN-LAST:event_jComboTipoHabitacionActionPerformed
 
-    private void txtNumeroHabitaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroHabitaciónActionPerformed
+    private void txtNumeroHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroHabitacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroHabitaciónActionPerformed
+    }//GEN-LAST:event_txtNumeroHabitacionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<TipoHabitacion> jComboTipoHabitación;
+    private javax.swing.JButton jBConfirmar;
+    private javax.swing.JComboBox<String> jCEstadoHab;
+    private javax.swing.JComboBox<TipoHabitacion> jComboTipoHabitacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtNumeroHabitación;
-    private javax.swing.JTextField txtPisoHabitación;
+    private javax.swing.JTextField txtNumeroHabitacion;
+    private javax.swing.JTextField txtPisoHabitacion;
     // End of variables declaration//GEN-END:variables
 
     public void cargarComboTipos() {
 
         listarTipos = (ArrayList) tipohabdata.listarTipoHab();
         for (TipoHabitacion lista : listarTipos) {
-            jComboTipoHabitación.addItem(lista);
+            jComboTipoHabitacion.addItem(lista);
         }
 
     }
