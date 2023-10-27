@@ -15,7 +15,7 @@ import javax.swing.Timer;
  * @author matias
  */
 public class pantallaCarga extends javax.swing.JFrame {
-public int animacionDuracionEnMilisegundos = 14000; // Duración de la animación en milisegundos
+public int animacionDuracionEnMilisegundos = 12000; // Duración de la animación en milisegundos
  private boolean animacionCompletada = false; // Declaración de la variable
     /**
      * Creates new form pantallaCarga
