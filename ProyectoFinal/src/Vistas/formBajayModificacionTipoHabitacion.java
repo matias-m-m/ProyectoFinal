@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import AccesoADatos.HabitacData;
 import AccesoADatos.TipoHabitacionData;
 import Entidades.TipoHabitacion;
 import java.sql.PreparedStatement;
@@ -20,8 +21,13 @@ import javax.swing.table.DefaultTableModel;
 public class formBajayModificacionTipoHabitacion extends javax.swing.JInternalFrame {
 
     private TipoHabitacionData tipohabdata = new TipoHabitacionData();
+    private HabitacData habdata = new HabitacData();
+    
     private DefaultTableModel modeloListaTipoHab = new DefaultTableModel() {
-        //Hacer que la tabla no sea editable haciendo doble click
+   
+        
+
+//Hacer que la tabla no sea editable haciendo doble click
         @Override
         public boolean isCellEditable(int row, int column) {
             return false; // Hacer que todas las celdas no sean editables
@@ -321,6 +327,9 @@ public class formBajayModificacionTipoHabitacion extends javax.swing.JInternalFr
             }
             else {
                 tipohabdata.borrarTipoHabitacion(Integer.parseInt(txtid.getText()));
+                habdata.bajarhabitacionesdeTipo(Integer.parseInt(txtid.getText()));//borrar las habitaciones de ese tipo
+                borrarTabla();
+                rellenarTabla();
             }
                 
         }
@@ -347,6 +356,8 @@ public class formBajayModificacionTipoHabitacion extends javax.swing.JInternalFr
                    
                     if (jComboBox1.getSelectedItem().equals("Habilitada")) {
                         nueva.setEstado(Boolean.parseBoolean("true"));
+                        
+                        habdata.habilitarHabitacionesDeTipo(Integer.parseInt(txtid.getText()));
                     }
                     else {
                         nueva.setEstado(Boolean.parseBoolean("false"));    ;
@@ -354,6 +365,7 @@ public class formBajayModificacionTipoHabitacion extends javax.swing.JInternalFr
                     
                     
                     tipohabdata.editarTipoHabitacion(nueva);
+                    
                     borrarTabla();
                     rellenarTabla();
                 }

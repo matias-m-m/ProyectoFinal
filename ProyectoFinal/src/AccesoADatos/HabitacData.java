@@ -77,6 +77,42 @@ public class HabitacData {
     }
     
     
+    
+    public void bajarhabitacionesdeTipo( int tipohab ) {
+        String sqlBajaVarias="UPDATE habitacion SET estado=0 WHERE idTipoHabitacion=?";
+        try{
+          PreparedStatement psBajas = con.prepareStatement(sqlBajaVarias);
+            psBajas.setInt(1,tipohab);
+            
+            psBajas.executeUpdate();
+            psBajas.close();
+            JOptionPane.showMessageDialog(null, "Habitaciones deshabilitadas con exito");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al editar la habitación: "+ex.getMessage());
+            //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    
+    
+    public void habilitarHabitacionesDeTipo( int tipohab ) {
+        String sqlHabilitarVarias="UPDATE habitacion SET estado=1 WHERE idTipoHabitacion=?";
+        try{
+          PreparedStatement psHabilitar = con.prepareStatement(sqlHabilitarVarias);
+            psHabilitar.setInt(1,tipohab);
+            
+            psHabilitar.executeUpdate();
+            psHabilitar.close();
+            JOptionPane.showMessageDialog(null, "Habitaciones habilitadas con exito");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al editar la habitación: "+ex.getMessage());
+            //Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }
    
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     
