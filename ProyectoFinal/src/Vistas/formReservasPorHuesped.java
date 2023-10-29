@@ -317,7 +317,7 @@ public class formReservasPorHuesped extends javax.swing.JInternalFrame {
        // select idHuesp,apellidoHuesp,nombreHuesp,dniHuesp,domicilioHuesp,emailHuesp,telefonoHuesp from huesped where estadoHuesp = 1
     
        
-        listaHuespedes = (ArrayList) hData.listarHuesped();
+        listaHuespedes = (ArrayList<Huesped>) hData.listarHuesped();
     
         for (Huesped h : listaHuespedes) {
             

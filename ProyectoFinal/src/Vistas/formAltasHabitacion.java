@@ -21,6 +21,7 @@ public class formAltasHabitacion extends javax.swing.JInternalFrame {
     public formAltasHabitacion() {
         initComponents();
         cargarComboTipos();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -225,10 +226,11 @@ public class formAltasHabitacion extends javax.swing.JInternalFrame {
 
     public void cargarComboTipos() {
 
-        listarTipos = (ArrayList) tipohabdata.listarTipoHab();
-        for (TipoHabitacion lista : listarTipos) {
-            jComboTipoHabitacion.addItem(lista);
+           listarTipos = (ArrayList<TipoHabitacion>) tipohabdata.listarTipoHab();
+    for (TipoHabitacion tipo : listarTipos) {
+        jComboTipoHabitacion.addItem(tipo);
         }
 
     }
+    
 }

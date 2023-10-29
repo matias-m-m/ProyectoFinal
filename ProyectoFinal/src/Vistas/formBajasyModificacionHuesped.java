@@ -387,7 +387,7 @@ public class formBajasyModificacionHuesped extends javax.swing.JInternalFrame {
 
     //metodo cargar tabla
     public void cargarTabla() {
-        listarHuesp = (ArrayList) huespeddata.listarHuesped();
+        listarHuesp = (ArrayList<Huesped>) huespeddata.listarHuesped();
         for (Huesped lista : listarHuesp) {
             modelo.addRow(new Object[]{lista.getIdHuesp(), lista.getApellidoHuesp(), lista.getNombreHuesp(), lista.getDniHuesp(), lista.getDomicilioHuesp(), lista.getEmailHuesp(), lista.getTelefonoHuesp()});
         }

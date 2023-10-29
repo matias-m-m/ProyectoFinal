@@ -208,7 +208,7 @@ public class formHabitacionesPorTipo extends javax.swing.JInternalFrame {
   public void cargarComboTipos() {
        
      
-        listarTipos = (ArrayList) tipohabdata.listarTipoHab();
+        listarTipos = (ArrayList<TipoHabitacion>) tipohabdata.listarTipoHab();
         for (TipoHabitacion lista : listarTipos) {
             jCNombresTipo.addItem(lista.getIdTipoHabit()+" - "+lista.getNombreTipo());
         }  
@@ -246,7 +246,8 @@ public class formHabitacionesPorTipo extends javax.swing.JInternalFrame {
         
         
         
-        habitacionesPorTipo = (ArrayList) habdata.listarHabPorTipo(idTipo);
+       habitacionesPorTipo = (ArrayList<Habitacion>) habdata.listarHabPorTipo(idTipo);
+
     
         for (Habitacion h : habitacionesPorTipo) {
             

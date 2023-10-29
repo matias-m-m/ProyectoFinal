@@ -33,6 +33,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jporhuesped.setVisible(false);
         btnAltaHuesp.setVisible(false);
         btnEditHuesp.setVisible(false);
+        
+        
     }
 
     /**
