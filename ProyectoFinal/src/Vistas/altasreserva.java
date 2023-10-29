@@ -13,26 +13,64 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author matias
  */
 public class altasreserva extends javax.swing.JInternalFrame {
- private ReservaData reservadata = new ReservaData();
+ 
+    private ReservaData reservadata = new ReservaData();
     private HuespedData huespeddata = new HuespedData();
     /**
      * Creates new form altas
      */
     public altasreserva() {
         initComponents();
+        
+        // Obtén la fecha actual
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date fechaActual = calendar.getTime();
+        System.out.println(calendar);
+        System.out.println(fechaActual);
+        // Establece la fecha actual como la fecha mínima seleccionable
+        fechaIngresoChooser.setMinSelectableDate(fechaActual);
+        fechaSalidaChooser.setMinSelectableDate(fechaActual);
+        
+        
+        btnConfirmar.setEnabled(false);
+        //SpinnerNumberModel(valorInicial,ValorMenor,valorMayor,Paso)
+        SpinnerModel model = new SpinnerNumberModel(1,1,100,1);
+        
+        nroHuespedes.setModel(model);
+        crearCabeceras();
+        rellenarTabla();
+        setResizable(true);
+        
+        
     }
-
+ private DefaultTableModel modeloTablaHabs = new DefaultTableModel() {
+        //Hacer que la tabla no sea editable haciendo doble click
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Hacer que todas las celdas no sean editables
+        }
+    };
+ 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -259,8 +297,8 @@ public class altasreserva extends javax.swing.JInternalFrame {
 
     private void nroHuespedesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_nroHuespedesStateChanged
         // TODO add your handling code here:
-       // borrarTabla();
-       // rellenarTablaSpinner();
+        borrarTabla();
+        rellenarTablaSpinner();
 
     }//GEN-LAST:event_nroHuespedesStateChanged
 
@@ -419,5 +457,83 @@ public class altasreserva extends javax.swing.JInternalFrame {
     private javax.swing.JLabel totalReserva;
     private javax.swing.JLabel valorTotalPesos;
     // End of variables declaration//GEN-END:variables
+public void borrarTabla() {
+    
+        int filas = modeloTablaHabs.getRowCount() - 1;
+        
+        for (; filas >= 0; filas--) {
+            modeloTablaHabs.removeRow(filas);
+        }
+        
+    }
+public void crearCabeceras() {
 
+        modeloTablaHabs.addColumn("ID");//0
+        modeloTablaHabs.addColumn("Nro");//1
+        modeloTablaHabs.addColumn("Piso");//2
+        modeloTablaHabs.addColumn("Tipo");//3
+        modeloTablaHabs.addColumn("Capacidad");//4
+        modeloTablaHabs.addColumn("$/Noche");//5
+
+        tablaHabitaciones.setModel(modeloTablaHabs);
+    }
+public void rellenarTabla() {
+
+        String SQLPrimeraCarga = "SELECT\n"
+                + "    H.IdHabitacion,\n"
+                + "    H.nrohabitacion,\n"
+                + "    H.piso,\n"
+                + "    H.estado,\n"
+                + "    T.maxHuespedes,\n"
+                + "    T.importepornoche,\n"
+                + "    T.letraTipo\n"
+                + "FROM HABITACION H\n"
+                + "JOIN TIPOHABITACION T ON H.idTipoHabitacion = T.idTipohabit\n"
+                + "WHERE H.estado=1;";
+
+        PreparedStatement ps;
+        try {
+            ps = reservadata.getCon().prepareStatement(SQLPrimeraCarga);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                modeloTablaHabs.addRow(new Object[]{rs.getInt("H.IdHabitacion"), "N°"+rs.getInt("H.nrohabitacion"), rs.getInt("H.piso"), rs.getString("T.letraTipo"), rs.getInt("T.maxHuespedes"), rs.getDouble("T.importepornoche")});
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla" + ex.getMessage());
+        }
+
+    }
+ public void rellenarTablaSpinner() {
+
+        String SQLPrimeraCarga = "SELECT\n"
+                + "    H.IdHabitacion,\n"
+                + "    H.nrohabitacion,\n"
+                + "    H.piso,\n"
+                + "    H.estado,\n"
+                + "    T.maxHuespedes,\n"
+                + "    T.importepornoche,\n"
+                + "    T.letraTipo\n"
+                + "FROM HABITACION H\n"
+                + "JOIN TIPOHABITACION T ON H.idTipoHabitacion = T.idTipohabit\n"
+                + "WHERE H.estado=1 AND T.maxHuespedes = ?;";
+
+        PreparedStatement ps;
+        int valorH = (int) nroHuespedes.getValue();
+            
+        try {
+            ps = reservadata.getCon().prepareStatement(SQLPrimeraCarga);
+            ps.setInt(1,valorH);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                modeloTablaHabs.addRow(new Object[]{rs.getInt("H.IdHabitacion"), "N°"+rs.getInt("H.nrohabitacion"), rs.getInt("H.piso"), rs.getString("T.letraTipo"), rs.getInt("T.maxHuespedes"), rs.getDouble("T.importepornoche")});
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla" + ex.getMessage());
+        }
+
+    }
 }
