@@ -16,7 +16,8 @@ import javax.swing.UIManager;
  * @author matias
  */
 public class vistaPrncipal extends javax.swing.JFrame {
-
+private final ImageIcon ventanaIcon = new ImageIcon(getClass().getResource("/imagenes/iconoeditar.png"));
+private final ImageIcon veIcon = new ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"));
     /**
      * Creates new form vistaPrncipal
      */
