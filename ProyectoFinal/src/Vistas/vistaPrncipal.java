@@ -27,7 +27,10 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnNvaHabit.setVisible(false);
         btnEditHabit.setVisible(false);
         jButton9.setVisible(false);
-        btnConsultaUno.setVisible(false);
+        jportipohabitación.setVisible(false);
+        jporfecha.setVisible(false);
+        jporHabitación.setVisible(false);
+        jporhuesped.setVisible(false);
         btnAltaHuesp.setVisible(false);
         btnEditHuesp.setVisible(false);
     }
@@ -51,10 +54,13 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnNvaHabit = new javax.swing.JButton();
         btnEditHabit = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        btnConsultaUno = new javax.swing.JButton();
         btnAltaHuesp = new javax.swing.JButton();
         btnEditHuesp = new javax.swing.JButton();
         btnNvaReserv = new javax.swing.JButton();
+        jporHabitación = new javax.swing.JButton();
+        jporhuesped = new javax.swing.JButton();
+        jporfecha = new javax.swing.JButton();
+        jportipohabitación = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuReserva = new javax.swing.JMenu();
         imNvaReserva = new javax.swing.JMenuItem();
@@ -201,25 +207,13 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jButton9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono agregar.png"))); // NOI18N
-        jButton9.setText("    ALTAS  ");
+        jButton9.setText("RESERVAS");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 760, 210, 50));
-
-        btnConsultaUno.setBackground(new java.awt.Color(0, 0, 0));
-        btnConsultaUno.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnConsultaUno.setForeground(new java.awt.Color(255, 255, 255));
-        btnConsultaUno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono editar.png"))); // NOI18N
-        btnConsultaUno.setText("BAJA/EDITAR");
-        btnConsultaUno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultaUnoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnConsultaUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 810, 210, 50));
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 810, 210, 50));
 
         btnAltaHuesp.setBackground(new java.awt.Color(0, 0, 0));
         btnAltaHuesp.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -256,6 +250,38 @@ public class vistaPrncipal extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnNvaReserv, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 760, 200, 50));
+
+        jporHabitación.setText("POR HABITACIÓN");
+        jporHabitación.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jporHabitaciónActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jporHabitación, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 690, 210, -1));
+
+        jporhuesped.setText("POR HUESPED");
+        jporhuesped.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jporhuespedActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jporhuesped, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 720, 210, -1));
+
+        jporfecha.setText("POR FECHA");
+        jporfecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jporfechaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jporfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 750, 210, -1));
+
+        jportipohabitación.setText("POR TIPO DE HABITACIÓN");
+        jportipohabitación.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jportipohabitaciónActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jportipohabitación, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 780, 210, -1));
 
         jescritorio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -519,42 +545,39 @@ public class vistaPrncipal extends javax.swing.JFrame {
         modifReserva.setVisible(true);
         jescritorio.add(modifReserva);
         jescritorio.moveToFront(modifReserva);
-        
-        
+
+
     }//GEN-LAST:event_btnEditReservaActionPerformed
 
     private void btnNvaHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNvaHabitActionPerformed
         btnNvaHabit.setVisible(false);
-        
-       
+
+
     }//GEN-LAST:event_btnNvaHabitActionPerformed
 
     private void btnEditHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditHabitActionPerformed
         btnEditHabit.setVisible(false);
-        
+
     }//GEN-LAST:event_btnEditHabitActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         jButton9.setVisible(false);
-        formReservasPorHabitacion fBajayModiftTipHab = new formReservasPorHabitacion();
-        fBajayModiftTipHab.setVisible(true);
-        jescritorio.add(fBajayModiftTipHab);
-        jescritorio.moveToFront(fBajayModiftTipHab);
+        jporHabitación.setVisible(true);
+        jporfecha.setVisible(true);
+        jporhuesped.setVisible(true);
+        jportipohabitación.setVisible(true);
+                
     }//GEN-LAST:event_jButton9ActionPerformed
 // estos botones hay  que ordenarlo pertenecen arriba alos action de reserva habitacion consulta  y huesped
     private void btnBigConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBigConsultActionPerformed
         jButton9.setVisible(true);
-        btnConsultaUno.setVisible(true);
+
     }//GEN-LAST:event_btnBigConsultActionPerformed
 
     private void btnBigHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBigHabitActionPerformed
         btnNvaHabit.setVisible(true);
         btnEditHabit.setVisible(true);
     }//GEN-LAST:event_btnBigHabitActionPerformed
-
-    private void btnConsultaUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaUnoActionPerformed
-        btnConsultaUno.setVisible(false);
-    }//GEN-LAST:event_btnConsultaUnoActionPerformed
 
     private void btnAltaHuespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaHuespActionPerformed
 
@@ -593,8 +616,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
         fResPorHab.setVisible(true);
         jescritorio.add(fResPorHab);
         jescritorio.moveToFront(fResPorHab);
-        
-        
+
+
     }//GEN-LAST:event_jMResPorHabActionPerformed
 
     private void jMResPorHuespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMResPorHuespActionPerformed
@@ -603,8 +626,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
         fResPorHuesp.setVisible(true);
         jescritorio.add(fResPorHuesp);
         jescritorio.moveToFront(fResPorHuesp);
-               
-        
+
+
     }//GEN-LAST:event_jMResPorHuespActionPerformed
 
     private void jMHabitPorTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHabitPorTipoActionPerformed
@@ -613,8 +636,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
         fHabPorTipo.setVisible(true);
         jescritorio.add(fHabPorTipo);
         jescritorio.moveToFront(fHabPorTipo);
-        
-        
+
+
     }//GEN-LAST:event_jMHabitPorTipoActionPerformed
 
 
@@ -641,31 +664,58 @@ public class vistaPrncipal extends javax.swing.JFrame {
         fResEntreFech.setVisible(true);
         jescritorio.add(fResEntreFech);
         jescritorio.moveToFront(fResEntreFech);
-        
-        
+
+
     }//GEN-LAST:event_jMResEntreFechasActionPerformed
 
     private void imEditReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imEditReservaActionPerformed
-      formBajasyModificacionReserva fResEntreFech = new formBajasyModificacionReserva();
+        formBajasyModificacionReserva fResEntreFech = new formBajasyModificacionReserva();
         fResEntreFech.setVisible(true);
         jescritorio.add(fResEntreFech);
         jescritorio.moveToFront(fResEntreFech);
     }//GEN-LAST:event_imEditReservaActionPerformed
 
     private void miBajaEditHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miBajaEditHabActionPerformed
-         formBajasModificacionHabitacion fResEntreFech = new formBajasModificacionHabitacion();
+        formBajasModificacionHabitacion fResEntreFech = new formBajasModificacionHabitacion();
         fResEntreFech.setVisible(true);
         jescritorio.add(fResEntreFech);
         jescritorio.moveToFront(fResEntreFech);
     }//GEN-LAST:event_miBajaEditHabActionPerformed
 
     private void miAltaHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAltaHabitActionPerformed
-       formAltasHabitacion fResEntreFech = new formAltasHabitacion();
+        formAltasHabitacion fResEntreFech = new formAltasHabitacion();
         fResEntreFech.setVisible(true);
         jescritorio.add(fResEntreFech);
         jescritorio.moveToFront(fResEntreFech);
     }//GEN-LAST:event_miAltaHabitActionPerformed
 
+    private void jporHabitaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jporHabitaciónActionPerformed
+        formReservasPorHabitacion fResEntreFech = new formReservasPorHabitacion();
+        fResEntreFech.setVisible(true);
+        jescritorio.add(fResEntreFech);
+        jescritorio.moveToFront(fResEntreFech);
+    }//GEN-LAST:event_jporHabitaciónActionPerformed
+
+    private void jporhuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jporhuespedActionPerformed
+        formReservasPorHuesped fResEntreFech = new formReservasPorHuesped();
+        fResEntreFech.setVisible(true);
+        jescritorio.add(fResEntreFech);
+        jescritorio.moveToFront(fResEntreFech);
+    }//GEN-LAST:event_jporhuespedActionPerformed
+
+    private void jporfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jporfechaActionPerformed
+      formReservasEntreFechas fResEntreFech = new formReservasEntreFechas();
+        fResEntreFech.setVisible(true);
+        jescritorio.add(fResEntreFech);
+        jescritorio.moveToFront(fResEntreFech);
+    }//GEN-LAST:event_jporfechaActionPerformed
+
+    private void jportipohabitaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jportipohabitaciónActionPerformed
+        formHabitacionesPorTipo fResEntreFech = new formHabitacionesPorTipo();
+        fResEntreFech.setVisible(true);
+        jescritorio.add(fResEntreFech);
+        jescritorio.moveToFront(fResEntreFech);
+    }//GEN-LAST:event_jportipohabitaciónActionPerformed
 
     /**
      * @param args the command line arguments
@@ -708,7 +758,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JButton btnBigHabit;
     private javax.swing.JButton btnBigHuesp;
     private javax.swing.JButton btnBigReserva;
-    private javax.swing.JButton btnConsultaUno;
     private javax.swing.JButton btnEditHabit;
     private javax.swing.JButton btnEditHuesp;
     private javax.swing.JButton btnEditReserva;
@@ -728,6 +777,10 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JDesktopPane jescritorio;
+    private javax.swing.JButton jporHabitación;
+    private javax.swing.JButton jporfecha;
+    private javax.swing.JButton jporhuesped;
+    private javax.swing.JButton jportipohabitación;
     private javax.swing.JMenu menuConsultas;
     private javax.swing.JMenu menuHabitac;
     private javax.swing.JMenu menuHuesp;
