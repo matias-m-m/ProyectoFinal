@@ -22,7 +22,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
      */
     public vistaPrncipal() {
         initComponents();
-        btnNvaReserv.setVisible(false);
+        jaltasresev.setVisible(false);
         btnEditReserva.setVisible(false);
         btnNvaHabit.setVisible(false);
         btnEditHabit.setVisible(false);
@@ -56,11 +56,11 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         btnAltaHuesp = new javax.swing.JButton();
         btnEditHuesp = new javax.swing.JButton();
-        btnNvaReserv = new javax.swing.JButton();
         jporHabitación = new javax.swing.JButton();
         jporhuesped = new javax.swing.JButton();
         jporfecha = new javax.swing.JButton();
         jportipohabitación = new javax.swing.JButton();
+        jaltasresev = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuReserva = new javax.swing.JMenu();
         imNvaReserva = new javax.swing.JMenuItem();
@@ -239,18 +239,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnEditHuesp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 810, 200, 50));
 
-        btnNvaReserv.setBackground(new java.awt.Color(0, 0, 0));
-        btnNvaReserv.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnNvaReserv.setForeground(new java.awt.Color(255, 255, 255));
-        btnNvaReserv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"))); // NOI18N
-        btnNvaReserv.setText("    ALTAS  ");
-        btnNvaReserv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNvaReservActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnNvaReserv, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 760, 200, 50));
-
         jporHabitación.setBackground(new java.awt.Color(0, 0, 0));
         jporHabitación.setForeground(new java.awt.Color(255, 255, 255));
         jporHabitación.setText("POR HABITACIÓN");
@@ -290,6 +278,23 @@ public class vistaPrncipal extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jportipohabitación, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 780, 210, -1));
+
+        jaltasresev.setBackground(new java.awt.Color(0, 0, 0));
+        jaltasresev.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jaltasresev.setForeground(new java.awt.Color(255, 255, 255));
+        jaltasresev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"))); // NOI18N
+        jaltasresev.setText("ALTAS");
+        jaltasresev.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jaltasresevMouseClicked(evt);
+            }
+        });
+        jaltasresev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jaltasresevActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jaltasresev, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 762, 200, 50));
 
         jescritorio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -442,7 +447,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private void btnBigReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBigReservaActionPerformed
         // jescritorio.removeAll();
         // jescritorio.repaint();
-        btnNvaReserv.setVisible(true);
+        jaltasresev.setVisible(true);
         btnEditReserva.setVisible(true);
 
         // formReserva reserva = new formReserva();
@@ -537,15 +542,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jescritorio.moveToFront(fBajayModiftTipHab);
 
     }//GEN-LAST:event_miBajaEditTipoHabActionPerformed
-// estos son los botones para que se muestren al accionar en ellos  son 8 botones 
-    private void btnNvaReservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNvaReservActionPerformed
-        btnNvaReserv.setVisible(false);
-        formAltasReserva nvaReserva = new formAltasReserva();
-        nvaReserva.setVisible(true);
-        jescritorio.add(nvaReserva);
-        jescritorio.moveToFront(nvaReserva);
-
-    }//GEN-LAST:event_btnNvaReservActionPerformed
 
     private void btnEditReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditReservaActionPerformed
         btnEditReserva.setVisible(false);
@@ -618,7 +614,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
     private void imNvaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imNvaReservaActionPerformed
         // TODO add your handling code here:
-        formAltasReserva nvaReserva = new formAltasReserva();
+        altasreserva nvaReserva = new altasreserva();
         nvaReserva.setVisible(true);
         jescritorio.add(nvaReserva);
         jescritorio.moveToFront(nvaReserva);
@@ -674,48 +670,48 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
     private void jMResEntreFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMResEntreFechasActionPerformed
         // TODO add your handling code here:
-        formReservasEntreFechas fResEntreFech = new formReservasEntreFechas();
-        fResEntreFech.setVisible(true);
-        jescritorio.add(fResEntreFech);
-        jescritorio.moveToFront(fResEntreFech);
+        formReservasEntreFechas fechas = new formReservasEntreFechas();
+        fechas.setVisible(true);
+        jescritorio.add(fechas);
+        jescritorio.moveToFront(fechas);
 
 
     }//GEN-LAST:event_jMResEntreFechasActionPerformed
 
     private void imEditReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imEditReservaActionPerformed
-        formBajasyModificacionReserva fResEntreFech = new formBajasyModificacionReserva();
-        fResEntreFech.setVisible(true);
-        jescritorio.add(fResEntreFech);
-        jescritorio.moveToFront(fResEntreFech);
+        formBajasyModificacionReserva fBajasyModificacionReserva = new formBajasyModificacionReserva();
+        fBajasyModificacionReserva.setVisible(true);
+        jescritorio.add(fBajasyModificacionReserva);
+        jescritorio.moveToFront(fBajasyModificacionReserva);
     }//GEN-LAST:event_imEditReservaActionPerformed
 
     private void miBajaEditHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miBajaEditHabActionPerformed
-        formBajasModificacionHabitacion fResEntreFech = new formBajasModificacionHabitacion();
-        fResEntreFech.setVisible(true);
-        jescritorio.add(fResEntreFech);
-        jescritorio.moveToFront(fResEntreFech);
+        formBajasModificacionHabitacion forModificacionHabitacion = new formBajasModificacionHabitacion();
+        forModificacionHabitacion.setVisible(true);
+        jescritorio.add(forModificacionHabitacion);
+        jescritorio.moveToFront(forModificacionHabitacion);
     }//GEN-LAST:event_miBajaEditHabActionPerformed
 
     private void miAltaHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAltaHabitActionPerformed
-        formAltasHabitacion fResEntreFech = new formAltasHabitacion();
-        fResEntreFech.setVisible(true);
-        jescritorio.add(fResEntreFech);
-        jescritorio.moveToFront(fResEntreFech);
+        formAltasHabitacion fAltasHabitacion = new formAltasHabitacion();
+        fAltasHabitacion.setVisible(true);
+        jescritorio.add(fAltasHabitacion);
+        jescritorio.moveToFront(fAltasHabitacion);
     }//GEN-LAST:event_miAltaHabitActionPerformed
 
     private void jporHabitaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jporHabitaciónActionPerformed
-        formReservasPorHabitacion fResEntreFech = new formReservasPorHabitacion();
-        fResEntreFech.setVisible(true);
-        jescritorio.add(fResEntreFech);
-        jescritorio.moveToFront(fResEntreFech);
+        formReservasPorHabitacion fReservasPorHabitacion = new formReservasPorHabitacion();
+        fReservasPorHabitacion.setVisible(true);
+        jescritorio.add(fReservasPorHabitacion);
+        jescritorio.moveToFront(fReservasPorHabitacion);
         jporHabitación.setVisible(false);
     }//GEN-LAST:event_jporHabitaciónActionPerformed
 
     private void jporhuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jporhuespedActionPerformed
-        formReservasPorHuesped fResEntreFech = new formReservasPorHuesped();
-        fResEntreFech.setVisible(true);
-        jescritorio.add(fResEntreFech);
-        jescritorio.moveToFront(fResEntreFech);
+        formReservasPorHuesped fHuesped = new formReservasPorHuesped();
+        fHuesped.setVisible(true);
+        jescritorio.add(fHuesped);
+        jescritorio.moveToFront(fHuesped);
         jporhuesped.setVisible(false);
     }//GEN-LAST:event_jporhuespedActionPerformed
 
@@ -728,12 +724,25 @@ public class vistaPrncipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jporfechaActionPerformed
 
     private void jportipohabitaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jportipohabitaciónActionPerformed
-        formHabitacionesPorTipo fResEntreFech = new formHabitacionesPorTipo();
-        fResEntreFech.setVisible(true);
-        jescritorio.add(fResEntreFech);
-        jescritorio.moveToFront(fResEntreFech);
+        formHabitacionesPorTipo fHabitacionesPorTipo = new formHabitacionesPorTipo();
+        fHabitacionesPorTipo.setVisible(true);
+        jescritorio.add(fHabitacionesPorTipo);
+        jescritorio.moveToFront(fHabitacionesPorTipo);
         jportipohabitación.setVisible(false);
     }//GEN-LAST:event_jportipohabitaciónActionPerformed
+
+    private void jaltasresevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jaltasresevMouseClicked
+        jaltasresev.setVisible(false);
+        altasreserva fAltasReserva = new altasreserva();
+        fAltasReserva.setVisible(true);
+        jescritorio.add(fAltasReserva);
+        jescritorio.moveToFront(fAltasReserva);
+        
+    }//GEN-LAST:event_jaltasresevMouseClicked
+
+    private void jaltasresevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaltasresevActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jaltasresevActionPerformed
 
     /**
      * @param args the command line arguments
@@ -780,7 +789,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEditHuesp;
     private javax.swing.JButton btnEditReserva;
     private javax.swing.JButton btnNvaHabit;
-    private javax.swing.JButton btnNvaReserv;
     private javax.swing.JMenuItem imAltaTipoHab;
     private javax.swing.JMenuItem imEditReserva;
     private javax.swing.JMenuItem imNvaReserva;
@@ -794,6 +802,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JButton jaltasresev;
     private javax.swing.JDesktopPane jescritorio;
     private javax.swing.JButton jporHabitación;
     private javax.swing.JButton jporfecha;
