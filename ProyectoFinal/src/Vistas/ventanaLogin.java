@@ -69,7 +69,7 @@ private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource(
         jLabel4.setText("NO TENES CUENTA");
         jfondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 910, 180, 20));
 
-        jButton1.setText("Registrarce");
+        jButton1.setText("Registrarse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
