@@ -559,13 +559,19 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
     private void btnNvaHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNvaHabitActionPerformed
         btnNvaHabit.setVisible(false);
-
+        formAltasHabitacion fAltas = new formAltasHabitacion();
+        fAltas.setVisible(true);
+        jescritorio.add(fAltas);
+        jescritorio.moveToFront(fAltas);
 
     }//GEN-LAST:event_btnNvaHabitActionPerformed
 
     private void btnEditHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditHabitActionPerformed
         btnEditHabit.setVisible(false);
-
+        formBajasModificacionHabitacion fAltas = new formBajasModificacionHabitacion();
+        fAltas.setVisible(true);
+        jescritorio.add(fAltas);
+        jescritorio.moveToFront(fAltas);
     }//GEN-LAST:event_btnEditHabitActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
