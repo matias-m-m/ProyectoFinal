@@ -251,6 +251,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnNvaReserv, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 760, 200, 50));
 
+        jporHabitación.setBackground(new java.awt.Color(0, 0, 0));
+        jporHabitación.setForeground(new java.awt.Color(255, 255, 255));
         jporHabitación.setText("POR HABITACIÓN");
         jporHabitación.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,6 +261,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
         });
         jPanel1.add(jporHabitación, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 690, 210, -1));
 
+        jporhuesped.setBackground(new java.awt.Color(0, 0, 0));
+        jporhuesped.setForeground(new java.awt.Color(255, 255, 255));
         jporhuesped.setText("POR HUESPED");
         jporhuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +271,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
         });
         jPanel1.add(jporhuesped, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 720, 210, -1));
 
+        jporfecha.setBackground(new java.awt.Color(0, 0, 0));
+        jporfecha.setForeground(new java.awt.Color(255, 255, 255));
         jporfecha.setText("POR FECHA");
         jporfecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,6 +281,8 @@ public class vistaPrncipal extends javax.swing.JFrame {
         });
         jPanel1.add(jporfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 750, 210, -1));
 
+        jportipohabitación.setBackground(new java.awt.Color(0, 0, 0));
+        jportipohabitación.setForeground(new java.awt.Color(255, 255, 255));
         jportipohabitación.setText("POR TIPO DE HABITACIÓN");
         jportipohabitación.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -694,6 +702,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         fResEntreFech.setVisible(true);
         jescritorio.add(fResEntreFech);
         jescritorio.moveToFront(fResEntreFech);
+        jporHabitación.setVisible(false);
     }//GEN-LAST:event_jporHabitaciónActionPerformed
 
     private void jporhuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jporhuespedActionPerformed
@@ -701,6 +710,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         fResEntreFech.setVisible(true);
         jescritorio.add(fResEntreFech);
         jescritorio.moveToFront(fResEntreFech);
+        jporhuesped.setVisible(false);
     }//GEN-LAST:event_jporhuespedActionPerformed
 
     private void jporfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jporfechaActionPerformed
@@ -708,6 +718,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         fResEntreFech.setVisible(true);
         jescritorio.add(fResEntreFech);
         jescritorio.moveToFront(fResEntreFech);
+        jporfecha.setVisible(false);
     }//GEN-LAST:event_jporfechaActionPerformed
 
     private void jportipohabitaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jportipohabitaciónActionPerformed
@@ -715,6 +726,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         fResEntreFech.setVisible(true);
         jescritorio.add(fResEntreFech);
         jescritorio.moveToFront(fResEntreFech);
+        jportipohabitación.setVisible(false);
     }//GEN-LAST:event_jportipohabitaciónActionPerformed
 
     /**
