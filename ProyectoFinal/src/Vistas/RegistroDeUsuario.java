@@ -6,6 +6,7 @@
 package Vistas;
 
 import AccesoADatos.UsuarioData;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +14,10 @@ import javax.swing.JOptionPane;
  * @author matias
  */
 public class RegistroDeUsuario extends javax.swing.JFrame {
-
+    
+  boolean passwordVisible = false; // Variable para rastrear el estado de la contraseña
+private final ImageIcon showPasswordIcon = new ImageIcon(getClass().getResource("/imagenes/ojocerrado.png"));
+private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource("/imagenes/iconoojoabierto.png"));
     
     public RegistroDeUsuario() {
         initComponents();
@@ -34,7 +38,8 @@ public class RegistroDeUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jButton2 = new javax.swing.JButton();
+        jPasswordField2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +62,17 @@ public class RegistroDeUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 580, 250, 40));
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 530, 270, 30));
+
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoojoabierto.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 530, 50, 30));
+        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 530, 270, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,7 +90,7 @@ public class RegistroDeUsuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombreUsuario = jTextField1.getText(); // Obtener el nombre de usuario del campo de texto
-        char[] contrasenaChars = jPasswordField1.getPassword(); // Obtener la contraseña del campo de contraseña
+        char[] contrasenaChars = jPasswordField2.getPassword(); // Obtener la contraseña del campo de contraseña
         String contrasena = new String(contrasenaChars);
 
         UsuarioData usuarioData = new UsuarioData();
@@ -88,6 +103,18 @@ public class RegistroDeUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(RegistroDeUsuario.this, "Error al registrar el usuario.");
     }//GEN-LAST:event_jButton1ActionPerformed
     }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         if (passwordVisible) {
+        jPasswordField2.setEchoChar('*'); // Ocultar la contraseña
+        jButton2.setIcon(showPasswordIcon); // Cambiar al ícono "Mostrar contraseña"
+        passwordVisible = false;
+    } else {
+        jPasswordField2.setEchoChar((char) 0); // Mostrar la contraseña
+        jButton2.setIcon(hidePasswordIcon); // Cambiar al ícono "Ocultar contraseña"
+        passwordVisible = true;
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -125,10 +152,11 @@ public class RegistroDeUsuario extends javax.swing.JFrame {
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

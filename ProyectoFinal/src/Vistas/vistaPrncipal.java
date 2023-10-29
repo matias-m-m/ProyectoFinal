@@ -165,7 +165,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnEditReserva.setBackground(new java.awt.Color(0, 0, 0));
         btnEditReserva.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnEditReserva.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono editar.png"))); // NOI18N
+        btnEditReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoeditar.png"))); // NOI18N
         btnEditReserva.setText("BAJA/EDITAR");
         btnEditReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +177,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnNvaHabit.setBackground(new java.awt.Color(0, 0, 0));
         btnNvaHabit.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnNvaHabit.setForeground(new java.awt.Color(255, 255, 255));
-        btnNvaHabit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono agregar.png"))); // NOI18N
+        btnNvaHabit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"))); // NOI18N
         btnNvaHabit.setText("    ALTAS  ");
         btnNvaHabit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +189,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnEditHabit.setBackground(new java.awt.Color(0, 0, 0));
         btnEditHabit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnEditHabit.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditHabit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono editar.png"))); // NOI18N
+        btnEditHabit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoeditar.png"))); // NOI18N
         btnEditHabit.setText("BAJA/EDITAR");
         btnEditHabit.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
@@ -206,7 +206,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jButton9.setBackground(new java.awt.Color(0, 0, 0));
         jButton9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono agregar.png"))); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"))); // NOI18N
         jButton9.setText("RESERVAS");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +218,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnAltaHuesp.setBackground(new java.awt.Color(0, 0, 0));
         btnAltaHuesp.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnAltaHuesp.setForeground(new java.awt.Color(255, 255, 255));
-        btnAltaHuesp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono agregar.png"))); // NOI18N
+        btnAltaHuesp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"))); // NOI18N
         btnAltaHuesp.setText("ALTAS");
         btnAltaHuesp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,7 +230,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnEditHuesp.setBackground(new java.awt.Color(0, 0, 0));
         btnEditHuesp.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnEditHuesp.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditHuesp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono editar.png"))); // NOI18N
+        btnEditHuesp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoeditar.png"))); // NOI18N
         btnEditHuesp.setText("BAJA/EDITAR");
         btnEditHuesp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +242,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnNvaReserv.setBackground(new java.awt.Color(0, 0, 0));
         btnNvaReserv.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnNvaReserv.setForeground(new java.awt.Color(255, 255, 255));
-        btnNvaReserv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono agregar.png"))); // NOI18N
+        btnNvaReserv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"))); // NOI18N
         btnNvaReserv.setText("    ALTAS  ");
         btnNvaReserv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

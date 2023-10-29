@@ -19,8 +19,8 @@ import javax.swing.JOptionPane;
 public class ventanaLogin extends javax.swing.JFrame {
     UsuarioData udata =new UsuarioData();
     boolean passwordVisible = false; // Variable para rastrear el estado de la contraseña
-private final ImageIcon showPasswordIcon = new ImageIcon(getClass().getResource("/imagenes/ojo cerrado.png"));
-private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource("/imagenes/icono ojo abierto.png"));
+private final ImageIcon showPasswordIcon = new ImageIcon(getClass().getResource("/imagenes/ojocerrado.png"));
+private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource("/imagenes/iconoojoabierto.png"));
 
     
     public ventanaLogin() {
@@ -79,7 +79,7 @@ private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource(
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono ojo abierto.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoojoabierto.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
