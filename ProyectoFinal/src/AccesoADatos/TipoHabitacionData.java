@@ -145,20 +145,24 @@ public class TipoHabitacionData {
         
         TipoHabitacion tipohab = null;
         
-        String sql = "select * from tipohabitacion where estado = 1 and idTipoHabit = ?";
+        String sql = "select idTipoHabit, nombreTipo, letraTipo, maxHuespedes, importepornoche from tipohabitacion where estado = 1 and idTipoHabit = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-            
+            JOptionPane.showMessageDialog(null,"prepare la consulta");
             ResultSet rs = ps.executeQuery();
-            
+            JOptionPane.showMessageDialog(null,"ejecute la consulta");
         //    while(rs.next()){
                 tipohab = new TipoHabitacion();
-                tipohab.setIdTipoHabit(rs.getInt("idTipoHabit"));
+                
+                JOptionPane.showMessageDialog(null,"cree la variable tipohab");
+                //tipohab.setIdTipoHabit(id);
+                //tipohab.setIdTipoHabit(rs.getInt("idTipoHabit"));
                 tipohab.setNombreTipo(rs.getString("nombreTipo"));
                 tipohab.setLetraTipo(rs.getString("letraTipo").charAt(0));
                 tipohab.setMaxHuespedes(rs.getInt("maxHuespedes"));
                 tipohab.setImportePorNoche(rs.getDouble("importepornoche"));
+                JOptionPane.showMessageDialog(null,"Cargué datos en la variable");
                 tipohab.setEstado(true);
             //    lista.add(tipohab);
           //  }    

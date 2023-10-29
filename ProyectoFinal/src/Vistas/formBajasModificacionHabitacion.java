@@ -9,6 +9,9 @@ import AccesoADatos.HabitacData;
 import AccesoADatos.TipoHabitacionData;
 import Entidades.Habitacion;
 import Entidades.TipoHabitacion;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +27,7 @@ public class formBajasModificacionHabitacion extends javax.swing.JInternalFrame 
     private ArrayList<Habitacion> habitacionesPorTipo;
     private HabitacData habdata = new HabitacData();
     private TipoHabitacionData tipohabdata = new TipoHabitacionData();
+    
 
     public formBajasModificacionHabitacion() {
         initComponents();
@@ -266,66 +270,7 @@ public class formBajasModificacionHabitacion extends javax.swing.JInternalFrame 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    /////////////////////////////////////////////////////////////////////////////////////////
-    
-    
-//     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-//        // dar de baja
-//        if ( jRBaja.isSelected() ){
-//            if (txtid.getText().isEmpty()){
-//                JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla para eliminar.");
-//            }
-//            else {
-//                tipohabdata.borrarTipoHabitacion(Integer.parseInt(txtid.getText()));
-//                habdata.bajarhabitacionesdeTipo(Integer.parseInt(txtid.getText()));//borrar las habitaciones de ese tipo
-//                borrarTabla();
-//                rellenarTabla();
-//            }
-//                
-//        }
-//        
-//        // actualizar
-//        if ( jRModificacion.isSelected() ){
-//            if (txtid.getText().isEmpty()){
-//                JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla para actualizar.");
-//            }
-//            else {
-//                if (txtnombre.getText().isEmpty() || txtletra.getText().isEmpty() || 
-//                    txtmax.getText().isEmpty() || txtimporte.getText().isEmpty() ) {
-//                        JOptionPane.showMessageDialog(null, "Faltan agregar datos...");
-//                }
-//                else {
-//                
-//                    TipoHabitacion nueva = new TipoHabitacion();
-//                    
-//                    nueva.setIdTipoHabit(Integer.parseInt(txtid.getText()));
-//                    nueva.setNombreTipo(txtnombre.getText());
-//                    nueva.setLetraTipo(txtletra.getText().charAt(0));
-//                    nueva.setMaxHuespedes(Integer.parseInt(txtmax.getText()));
-//                    nueva.setImportePorNoche(Double.parseDouble(txtimporte.getText()));
-//                   
-//                    if (jComboBox1.getSelectedItem().equals("Habilitada")) {
-//                        nueva.setEstado(Boolean.parseBoolean("true"));
-//                        
-//                        habdata.habilitarHabitacionesDeTipo(Integer.parseInt(txtid.getText()));
-//                    }
-//                    else {
-//                        nueva.setEstado(Boolean.parseBoolean("false"));    ;
-//                    }
-//                    
-//                    
-//                    tipohabdata.editarTipoHabitacion(nueva);
-//                    
-//                    borrarTabla();
-//                    rellenarTabla();
-//                }
-//                
-//            }
-//        }
-//    }                    
-//    
-    //////////////////////////////////////////////////////////////////////////////////////////
+
     
     
     
@@ -338,8 +283,6 @@ public class formBajasModificacionHabitacion extends javax.swing.JInternalFrame 
             else {
                 
                 habdata.bajarhabitacion( Integer.parseInt(jTHabitaciones.getValueAt(jTHabitaciones.getSelectedRow(), 0).toString()) );
-               // tipohabdata.borrarTipoHabitacion(Integer.parseInt(txtid.getText()));
-              // habdata.bajarhabitacionesdeTipo(Integer.parseInt(txtid.getText()));//borrar las habitaciones de ese tipo
                 borrarTablaTipos();
                 int id = Integer.parseInt(jTipoHabitacion.getSelectedItem().toString().substring(0, jTipoHabitacion.getSelectedItem().toString().indexOf(" ")));
                 rellenarTablaHabitacionesPorTipo(id);
@@ -350,6 +293,9 @@ public class formBajasModificacionHabitacion extends javax.swing.JInternalFrame 
         }
      
         if ( jRModificacion.isSelected() ){
+            
+          
+            
             if (txtNumeroHabitacion.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla para actualizar.");
             }
@@ -359,34 +305,51 @@ public class formBajasModificacionHabitacion extends javax.swing.JInternalFrame 
                 }
                 else {
                 
-                    Habitacion nueva = new Habitacion();
-                    
-                    
-                //    nueva.setTipoHabitacion(Integer.parseInt(jTHabitaciones.getValueAt(jTHabitaciones.getSelectedRow(), 0).toString()) );
-                    nueva.setNroHabitacion(Integer.parseInt(txtNumeroHabitacion.getText()));
-                    nueva.setPiso(Integer.parseInt(txtPisoHabitacion.getText()));
-                    
+                  
+                    String sql = "update habitacion set nroHabitacion = ?, idTipoHabitacion = ?, piso = ?, estado = ? where idHabitacion = ?";
                    
-//                    if (jComboBox1.getSelectedItem().equals("Habilitada")) {
-//                        nueva.setEstado(Boolean.parseBoolean("true"));
-//                        
-//                        habdata.habilitarHabitacionesDeTipo(Integer.parseInt(txtid.getText()));
-//                    }
-//                    else {
-//                        nueva.setEstado(Boolean.parseBoolean("false"));    ;
-//                    }
-//                    
-//                    
-//                    tipohabdata.editarTipoHabitacion(nueva);
-//                    
-//                    borrarTabla();
-//                    rellenarTabla();
+                    try {
+                        
+                       int idHab = Integer.parseInt(jTHabitaciones.getValueAt(jTHabitaciones.getSelectedRow(), 0).toString());
+                       int nroHab = Integer.parseInt(jTHabitaciones.getValueAt(jTHabitaciones.getSelectedRow(), 1).toString());
+                       int idTipoHab = Integer.parseInt(jComboTipoHabitacion.getSelectedItem().toString().substring(0, jComboTipoHabitacion.getSelectedItem().toString().indexOf(" ")));  
+                       
+                        PreparedStatement ps = tipohabdata.getCon().prepareStatement(sql); 
+                       // PreparedStatement ps = con.prepareStatement(sql);
+                        ps.setInt(1, Integer.parseInt(txtNumeroHabitacion.getText()) );
+                        ps.setInt(2, idTipoHab );
+                        ps.setInt(3, Integer.parseInt(txtPisoHabitacion.getText()));
+                        
+                        if ( jCEstadoHab.getSelectedItem().equals("Habilitada")) {
+                            ps.setInt(4, 1);    
+                        }
+                        if ( jCEstadoHab.getSelectedItem().equals("Inhabilitada")) {
+                            ps.setInt(4, 0);
+                        }
+                        
+                        ps.setInt(5, idHab);
+                        
+                        ps.executeUpdate();
+                        ps.close();
+                        JOptionPane.showMessageDialog(null, "Habitacion modificada con exito...");
+                        
+                         borrarTablaTipos();
+                        int id = Integer.parseInt(jTipoHabitacion.getSelectedItem().toString().substring(0, jTipoHabitacion.getSelectedItem().toString().indexOf(" ")));
+                        rellenarTablaHabitacionesPorTipo(id);
+                        jComboTipoHabitacion.setSelectedIndex(-1);
+                        txtNumeroHabitacion.setText("");
+                        txtPisoHabitacion.setText("");
+                        
+                    } 
+                    catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error al ejecutar la consulta..."+ex.getMessage());
+                    }
                 }
-                
             }
         }
-        
-        
+                       
+                        
+      
     }//GEN-LAST:event_jConfirmarActionPerformed
 
     private void jTipoHabitacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jTipoHabitacionItemStateChanged
