@@ -25,7 +25,7 @@ private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource(
     
     public ventanaLogin() {
         initComponents();
-        setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+        
     }
 
     /**
@@ -56,18 +56,18 @@ private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource(
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CONTRASEÑA");
-        jfondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 740, 260, -1));
+        jfondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 410, 260, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("USUARIO");
-        jfondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 650, 170, 40));
+        jfondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 320, 170, 40));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 189, 255));
         jLabel4.setText("NO TENES CUENTA");
-        jfondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 910, 180, 20));
+        jfondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 580, 180, 20));
 
         jButton1.setText("Registrarse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +75,7 @@ private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource(
                 jButton1ActionPerformed(evt);
             }
         });
-        jfondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 930, -1, -1));
+        jfondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 600, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
@@ -85,21 +85,21 @@ private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource(
                 jButton3ActionPerformed(evt);
             }
         });
-        jfondo.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 790, 60, 40));
+        jfondo.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 460, 60, 40));
 
         jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jPasswordField1KeyTyped(evt);
             }
         });
-        jfondo.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 790, 190, 40));
+        jfondo.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 460, 190, 40));
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField1KeyTyped(evt);
             }
         });
-        jfondo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 700, 190, 40));
+        jfondo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 370, 190, 40));
 
         jButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButton2.setText("Conectar");
@@ -108,7 +108,7 @@ private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource(
                 jButton2ActionPerformed(evt);
             }
         });
-        jfondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 860, 190, 50));
+        jfondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 530, 190, 50));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoventanausuario.jpg"))); // NOI18N
@@ -118,7 +118,7 @@ private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource(
                 jLabel1ComponentResized(evt);
             }
         });
-        jfondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
+        jfondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -120, 1920, 1080));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
