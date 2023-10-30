@@ -406,7 +406,7 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null, "Debe ingresar un número de DNI en el campo de texto");
     } else {
 
-        String SQLBusq = "SELECT r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n"
+        String SQLBusq = "SELECT p.idHuesp , r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n"
                 + "FROM reserva AS r JOIN habitacion as h ON (r.idHabitacion = h.idHabitacion) \n"
                 + "JOIN huesped AS p ON r.idHuesped = p.idHuesp \n"
                 + "WHERE dniHuesp = ? and r.estado = 1 order by FechaIngreso;";
@@ -426,7 +426,7 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
                     //rs.getInt("Cant"), // Corrección: Agregar una coma aquí
                     rs.getDouble("montoTotal")
                 });
-                //   idHuesped = rs.getInt("idHuesped");
+                   idHuesped = rs.getInt("idHuesp");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -594,18 +594,18 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
                 borrarTabla();
 
                 //Alta
-//                Reserva res = new Reserva();
-//                res.setEstado(true);
-//                LocalDate vFech1, vFech2;
-//                vFech1 = fechaIngresoChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//                vFech2 = fechaSalidaChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//                res.setFechaIngreso(vFech1);
-//                res.setFechaSalida(vFech2);
-//                res.setMontoTotal(Double.parseDouble(valorTotalPesos.getText()));
-//                res.setIdHuesped(idHuesped);
-//                res.setIdHabitacion((int) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 0));
-//                reservadata.insertarReserva(res);
-//                
+                Reserva res = new Reserva();
+                res.setEstado(true);
+                LocalDate vFech1, vFech2;
+                vFech1 = fechaIngresoChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                vFech2 = fechaSalidaChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                res.setFechaIngreso(vFech1);
+                res.setFechaSalida(vFech2);
+                res.setMontoTotal(Double.parseDouble(valorTotalPesos.getText()));
+                res.setIdHuesped(idHuesped);
+                res.setIdHabitacion((int) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 0));
+                rData.insertarReserva(res);
+                
             }
         }
 
