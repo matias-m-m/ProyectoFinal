@@ -399,33 +399,40 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
     private void jBBuscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarHuespedActionPerformed
         // TODO add your handling code here:
 
-        borrarTabla();
 
-        if (txtDNI.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar un numero de DNI en el campo de texto");
-        } else {
+    borrarTabla();
 
-            String SQLBusq = "SELECT r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n"
-                    + "FROM reserva AS r JOIN habitacion as h ON (r.idHabitacion = h.idHabitacion) \n"
-                    + "JOIN huesped AS p ON r.idHuesped = p.idHuesp \n"
-                    + "WHERE dniHuesp = ? and r.estado = 1 order by FechaIngreso;";
+    if (txtDNI.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Debe ingresar un número de DNI en el campo de texto");
+    } else {
 
-            PreparedStatement ps;
-            try {
-                ps = rData.getCon().prepareStatement(SQLBusq);
-                ps.setString(1, txtDNI.getText());
-                ResultSet rs = ps.executeQuery();
+        String SQLBusq = "SELECT r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n"
+                + "FROM reserva AS r JOIN habitacion as h ON (r.idHabitacion = h.idHabitacion) \n"
+                + "JOIN huesped AS p ON r.idHuesped = p.idHuesp \n"
+                + "WHERE dniHuesp = ? and r.estado = 1 order by FechaIngreso;";
 
-                while (rs.next()) {
-                    modeloListaReservasH.addRow(new Object[]{rs.getInt("idReserva"), rs.getInt("nroHabitacion"), rs.getDate("FechaIngreso"), rs.getDate("FechaSalida"), rs.getInt("Cant")
-                    rs.getDouble("montoTotal") });
+        PreparedStatement ps;
+        try {
+            ps = rData.getCon().prepareStatement(SQLBusq);
+            ps.setString(1, txtDNI.getText());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                modeloListaReservasH.addRow(new Object[]{
+                    rs.getInt("idReserva"),
+                    rs.getInt("nroHabitacion"),
+                    rs.getDate("FechaIngreso"),
+                    rs.getDate("FechaSalida"),
+                    rs.getInt("Cant"), // Corrección: Agregar una coma aquí
+                    rs.getDouble("montoTotal")
+                });
                 //   idHuesped = rs.getInt("idHuesped");
             }
             ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla" + ex.getMessage());
         }
-        catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error al cargar la tabla" + ex.getMessage());
-        }
+    }
 
 
     }//GEN-LAST:event_jBBuscarHuespedActionPerformed
