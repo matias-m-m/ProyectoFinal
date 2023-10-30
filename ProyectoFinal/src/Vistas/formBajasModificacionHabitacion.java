@@ -282,6 +282,7 @@ public class formBajasModificacionHabitacion extends javax.swing.JInternalFrame 
             }
             else {
                 
+                
                 habdata.bajarhabitacion( Integer.parseInt(jTHabitaciones.getValueAt(jTHabitaciones.getSelectedRow(), 0).toString()) );
                 borrarTablaTipos();
                 int id = Integer.parseInt(jTipoHabitacion.getSelectedItem().toString().substring(0, jTipoHabitacion.getSelectedItem().toString().indexOf(" ")));

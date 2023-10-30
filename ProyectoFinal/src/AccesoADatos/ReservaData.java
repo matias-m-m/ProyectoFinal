@@ -54,7 +54,7 @@ public class ReservaData {
     
      //metodo para dar de baja una reserva a traves del id
     public void borrarReserva(int idRes) {
-        String sql = "update reserva set estadop=0 where idReserva=?";
+        String sql = "update reserva set estado=0 where idReserva=?";
         try {
             //preparo la consulta
             PreparedStatement ps = con.prepareStatement(sql);

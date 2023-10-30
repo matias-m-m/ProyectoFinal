@@ -8,6 +8,7 @@ package Vistas;
 import AccesoADatos.HuespedData;
 import AccesoADatos.ReservaData;
 import Entidades.Huesped;
+import Entidades.Reserva;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,6 +29,10 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
     private ReservaData rData = new ReservaData();
     private DefaultTableModel modeloListaReservasH = new DefaultTableModel();
 
+    
+    private int idHuesped;
+    
+    
     /**
      * Creates new form formBajasyModificacionReserva
      */
@@ -72,6 +77,7 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Baja/Modificacion de Reservas");
 
         jPanel1.setBackground(new java.awt.Color(27, 27, 27));
 
@@ -103,6 +109,11 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTResPorHuesped.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResPorHuespedMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTResPorHuesped);
 
         totalReserva.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -362,15 +373,18 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
     
     private void jBBuscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarHuespedActionPerformed
         // TODO add your handling code here:
+        
+        borrarTabla();
+        
         if ( txtDNI.getText().isEmpty() ) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un numero de DNI en el campo de texto");
         }
         else {
             
-            String SQLBusq = "SELECT r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n" +
+            String SQLBusq = "SELECT r.idHuesped, r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n" +
                     "FROM reserva AS r JOIN habitacion as h ON (r.idHabitacion = h.idHabitacion) \n" +
                     "JOIN huesped AS p ON r.idHuesped = p.idHuesp \n"+
-                    "WHERE dniHuesp = ? order by FechaIngreso;";
+                    "WHERE dniHuesp = ? and r.estado = 1 order by FechaIngreso;";
  
             PreparedStatement ps;
         try {
@@ -378,9 +392,10 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
             ps.setString(1, txtDNI.getText());
             ResultSet rs = ps.executeQuery();
             
+           
             while (rs.next()) {
                  modeloListaReservasH.addRow(new Object[] { rs.getInt("idReserva"), rs.getInt("idHabitacion"), rs.getInt("nroHabitacion"), rs.getDate("FechaIngreso"),rs.getDate("FechaSalida"), rs.getDouble("montoTotal") } );
-                
+                 idHuesped = rs.getInt("idHuesped");
             }
             ps.close();
         }
@@ -420,12 +435,6 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        
-        
-        
         
         // Obtener la fecha actual o la fecha deseada (por ejemplo, la fecha mínima)
         java.util.Calendar currentDate = java.util.GregorianCalendar.getInstance();
@@ -509,6 +518,82 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
         
+        //Baja de Reservas
+        //////////////////////
+        
+        if ( radioDarDeBaja.isSelected() ){
+            if (jTResPorHuesped.getSelectedRow() == -1){
+                JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla para eliminar la Reserva.");
+            }
+            else {
+                
+                int id = Integer.parseInt(jTResPorHuesped.getValueAt(jTResPorHuesped.getSelectedRow(), 0).toString());
+                rData.borrarReserva( id );
+                
+                borrarTabla();
+                
+                
+                String SQLBusq = "SELECT r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n" +
+                    "FROM reserva AS r JOIN habitacion as h ON (r.idHabitacion = h.idHabitacion) \n" +
+                    "JOIN huesped AS p ON r.idHuesped = p.idHuesp \n"+
+                    "WHERE dniHuesp = ? and r.estado = 1 order by FechaIngreso;";
+ 
+                PreparedStatement ps;
+                try {
+                    ps = rData.getCon().prepareStatement(SQLBusq);
+                    ps.setString(1, txtDNI.getText());
+                    ResultSet rs = ps.executeQuery();
+            
+                    while (rs.next()) {
+                        modeloListaReservasH.addRow(new Object[] { rs.getInt("idReserva"), rs.getInt("idHabitacion"), rs.getInt("nroHabitacion"), rs.getDate("FechaIngreso"),rs.getDate("FechaSalida"), rs.getDouble("montoTotal") } );
+                
+                    }
+                    ps.close();
+                }
+                catch (SQLException ex){
+                    JOptionPane.showMessageDialog(null,"Error al cargar la tabla" + ex.getMessage());
+                }
+            }
+        }
+     
+        // Actualizacion de reserva
+        ////////////////////////////
+        
+        if ( radioModificar.isSelected() ){
+            if (jTResPorHuesped.getSelectedRow() == -1){
+                JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla para Modificar la Reserva.");
+            }
+            else {
+                //Baja
+                int id = Integer.parseInt(jTResPorHuesped.getValueAt(jTResPorHuesped.getSelectedRow(), 0).toString());
+                rData.borrarReserva( id );
+                
+                borrarTabla();
+                
+                //Alta
+                 
+                
+                
+                
+//                Reserva res = new Reserva();
+//                res.setEstado(true);
+//                LocalDate vFech1, vFech2;
+//                vFech1 = fechaIngresoChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//                vFech2 = fechaSalidaChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//                res.setFechaIngreso(vFech1);
+//                res.setFechaSalida(vFech2);
+//                res.setMontoTotal(Double.parseDouble(valorTotalPesos.getText()));
+//                res.setIdHuesped(idHuesped);
+//                res.setIdHabitacion((int) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 0));
+//                reservadata.insertarReserva(res);
+//                
+                
+            }
+        }
+
+        
+        
+        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void radioModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioModificarActionPerformed
@@ -523,6 +608,12 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
             panelModificar.setEnabled(false);
         
     }//GEN-LAST:event_radioDarDeBajaActionPerformed
+
+    private void jTResPorHuespedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResPorHuespedMouseClicked
+        // TODO add your handling code here:
+        int fselec = jTResPorHuesped.getSelectedRow();
+        
+    }//GEN-LAST:event_jTResPorHuespedMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
