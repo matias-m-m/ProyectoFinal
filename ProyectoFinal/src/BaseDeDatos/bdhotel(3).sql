@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2023 a las 00:14:45
+-- Tiempo de generación: 30-10-2023 a las 00:23:08
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -65,7 +65,9 @@ INSERT INTO `habitacion` (`idHabitacion`, `nroHabitacion`, `idTipoHabitacion`, `
 (21, 42, 4, 2, 1),
 (22, 60, 6, 2, 1),
 (23, 61, 6, 2, 1),
-(24, 70, 7, 2, 1);
+(24, 70, 7, 2, 1),
+(25, 80, 8, 2, 0),
+(26, 81, 8, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -89,7 +91,9 @@ CREATE TABLE `huesped` (
 --
 
 INSERT INTO `huesped` (`idHuesp`, `ApellidoHuesp`, `NombreHuesp`, `dniHuesp`, `emailHuesp`, `telefonoHuesp`, `estadoHuesp`, `domicilioHuesp`) VALUES
-(1, 'Fortuna', 'Marcelo', '27444111', 'fortuna@hotmail.com', '34004758', 1, 'Av. Saenz 890');
+(1, 'Fortuna', 'Marcelo', '27444111', 'fortuna@hotmail.com', '34004758', 1, 'Av. Saenz 890'),
+(2, 'Botaro', 'Juan', '21456110', 'juanbotaro@gmail.com', '2494583427', 1, 'Alvear 574'),
+(3, 'Pedreira', 'Lucrecia', '29979753', 'lucrep83@hotmail.com', '2494003069', 1, 'Alvear 576');
 
 -- --------------------------------------------------------
 
@@ -106,6 +110,24 @@ CREATE TABLE `reserva` (
   `montoTotal` double NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`idReserva`, `idHabitacion`, `idHuesped`, `FechaIngreso`, `FechaSalida`, `montoTotal`, `estado`) VALUES
+(1, 2, 1, '2023-10-20', '2023-10-23', 3000, 1),
+(2, 2, 1, '2023-11-01', '2023-11-06', 6000, 1),
+(3, 2, 1, '2023-11-15', '2023-11-24', 5000, 1),
+(4, 2, 1, '2023-12-01', '2023-12-15', 4000, 1),
+(5, 4, 1, '2023-10-23', '2023-10-26', 3500, 1),
+(6, 4, 1, '2023-10-29', '2023-11-02', 4200, 1),
+(7, 4, 1, '2023-11-08', '2023-11-14', 3500, 1),
+(8, 7, 1, '2023-12-01', '2023-12-15', 4300, 1),
+(9, 7, 1, '2023-12-20', '2023-12-24', 4500, 1),
+(10, 7, 1, '2023-12-27', '2023-12-31', 5000, 1),
+(11, 1, 2, '2023-11-08', '2023-11-12', 14000, 1),
+(12, 1, 2, '2023-11-20', '2023-11-25', 17500, 1);
 
 -- --------------------------------------------------------
 
@@ -127,12 +149,13 @@ CREATE TABLE `tipohabitacion` (
 --
 
 INSERT INTO `tipohabitacion` (`idTipoHabit`, `nombreTipo`, `letraTipo`, `maxHuespedes`, `importepornoche`, `estado`) VALUES
-(1, 'Simple', 'S', 1, 3000, 1),
+(1, 'Simple', 'S', 1, 3500, 1),
 (2, 'Doble', 'D', 2, 7000, 1),
-(3, 'Triple', 'T', 3, 12000, 1),
+(3, 'Triple', 'T', 3, 11000, 1),
 (4, 'SuiteLujo', 'L', 2, 12000, 1),
-(6, 'SuiteXL', 'X', 7, 20000, 1),
-(7, 'Presidencial', 'P', 5, 50000, 1);
+(6, 'SuiteXL', 'X', 7, 19000, 1),
+(7, 'Presidencial', 'P', 5, 50000, 1),
+(8, 'Cuadruple', 'C', 4, 16000, 1);
 
 -- --------------------------------------------------------
 
@@ -204,25 +227,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `huesped`
 --
 ALTER TABLE `huesped`
-  MODIFY `idHuesp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idHuesp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tipohabitacion`
 --
 ALTER TABLE `tipohabitacion`
-  MODIFY `idTipoHabit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idTipoHabit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas

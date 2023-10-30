@@ -52,17 +52,17 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnBigHuesp = new javax.swing.JButton();
         btnBigHabit = new javax.swing.JButton();
         btnBigConsult = new javax.swing.JButton();
+        jporHabitación = new javax.swing.JButton();
+        jporhuesped = new javax.swing.JButton();
+        jporfecha = new javax.swing.JButton();
+        jportipohabitación = new javax.swing.JButton();
+        jaltasresev = new javax.swing.JButton();
         btnEditReserva = new javax.swing.JButton();
         btnNvaHabit = new javax.swing.JButton();
         btnEditHabit = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         btnAltaHuesp = new javax.swing.JButton();
         btnEditHuesp = new javax.swing.JButton();
-        jporHabitación = new javax.swing.JButton();
-        jporhuesped = new javax.swing.JButton();
-        jporfecha = new javax.swing.JButton();
-        jportipohabitación = new javax.swing.JButton();
-        jaltasresev = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuReserva = new javax.swing.JMenu();
         imNvaReserva = new javax.swing.JMenuItem();
@@ -164,83 +164,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnBigConsult, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 860, 210, 70));
 
-        btnEditReserva.setBackground(new java.awt.Color(0, 0, 0));
-        btnEditReserva.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnEditReserva.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoeditar.png"))); // NOI18N
-        btnEditReserva.setText("BAJA/EDITAR");
-        btnEditReserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditReservaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnEditReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 810, 200, 50));
-
-        btnNvaHabit.setBackground(new java.awt.Color(0, 0, 0));
-        btnNvaHabit.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnNvaHabit.setForeground(new java.awt.Color(255, 255, 255));
-        btnNvaHabit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"))); // NOI18N
-        btnNvaHabit.setText("    ALTAS  ");
-        btnNvaHabit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNvaHabitActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnNvaHabit, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 760, 200, 50));
-
-        btnEditHabit.setBackground(new java.awt.Color(0, 0, 0));
-        btnEditHabit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnEditHabit.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditHabit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoeditar.png"))); // NOI18N
-        btnEditHabit.setText("BAJA/EDITAR");
-        btnEditHabit.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                btnEditHabitComponentHidden(evt);
-            }
-        });
-        btnEditHabit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditHabitActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnEditHabit, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 810, 200, 50));
-
-        jButton9.setBackground(new java.awt.Color(0, 0, 0));
-        jButton9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"))); // NOI18N
-        jButton9.setText("RESERVAS");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 810, 210, 50));
-
-        btnAltaHuesp.setBackground(new java.awt.Color(0, 0, 0));
-        btnAltaHuesp.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnAltaHuesp.setForeground(new java.awt.Color(255, 255, 255));
-        btnAltaHuesp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"))); // NOI18N
-        btnAltaHuesp.setText("ALTAS");
-        btnAltaHuesp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAltaHuespActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAltaHuesp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 760, 200, 50));
-
-        btnEditHuesp.setBackground(new java.awt.Color(0, 0, 0));
-        btnEditHuesp.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnEditHuesp.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditHuesp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoeditar.png"))); // NOI18N
-        btnEditHuesp.setText("BAJA/EDITAR");
-        btnEditHuesp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditHuespActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnEditHuesp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 810, 200, 50));
-
         jporHabitación.setBackground(new java.awt.Color(0, 0, 0));
         jporHabitación.setForeground(new java.awt.Color(255, 255, 255));
         jporHabitación.setText("POR HABITACIÓN");
@@ -284,19 +207,79 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jaltasresev.setBackground(new java.awt.Color(0, 0, 0));
         jaltasresev.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jaltasresev.setForeground(new java.awt.Color(255, 255, 255));
-        jaltasresev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconoagregar.png"))); // NOI18N
-        jaltasresev.setText("ALTAS");
+        jaltasresev.setText("    ALTAS  ");
         jaltasresev.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jaltasresevMouseClicked(evt);
             }
         });
-        jaltasresev.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jaltasresevActionPerformed(evt);
+        jPanel1.add(jaltasresev, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 762, 200, 50));
+
+        btnEditReserva.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditReserva.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnEditReserva.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditReserva.setText("BAJA/EDITAR");
+        btnEditReserva.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditReservaMouseClicked(evt);
             }
         });
-        jPanel1.add(jaltasresev, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 762, 200, 50));
+        jPanel1.add(btnEditReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 810, 200, 50));
+
+        btnNvaHabit.setBackground(new java.awt.Color(0, 0, 0));
+        btnNvaHabit.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnNvaHabit.setForeground(new java.awt.Color(255, 255, 255));
+        btnNvaHabit.setText("    ALTAS  ");
+        btnNvaHabit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNvaHabitMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnNvaHabit, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 762, 200, 50));
+
+        btnEditHabit.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditHabit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnEditHabit.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditHabit.setText("BAJA/EDITAR");
+        btnEditHabit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditHabitMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnEditHabit, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 810, 200, 50));
+
+        jButton9.setBackground(new java.awt.Color(0, 0, 0));
+        jButton9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("BAJA/EDITAR");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 810, 210, 50));
+
+        btnAltaHuesp.setBackground(new java.awt.Color(0, 0, 0));
+        btnAltaHuesp.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnAltaHuesp.setForeground(new java.awt.Color(255, 255, 255));
+        btnAltaHuesp.setText("    ALTAS  ");
+        btnAltaHuesp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAltaHuespMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnAltaHuesp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 762, 200, 50));
+
+        btnEditHuesp.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditHuesp.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnEditHuesp.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditHuesp.setText("BAJA/EDITAR");
+        btnEditHuesp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditHuespMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnEditHuesp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 810, 200, 50));
 
         jescritorio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -544,42 +527,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jescritorio.moveToFront(fBajayModiftTipHab);
 
     }//GEN-LAST:event_miBajaEditTipoHabActionPerformed
-
-    private void btnEditReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditReservaActionPerformed
-        btnEditReserva.setVisible(false);
-        formBajasyModificacionReserva modifReserva = new formBajasyModificacionReserva();
-        modifReserva.setVisible(true);
-        jescritorio.add(modifReserva);
-        jescritorio.moveToFront(modifReserva);
-
-
-    }//GEN-LAST:event_btnEditReservaActionPerformed
-
-    private void btnNvaHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNvaHabitActionPerformed
-        btnNvaHabit.setVisible(false);
-        formAltasHabitacion fAltas = new formAltasHabitacion();
-        fAltas.setVisible(true);
-        jescritorio.add(fAltas);
-        jescritorio.moveToFront(fAltas);
-
-    }//GEN-LAST:event_btnNvaHabitActionPerformed
-
-    private void btnEditHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditHabitActionPerformed
-        btnEditHabit.setVisible(false);
-        formBajasModificacionHabitacion fAltas = new formBajasModificacionHabitacion();
-        fAltas.setVisible(true);
-        jescritorio.add(fAltas);
-        jescritorio.moveToFront(fAltas);
-    }//GEN-LAST:event_btnEditHabitActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        jButton9.setVisible(false);
-        jporHabitación.setVisible(true);
-        jporfecha.setVisible(true);
-        jporhuesped.setVisible(true);
-        jportipohabitación.setVisible(true);
-                
-    }//GEN-LAST:event_jButton9ActionPerformed
 // estos botones hay  que ordenarlo pertenecen arriba alos action de reserva habitacion consulta  y huesped
     private void btnBigConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBigConsultActionPerformed
         jButton9.setVisible(true);
@@ -590,29 +537,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnNvaHabit.setVisible(true);
         btnEditHabit.setVisible(true);
     }//GEN-LAST:event_btnBigHabitActionPerformed
-
-    private void btnAltaHuespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaHuespActionPerformed
-
-        btnAltaHuesp.setVisible(false);
-        formAltasHuesped fAltas = new formAltasHuesped();
-        fAltas.setVisible(true);
-        jescritorio.add(fAltas);
-        jescritorio.moveToFront(fAltas);
-        //este es otro formulario tambien para altas?
-        // formAltasReserva altasHues = new formAltasReserva();
-        //altasHues.setVisible(true);
-        // altasHues.getContentPane().setBackground(new Color(251, 128, 82));
-        //jescritorio.add(altasHues);
-        //jescritorio.moveToFront(altasHues);
-    }//GEN-LAST:event_btnAltaHuespActionPerformed
-
-    private void btnEditHuespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditHuespActionPerformed
-        btnEditHuesp.setVisible(false);
-        formBajasyModificacionHuesped fBaMo = new formBajasyModificacionHuesped();
-        fBaMo.setVisible(true);
-        jescritorio.add(fBaMo);
-        jescritorio.moveToFront(fBaMo);
-    }//GEN-LAST:event_btnEditHuespActionPerformed
 
     private void imNvaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imNvaReservaActionPerformed
         // TODO add your handling code here:
@@ -652,10 +576,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMHabitPorTipoActionPerformed
 
-
-    private void btnEditHabitComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnEditHabitComponentHidden
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditHabitComponentHidden
 
     private void btnBigHabitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBigHabitMouseExited
         btnBigHabit.setBackground(Color.BLACK);
@@ -734,17 +654,60 @@ public class vistaPrncipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jportipohabitaciónActionPerformed
 
     private void jaltasresevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jaltasresevMouseClicked
-        jaltasresev.setVisible(false);
-        altasreserva fAltasReserva = new altasreserva();
-        fAltasReserva.setVisible(true);
-        jescritorio.add(fAltasReserva);
-        jescritorio.moveToFront(fAltasReserva);
-        
+       formAltasHabitacion fAltasHabitacion = new formAltasHabitacion();
+        fAltasHabitacion.setVisible(true);
+        jescritorio.add(fAltasHabitacion);
+        jescritorio.moveToFront(fAltasHabitacion);
+        jportipohabitación.setVisible(false);
     }//GEN-LAST:event_jaltasresevMouseClicked
 
-    private void jaltasresevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaltasresevActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jaltasresevActionPerformed
+    private void btnEditReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditReservaMouseClicked
+      btnEditReserva.setVisible(false);
+        formBajasyModificacionReserva modifReserva = new formBajasyModificacionReserva();
+        modifReserva.setVisible(true);
+        jescritorio.add(modifReserva);
+        jescritorio.moveToFront(modifReserva);
+    }//GEN-LAST:event_btnEditReservaMouseClicked
+
+    private void btnNvaHabitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNvaHabitMouseClicked
+          btnNvaHabit.setVisible(false);
+        formAltasHabitacion fAltas = new formAltasHabitacion();
+        fAltas.setVisible(true);
+        jescritorio.add(fAltas);
+        jescritorio.moveToFront(fAltas);
+    }//GEN-LAST:event_btnNvaHabitMouseClicked
+
+    private void btnEditHabitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditHabitMouseClicked
+          btnEditHabit.setVisible(false);
+        formBajasModificacionHabitacion fAltas = new formBajasModificacionHabitacion();
+        fAltas.setVisible(true);
+        jescritorio.add(fAltas);
+        jescritorio.moveToFront(fAltas);
+    }//GEN-LAST:event_btnEditHabitMouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+       jButton9.setVisible(false);
+        jporHabitación.setVisible(true);
+        jporfecha.setVisible(true);
+        jporhuesped.setVisible(true);
+        jportipohabitación.setVisible(true);
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void btnAltaHuespMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAltaHuespMouseClicked
+         btnAltaHuesp.setVisible(false);
+        formAltasHuesped fAltas = new formAltasHuesped();
+        fAltas.setVisible(true);
+        jescritorio.add(fAltas);
+        jescritorio.moveToFront(fAltas);
+    }//GEN-LAST:event_btnAltaHuespMouseClicked
+
+    private void btnEditHuespMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditHuespMouseClicked
+        btnEditHuesp.setVisible(false);
+        formBajasyModificacionHuesped fBaMo = new formBajasyModificacionHuesped();
+        fBaMo.setVisible(true);
+        jescritorio.add(fBaMo);
+        jescritorio.moveToFront(fBaMo);
+    }//GEN-LAST:event_btnEditHuespMouseClicked
 
     /**
      * @param args the command line arguments
