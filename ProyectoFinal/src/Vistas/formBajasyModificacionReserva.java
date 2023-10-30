@@ -19,20 +19,23 @@ import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
  * @author matias
  */
 public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
+
     private HuespedData hData = new HuespedData();
     private ReservaData rData = new ReservaData();
     private DefaultTableModel modeloListaReservasH = new DefaultTableModel();
 
-    
+    private DefaultTableModel modeloTablaHabs = new DefaultTableModel();
+
     private int idHuesped;
-    
-    
+
     /**
      * Creates new form formBajasyModificacionReserva
      */
@@ -40,6 +43,11 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
         initComponents();
         borrarTabla();
         cargarCabecera();
+        borrarTabla2();
+        crearCabeceraHabit();
+        rellenarTabla();
+        SpinnerModel model = new SpinnerNumberModel(1, 1, 100, 1);
+        nroHuespedes.setModel(model);
     }
 
     /**
@@ -89,7 +97,7 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Seleccione un Huésped o Ingrese un DNI:");
+        jLabel1.setText("Ingrese un DNI:");
 
         jBBuscarHuesped.setText("Buscar");
         jBBuscarHuesped.addActionListener(new java.awt.event.ActionListener() {
@@ -337,82 +345,96 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtDNIKeyTyped
 
-    private void cambiarEstado(boolean x){
-       fechaIngresoChooser.setEnabled(x);
-       fechaSalidaChooser.setEnabled(x);
-       nroHuespedes.setEnabled(x);
-       btnConsultar.setEnabled(x);
-       tablaHabitaciones.setEnabled(x);
+    private void cambiarEstado(boolean x) {
+        fechaIngresoChooser.setEnabled(x);
+        fechaSalidaChooser.setEnabled(x);
+        nroHuespedes.setEnabled(x);
+        btnConsultar.setEnabled(x);
+        tablaHabitaciones.setEnabled(x);
     }
-    
+
     public void borrarTabla() {
-        
+
         int filas = modeloListaReservasH.getRowCount() - 1;
-        
+
         for (; filas >= 0; filas--) {
             modeloListaReservasH.removeRow(filas);
         }
-        
+
     }
-    
+
     public void cargarCabecera() {
-       
+
         modeloListaReservasH.addColumn("id Reserva");
         modeloListaReservasH.addColumn("Nro Habit");
         modeloListaReservasH.addColumn("Fecha Ingreso");
         modeloListaReservasH.addColumn("Fecha Salida");
-        modeloListaReservasH.addColumn("Cant. Huesp.");
+        //modeloListaReservasH.addColumn("Cant. Huesp.");
         modeloListaReservasH.addColumn("monto Total");
-        
-        
-        
-                
+
         jTResPorHuesped.setModel(modeloListaReservasH);
     }
-    
-    
+
+    public void borrarTabla2() {
+        int filas = modeloTablaHabs.getRowCount() - 1;
+
+        for (; filas >= 0; filas--) {
+            modeloTablaHabs.removeRow(filas);
+        }
+    }
+
+    public void crearCabeceraHabit() {
+
+        modeloTablaHabs.addColumn("ID");//0
+        modeloTablaHabs.addColumn("Nro");//1
+        modeloTablaHabs.addColumn("Piso");//2
+        modeloTablaHabs.addColumn("Tipo");//3
+        modeloTablaHabs.addColumn("Capacidad");//4
+        modeloTablaHabs.addColumn("$/Noche");//5
+
+        tablaHabitaciones.setModel(modeloTablaHabs);
+    }
+
+
     private void jBBuscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarHuespedActionPerformed
         // TODO add your handling code here:
-        
+
         borrarTabla();
-        
-        if ( txtDNI.getText().isEmpty() ) {
+
+        if (txtDNI.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un numero de DNI en el campo de texto");
-        }
-        else {
-            
-            String SQLBusq = "SELECT r.idHuesped, r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n" +
-                    "FROM reserva AS r JOIN habitacion as h ON (r.idHabitacion = h.idHabitacion) \n" +
-                    "JOIN huesped AS p ON r.idHuesped = p.idHuesp \n"+
-                    "WHERE dniHuesp = ? and r.estado = 1 order by FechaIngreso;";
- 
+        } else {
+
+            String SQLBusq = "SELECT r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n"
+                    + "FROM reserva AS r JOIN habitacion as h ON (r.idHabitacion = h.idHabitacion) \n"
+                    + "JOIN huesped AS p ON r.idHuesped = p.idHuesp \n"
+                    + "WHERE dniHuesp = ? and r.estado = 1 order by FechaIngreso;";
+
             PreparedStatement ps;
-        try {
-            ps = rData.getCon().prepareStatement(SQLBusq);
-            ps.setString(1, txtDNI.getText());
-            ResultSet rs = ps.executeQuery();
-            
-           
-            while (rs.next()) {
-                 modeloListaReservasH.addRow(new Object[] { rs.getInt("idReserva"), rs.getInt("idHabitacion"), rs.getInt("nroHabitacion"), rs.getDate("FechaIngreso"),rs.getDate("FechaSalida"), rs.getDouble("montoTotal") } );
-                 idHuesped = rs.getInt("idHuesped");
+            try {
+                ps = rData.getCon().prepareStatement(SQLBusq);
+                ps.setString(1, txtDNI.getText());
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    modeloListaReservasH.addRow(new Object[]{rs.getInt("idReserva"), rs.getInt("nroHabitacion"), rs.getDate("FechaIngreso"), rs.getDate("FechaSalida"), rs.getInt("Cant")
+                    rs.getDouble("montoTotal") });
+                //   idHuesped = rs.getInt("idHuesped");
             }
             ps.close();
         }
         catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Error al cargar la tabla" + ex.getMessage());
         }
-            
-            
-        }
-       
+
 
     }//GEN-LAST:event_jBBuscarHuespedActionPerformed
 
     private void nroHuespedesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_nroHuespedesStateChanged
         // TODO add your handling code here:
-        borrarTabla();
-        
+        borrarTabla2();
+        rellenarTablaSpinner();
+
 
     }//GEN-LAST:event_nroHuespedesStateChanged
 
@@ -435,22 +457,22 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
-        
+
         // Obtener la fecha actual o la fecha deseada (por ejemplo, la fecha mínima)
         java.util.Calendar currentDate = java.util.GregorianCalendar.getInstance();
         if (fechaIngresoChooser.getDate().before(currentDate.getTime()) || fechaSalidaChooser.getDate().before(currentDate.getTime())) {
             LocalDate fechaAct = LocalDate.now();
-            JOptionPane.showMessageDialog(null,"Las fechas ingresadas no son válidas. Fecha minima: "+ fechaAct);
+            JOptionPane.showMessageDialog(null, "Las fechas ingresadas no son válidas. Fecha minima: " + fechaAct);
 
         } else {
             int idhab;
-            if(tablaHabitaciones.getSelectedRow() !=-1){
+            if (tablaHabitaciones.getSelectedRow() != -1) {
                 idhab = (Integer) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 0);
-                String sqlObtenerfechas="SELECT idReserva FROM reserva \n" +
-                "WHERE  ((FechaSalida BETWEEN ? AND ?) OR \n" +
-                "       (FechaIngreso BETWEEN ? AND ?) OR\n" +
-                "       (FechaIngreso <= ? AND FechaSalida >= ?)) AND\n" +
-                "       (idHabitacion=?) AND estado=1;";
+                String sqlObtenerfechas = "SELECT idReserva FROM reserva \n"
+                        + "WHERE  ((FechaSalida BETWEEN ? AND ?) OR \n"
+                        + "       (FechaIngreso BETWEEN ? AND ?) OR\n"
+                        + "       (FechaIngreso <= ? AND FechaSalida >= ?)) AND\n"
+                        + "       (idHabitacion=?) AND estado=1;";
                 //Agregamos Estado=1 para que tome las reservas activas
                 PreparedStatement psFechas;
                 LocalDate vFech1;
@@ -458,54 +480,54 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
                 Date fechaEntradaSQL;
                 Date fechaSalidaSQL;
 
-                if(fechaIngresoChooser.getDate() != null && fechaSalidaChooser.getDate() != null ){
+                if (fechaIngresoChooser.getDate() != null && fechaSalidaChooser.getDate() != null) {
                     vFech1 = fechaIngresoChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                     vFech2 = fechaSalidaChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                     //            if(vFech1.compareTo(vFech2)==1){
-                        //            System.out.println("El ingreso es mayor a la salida. Mal");
-                        //        } else if(vFech1.compareTo(vFech2)==0){
-                        //            System.out.println("Las fechas son las mismas. Mal");
-                        //        } else {
-                        //            System.out.println("ingreso menor a salida. Bien");
-                        //        }
+                    //            System.out.println("El ingreso es mayor a la salida. Mal");
+                    //        } else if(vFech1.compareTo(vFech2)==0){
+                    //            System.out.println("Las fechas son las mismas. Mal");
+                    //        } else {
+                    //            System.out.println("ingreso menor a salida. Bien");
+                    //        }
 
                     fechaEntradaSQL = Date.valueOf(String.valueOf(vFech1));
                     fechaSalidaSQL = Date.valueOf(String.valueOf(vFech2));
-                    try{
+                    try {
                         psFechas = rData.getCon().prepareStatement(sqlObtenerfechas);
                         // psFechas.setInt(1,nrohab);
                         //PRIMERA COMPARACION
-                        psFechas.setDate(1,fechaEntradaSQL);
+                        psFechas.setDate(1, fechaEntradaSQL);
                         psFechas.setDate(2, fechaSalidaSQL);
                         //SEGUNDA COMPARACION
-                        psFechas.setDate(3,fechaEntradaSQL);
+                        psFechas.setDate(3, fechaEntradaSQL);
                         psFechas.setDate(4, fechaSalidaSQL);
                         //TERCERA COMPARACION
-                        psFechas.setDate(5,fechaEntradaSQL);
+                        psFechas.setDate(5, fechaEntradaSQL);
                         psFechas.setDate(6, fechaSalidaSQL);
-                        psFechas.setInt(7,idhab);
+                        psFechas.setInt(7, idhab);
                         ResultSet rsfechas = psFechas.executeQuery();
 
-                        if(rsfechas.next()){
+                        if (rsfechas.next()) {
                             System.out.println(rsfechas);
-                            JOptionPane.showMessageDialog(null,"El rango de fecha ya contiene reservas. Habitacion ocupada");
+                            JOptionPane.showMessageDialog(null, "El rango de fecha ya contiene reservas. Habitacion ocupada");
                         } else {
-                            JOptionPane.showMessageDialog(null,"Hay disponibilidad!");
-                            int diasTotales = (int) ChronoUnit.DAYS.between(vFech1,vFech2);
-                            double precioTotal= diasTotales* ((Double) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 5));
-                            valorTotalPesos.setText(precioTotal+"");
+                            JOptionPane.showMessageDialog(null, "Hay disponibilidad!");
+                            int diasTotales = (int) ChronoUnit.DAYS.between(vFech1, vFech2);
+                            double precioTotal = diasTotales * ((Double) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 5));
+                            valorTotalPesos.setText(precioTotal + "");
 
                         }
                         psFechas.close();
 
-                    } catch(SQLException ex) {
+                    } catch (SQLException ex) {
                         JOptionPane.showMessageDialog(null, "Error al cargar la tabla" + ex.getMessage());
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "No se seleccionaron fechas");
                 }
             } else {
-                JOptionPane.showMessageDialog(null,"Seleccione una habitacion");
+                JOptionPane.showMessageDialog(null, "Seleccione una habitacion");
             }
         }
 
@@ -517,64 +539,54 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
-        
+
         //Baja de Reservas
         //////////////////////
-        
-        if ( radioDarDeBaja.isSelected() ){
-            if (jTResPorHuesped.getSelectedRow() == -1){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla para eliminar la Reserva.");
-            }
-            else {
-                
+        if (radioDarDeBaja.isSelected()) {
+            if (jTResPorHuesped.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar una fila de la tabla para eliminar la Reserva.");
+            } else {
+
                 int id = Integer.parseInt(jTResPorHuesped.getValueAt(jTResPorHuesped.getSelectedRow(), 0).toString());
-                rData.borrarReserva( id );
-                
+                rData.borrarReserva(id);
+
                 borrarTabla();
-                
-                
-                String SQLBusq = "SELECT r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n" +
-                    "FROM reserva AS r JOIN habitacion as h ON (r.idHabitacion = h.idHabitacion) \n" +
-                    "JOIN huesped AS p ON r.idHuesped = p.idHuesp \n"+
-                    "WHERE dniHuesp = ? and r.estado = 1 order by FechaIngreso;";
- 
+
+                String SQLBusq = "SELECT r.idReserva,r.idHabitacion, h.nroHabitacion, r.FechaIngreso, r.FechaSalida, r.montoTotal  \n"
+                        + "FROM reserva AS r JOIN habitacion as h ON (r.idHabitacion = h.idHabitacion) \n"
+                        + "JOIN huesped AS p ON r.idHuesped = p.idHuesp \n"
+                        + "WHERE dniHuesp = ? and r.estado = 1 order by FechaIngreso;";
+
                 PreparedStatement ps;
                 try {
                     ps = rData.getCon().prepareStatement(SQLBusq);
                     ps.setString(1, txtDNI.getText());
                     ResultSet rs = ps.executeQuery();
-            
+
                     while (rs.next()) {
-                        modeloListaReservasH.addRow(new Object[] { rs.getInt("idReserva"), rs.getInt("idHabitacion"), rs.getInt("nroHabitacion"), rs.getDate("FechaIngreso"),rs.getDate("FechaSalida"), rs.getDouble("montoTotal") } );
-                
+                        modeloListaReservasH.addRow(new Object[]{rs.getInt("idReserva"), rs.getInt("idHabitacion"), rs.getInt("nroHabitacion"), rs.getDate("FechaIngreso"), rs.getDate("FechaSalida"), rs.getDouble("montoTotal")});
+
                     }
                     ps.close();
-                }
-                catch (SQLException ex){
-                    JOptionPane.showMessageDialog(null,"Error al cargar la tabla" + ex.getMessage());
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error al cargar la tabla" + ex.getMessage());
                 }
             }
         }
-     
+
         // Actualizacion de reserva
         ////////////////////////////
-        
-        if ( radioModificar.isSelected() ){
-            if (jTResPorHuesped.getSelectedRow() == -1){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla para Modificar la Reserva.");
-            }
-            else {
+        if (radioModificar.isSelected()) {
+            if (jTResPorHuesped.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar una fila de la tabla para Modificar la Reserva.");
+            } else {
                 //Baja
                 int id = Integer.parseInt(jTResPorHuesped.getValueAt(jTResPorHuesped.getSelectedRow(), 0).toString());
-                rData.borrarReserva( id );
-                
+                rData.borrarReserva(id);
+
                 borrarTabla();
-                
+
                 //Alta
-                 
-                
-                
-                
 //                Reserva res = new Reserva();
 //                res.setEstado(true);
 //                LocalDate vFech1, vFech2;
@@ -587,32 +599,29 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
 //                res.setIdHabitacion((int) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 0));
 //                reservadata.insertarReserva(res);
 //                
-                
             }
         }
 
-        
-        
-        
+
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void radioModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioModificarActionPerformed
         // TODO add your handling code here:
         cambiarEstado(true);
-            panelModificar.setEnabled(true);
+        panelModificar.setEnabled(true);
     }//GEN-LAST:event_radioModificarActionPerformed
 
     private void radioDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioDarDeBajaActionPerformed
         // TODO add your handling code here:
-            cambiarEstado(false);
-            panelModificar.setEnabled(false);
-        
+        cambiarEstado(false);
+        panelModificar.setEnabled(false);
+
     }//GEN-LAST:event_radioDarDeBajaActionPerformed
 
     private void jTResPorHuespedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResPorHuespedMouseClicked
         // TODO add your handling code here:
         int fselec = jTResPorHuesped.getSelectedRow();
-        
+
     }//GEN-LAST:event_jTResPorHuespedMouseClicked
 
 
@@ -640,4 +649,66 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtDNI;
     private javax.swing.JLabel valorTotalPesos;
     // End of variables declaration//GEN-END:variables
+
+    public void rellenarTabla() {
+
+        String SQLPrimeraCarga = "SELECT\n"
+                + "    H.IdHabitacion,\n"
+                + "    H.nrohabitacion,\n"
+                + "    H.piso,\n"
+                + "    H.estado,\n"
+                + "    T.maxHuespedes,\n"
+                + "    T.importepornoche,\n"
+                + "    T.letraTipo\n"
+                + "FROM HABITACION H\n"
+                + "JOIN TIPOHABITACION T ON H.idTipoHabitacion = T.idTipohabit\n"
+                + "WHERE H.estado=1;";
+
+        PreparedStatement ps;
+        try {
+            ps = rData.getCon().prepareStatement(SQLPrimeraCarga);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                modeloTablaHabs.addRow(new Object[]{rs.getInt("H.IdHabitacion"), "N°" + rs.getInt("H.nrohabitacion"), rs.getInt("H.piso"), rs.getString("T.letraTipo"), rs.getInt("T.maxHuespedes"), rs.getDouble("T.importepornoche")});
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla" + ex.getMessage());
+        }
+
+    }
+
+    public void rellenarTablaSpinner() {
+
+        String SQLPrimeraCarga = "SELECT\n"
+                + "    H.IdHabitacion,\n"
+                + "    H.nrohabitacion,\n"
+                + "    H.piso,\n"
+                + "    H.estado,\n"
+                + "    T.maxHuespedes,\n"
+                + "    T.importepornoche,\n"
+                + "    T.letraTipo\n"
+                + "FROM HABITACION H\n"
+                + "JOIN TIPOHABITACION T ON H.idTipoHabitacion = T.idTipohabit\n"
+                + "WHERE H.estado=1 AND T.maxHuespedes = ?;";
+
+        PreparedStatement ps;
+        int valorH = (int) nroHuespedes.getValue();
+
+        try {
+            ps = rData.getCon().prepareStatement(SQLPrimeraCarga);
+            ps.setInt(1, valorH);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                modeloTablaHabs.addRow(new Object[]{rs.getInt("H.IdHabitacion"), "N°" + rs.getInt("H.nrohabitacion"), rs.getInt("H.piso"), rs.getString("T.letraTipo"), rs.getInt("T.maxHuespedes"), rs.getDouble("T.importepornoche")});
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla" + ex.getMessage());
+        }
+
+    }
+
 }
