@@ -423,7 +423,7 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
                     rs.getInt("nroHabitacion"),
                     rs.getDate("FechaIngreso"),
                     rs.getDate("FechaSalida"),
-                    rs.getInt("Cant"), // Corrección: Agregar una coma aquí
+                    //rs.getInt("Cant"), // Corrección: Agregar una coma aquí
                     rs.getDouble("montoTotal")
                 });
                 //   idHuesped = rs.getInt("idHuesped");
