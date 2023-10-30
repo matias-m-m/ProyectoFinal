@@ -118,7 +118,7 @@ private final ImageIcon hidePasswordIcon = new ImageIcon(getClass().getResource(
                 jLabel1ComponentResized(evt);
             }
         });
-        jfondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -120, 1920, 1080));
+        jfondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -120, 1920, 1110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
