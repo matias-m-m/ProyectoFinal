@@ -144,7 +144,7 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
         valorTotalPesos.setText("$0000");
 
         panelModificar.setBackground(jPanel1.getBackground());
-        panelModificar.setBorder(javax.swing.BorderFactory.createTitledBorder("Nueva reserva"));
+        panelModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Nueva reserva", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         panelModificar.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
