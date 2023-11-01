@@ -41,6 +41,17 @@ public class formBajasyModificacionReserva extends javax.swing.JInternalFrame {
      */
     public formBajasyModificacionReserva() {
         initComponents();
+        
+        // Obtén la fecha actual
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date fechaActual = calendar.getTime();
+        System.out.println(calendar);
+        System.out.println(fechaActual);
+        // Establece la fecha actual como la fecha mínima seleccionable
+        fechaIngresoChooser.setMinSelectableDate(fechaActual);
+        fechaSalidaChooser.setMinSelectableDate(fechaActual);
+        
+        
         borrarTabla();
         cargarCabecera();
         borrarTabla2();

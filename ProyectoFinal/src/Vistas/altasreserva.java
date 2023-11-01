@@ -36,9 +36,7 @@ public class altasreserva extends javax.swing.JInternalFrame {
  
     private ReservaData reservadata = new ReservaData();
     private HuespedData huespeddata = new HuespedData();
-    /**
-     * Creates new form altas
-     */
+    
     public altasreserva() {
         initComponents();
         

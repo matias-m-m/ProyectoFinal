@@ -26,7 +26,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnEditReserva.setVisible(false);
         btnNvaHabit.setVisible(false);
         btnEditHabit.setVisible(false);
-        jButton9.setVisible(false);
+        btnConsultas.setVisible(true);
         jportipohabitación.setVisible(false);
         jporfecha.setVisible(false);
         jporHabitación.setVisible(false);
@@ -51,7 +51,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnBigReserva = new javax.swing.JButton();
         btnBigHuesp = new javax.swing.JButton();
         btnBigHabit = new javax.swing.JButton();
-        btnBigConsult = new javax.swing.JButton();
         jporHabitación = new javax.swing.JButton();
         jporhuesped = new javax.swing.JButton();
         jporfecha = new javax.swing.JButton();
@@ -60,7 +59,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnEditReserva = new javax.swing.JButton();
         btnNvaHabit = new javax.swing.JButton();
         btnEditHabit = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnConsultas = new javax.swing.JButton();
         btnAltaHuesp = new javax.swing.JButton();
         btnEditHuesp = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -145,25 +144,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnBigHabit, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 860, 200, 70));
 
-        btnBigConsult.setBackground(new java.awt.Color(0, 0, 0));
-        btnBigConsult.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        btnBigConsult.setForeground(new java.awt.Color(255, 255, 255));
-        btnBigConsult.setText("Consulta");
-        btnBigConsult.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnBigConsultMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnBigConsultMouseExited(evt);
-            }
-        });
-        btnBigConsult.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBigConsultActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnBigConsult, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 860, 210, 70));
-
         jporHabitación.setBackground(new java.awt.Color(0, 0, 0));
         jporHabitación.setForeground(new java.awt.Color(255, 255, 255));
         jporHabitación.setText("POR HABITACIÓN");
@@ -172,7 +152,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 jporHabitaciónActionPerformed(evt);
             }
         });
-        jPanel1.add(jporHabitación, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 690, 210, -1));
+        jPanel1.add(jporHabitación, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 740, 210, -1));
 
         jporhuesped.setBackground(new java.awt.Color(0, 0, 0));
         jporhuesped.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,7 +162,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 jporhuespedActionPerformed(evt);
             }
         });
-        jPanel1.add(jporhuesped, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 720, 210, -1));
+        jPanel1.add(jporhuesped, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 770, 210, -1));
 
         jporfecha.setBackground(new java.awt.Color(0, 0, 0));
         jporfecha.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,7 +172,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 jporfechaActionPerformed(evt);
             }
         });
-        jPanel1.add(jporfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 750, 210, -1));
+        jPanel1.add(jporfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 800, 210, -1));
 
         jportipohabitación.setBackground(new java.awt.Color(0, 0, 0));
         jportipohabitación.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,7 +182,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 jportipohabitaciónActionPerformed(evt);
             }
         });
-        jPanel1.add(jportipohabitación, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 780, 210, -1));
+        jPanel1.add(jportipohabitación, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 830, 210, -1));
 
         jaltasresev.setBackground(new java.awt.Color(0, 0, 0));
         jaltasresev.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -253,16 +233,27 @@ public class vistaPrncipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnEditHabit, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 810, 200, 50));
 
-        jButton9.setBackground(new java.awt.Color(0, 0, 0));
-        jButton9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("BAJA/EDITAR");
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnConsultas.setBackground(new java.awt.Color(0, 0, 0));
+        btnConsultas.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnConsultas.setForeground(new java.awt.Color(255, 255, 255));
+        btnConsultas.setText("Consultas");
+        btnConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton9MouseClicked(evt);
+                btnConsultasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnConsultasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConsultasMouseExited(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 810, 210, 50));
+        btnConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnConsultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 860, 210, 70));
 
         btnAltaHuesp.setBackground(new java.awt.Color(0, 0, 0));
         btnAltaHuesp.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -472,18 +463,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnBigReserva.setSize(new Dimension(200, 70)); // Restaura el tamaño original
 
     }//GEN-LAST:event_btnBigReservaMouseExited
-//el jbutton 4 pertenece a consulta
-    private void btnBigConsultMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBigConsultMouseEntered
-        btnBigConsult.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
-        btnBigConsult.setForeground(Color.BLACK); // Cambia el color del texto a blanco
-        btnBigConsult.setSize(new Dimension(200, 60)); // Cambia el tamaño al 80% del tamaño original
-    }//GEN-LAST:event_btnBigConsultMouseEntered
-
-    private void btnBigConsultMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBigConsultMouseExited
-        btnBigConsult.setBackground(Color.BLACK);
-        btnBigConsult.setForeground(Color.WHITE);
-        btnBigConsult.setSize(new Dimension(210, 70)); // Restaura el tamaño original
-    }//GEN-LAST:event_btnBigConsultMouseExited
 //el jbutton 2 pertenece a huesped
     private void btnBigHuespMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBigHuespMouseEntered
         btnBigHuesp.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
@@ -532,11 +511,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jescritorio.moveToFront(fBajayModiftTipHab);
 
     }//GEN-LAST:event_miBajaEditTipoHabActionPerformed
-// estos botones hay  que ordenarlo pertenecen arriba alos action de reserva habitacion consulta  y huesped
-    private void btnBigConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBigConsultActionPerformed
-        jButton9.setVisible(true);
-
-    }//GEN-LAST:event_btnBigConsultActionPerformed
 
     private void btnBigHabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBigHabitActionPerformed
         btnNvaHabit.setVisible(true);
@@ -691,13 +665,13 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jescritorio.moveToFront(fAltas);
     }//GEN-LAST:event_btnEditHabitMouseClicked
 
-    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
-       jButton9.setVisible(false);
+    private void btnConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultasMouseClicked
+       
         jporHabitación.setVisible(true);
         jporfecha.setVisible(true);
         jporhuesped.setVisible(true);
         jportipohabitación.setVisible(true);
-    }//GEN-LAST:event_jButton9MouseClicked
+    }//GEN-LAST:event_btnConsultasMouseClicked
 
     private void btnAltaHuespMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAltaHuespMouseClicked
          btnAltaHuesp.setVisible(false);
@@ -718,6 +692,24 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private void jaltasresevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaltasresevActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jaltasresevActionPerformed
+
+    private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultasActionPerformed
+
+    private void btnConsultasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultasMouseEntered
+        // TODO add your handling code here:
+        btnConsultas.setBackground(Color.WHITE); // Cambia el fondo a rojo al pasar el cursor
+        btnConsultas.setForeground(Color.BLACK); // Cambia el color del texto a blanco
+        btnConsultas.setSize(new Dimension(190, 60)); // Cambia el tamaño al 80% del tamaño original
+    }//GEN-LAST:event_btnConsultasMouseEntered
+
+    private void btnConsultasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultasMouseExited
+        // TODO add your handling code here:
+        btnConsultas.setBackground(Color.BLACK);
+        btnConsultas.setForeground(Color.WHITE);
+        btnConsultas.setSize(new Dimension(200, 70)); // Restaura el tamaño original
+    }//GEN-LAST:event_btnConsultasMouseExited
 
     /**
      * @param args the command line arguments
@@ -756,10 +748,10 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAltaHuesp;
-    private javax.swing.JButton btnBigConsult;
     private javax.swing.JButton btnBigHabit;
     private javax.swing.JButton btnBigHuesp;
     private javax.swing.JButton btnBigReserva;
+    private javax.swing.JButton btnConsultas;
     private javax.swing.JButton btnEditHabit;
     private javax.swing.JButton btnEditHuesp;
     private javax.swing.JButton btnEditReserva;
@@ -767,7 +759,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem imAltaTipoHab;
     private javax.swing.JMenuItem imEditReserva;
     private javax.swing.JMenuItem imNvaReserva;
-    private javax.swing.JButton jButton9;
     private javax.swing.JMenuItem jMHabitPorTipo;
     private javax.swing.JMenuItem jMResEntreFechas;
     private javax.swing.JMenuItem jMResPorHab;
