@@ -92,6 +92,7 @@ public class altasreserva extends javax.swing.JInternalFrame {
         totalReserva = new javax.swing.JLabel();
         valorTotalPesos = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
+        labelID = new javax.swing.JLabel();
 
         setClosable(true);
         setResizable(true);
@@ -153,6 +154,7 @@ public class altasreserva extends javax.swing.JInternalFrame {
             }
         });
 
+        buscarHuesped.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8busqueda16.png"))); // NOI18N
         buscarHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarHuespedActionPerformed(evt);
@@ -193,6 +195,10 @@ public class altasreserva extends javax.swing.JInternalFrame {
             }
         });
 
+        labelID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelID.setForeground(new java.awt.Color(255, 255, 255));
+        labelID.setText("ID");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -212,15 +218,16 @@ public class altasreserva extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(26, 26, 26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labelID)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(labelNombreApellido))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(inputBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscarHuesped)))
+                            .addComponent(inputBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarHuesped)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -258,7 +265,8 @@ public class altasreserva extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(labelNombreApellido))
+                    .addComponent(labelNombreApellido)
+                    .addComponent(labelID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(buscarHuesped)
@@ -406,11 +414,11 @@ public class altasreserva extends javax.swing.JInternalFrame {
             huesp = huespeddata.buscarHuespPorDni(dniString);
 
             if(huesp!=null){
-                labelNombreApellido.setText(huesp.getIdHuesp()+"");
+                labelID.setText(huesp.getIdHuesp()+"");
                 labelNombreApellido.setText(huesp.getApellidoHuesp()+", "+huesp.getNombreHuesp());
                 btnConfirmar.setEnabled(true);
             } else {
-                labelNombreApellido.setText("00");
+                labelID.setText("00");
                 labelNombreApellido.setText("Huesped no encontrado");
                 btnConfirmar.setEnabled(false);
             }
@@ -432,7 +440,7 @@ public class altasreserva extends javax.swing.JInternalFrame {
         res.setFechaIngreso(vFech1);
         res.setFechaSalida(vFech2);
         res.setMontoTotal(Double.parseDouble(valorTotalPesos.getText()));
-        res.setIdHuesped(Integer.parseInt(labelNombreApellido.getText()));
+        res.setIdHuesped(Integer.parseInt(labelID.getText()));
         res.setIdHabitacion((int) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(),0));
         reservadata.insertarReserva(res);
     }//GEN-LAST:event_btnConfirmarActionPerformed
@@ -451,6 +459,7 @@ public class altasreserva extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelID;
     private javax.swing.JLabel labelNombreApellido;
     private javax.swing.JSpinner nroHuespedes;
     private javax.swing.JTable tablaHabitaciones;

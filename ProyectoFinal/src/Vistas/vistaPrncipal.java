@@ -213,6 +213,11 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 jaltasresevMouseClicked(evt);
             }
         });
+        jaltasresev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jaltasresevActionPerformed(evt);
+            }
+        });
         jPanel1.add(jaltasresev, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 762, 200, 50));
 
         btnEditReserva.setBackground(new java.awt.Color(0, 0, 0));
@@ -654,11 +659,12 @@ public class vistaPrncipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jportipohabitaciónActionPerformed
 
     private void jaltasresevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jaltasresevMouseClicked
-       formAltasHabitacion fAltasHabitacion = new formAltasHabitacion();
-        fAltasHabitacion.setVisible(true);
-        jescritorio.add(fAltasHabitacion);
-        jescritorio.moveToFront(fAltasHabitacion);
-        jportipohabitación.setVisible(false);
+       altasreserva nvaReserva = new altasreserva();
+        nvaReserva.setVisible(true);
+        jescritorio.add(nvaReserva);
+        jescritorio.moveToFront(nvaReserva);
+
+        
     }//GEN-LAST:event_jaltasresevMouseClicked
 
     private void btnEditReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditReservaMouseClicked
@@ -708,6 +714,10 @@ public class vistaPrncipal extends javax.swing.JFrame {
         jescritorio.add(fBaMo);
         jescritorio.moveToFront(fBaMo);
     }//GEN-LAST:event_btnEditHuespMouseClicked
+
+    private void jaltasresevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaltasresevActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jaltasresevActionPerformed
 
     /**
      * @param args the command line arguments
