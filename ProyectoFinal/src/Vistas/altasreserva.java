@@ -23,6 +23,7 @@ import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
@@ -33,13 +34,13 @@ import javax.swing.table.DefaultTableModel;
  * @author matias
  */
 public class altasreserva extends javax.swing.JInternalFrame {
- 
+
     private ReservaData reservadata = new ReservaData();
     private HuespedData huespeddata = new HuespedData();
-    
+
     public altasreserva() {
         initComponents();
-        
+
         // Obtén la fecha actual
         Calendar calendar = Calendar.getInstance();
         java.util.Date fechaActual = calendar.getTime();
@@ -48,27 +49,25 @@ public class altasreserva extends javax.swing.JInternalFrame {
         // Establece la fecha actual como la fecha mínima seleccionable
         fechaIngresoChooser.setMinSelectableDate(fechaActual);
         fechaSalidaChooser.setMinSelectableDate(fechaActual);
-        
-        
+
         btnConfirmar.setEnabled(false);
         //SpinnerNumberModel(valorInicial,ValorMenor,valorMayor,Paso)
-        SpinnerModel model = new SpinnerNumberModel(1,1,100,1);
-        
+        SpinnerModel model = new SpinnerNumberModel(1, 1, 100, 1);
+
         nroHuespedes.setModel(model);
         crearCabeceras();
         rellenarTabla();
         setResizable(true);
-        
-        
+
     }
- private DefaultTableModel modeloTablaHabs = new DefaultTableModel() {
+    private DefaultTableModel modeloTablaHabs = new DefaultTableModel() {
         //Hacer que la tabla no sea editable haciendo doble click
         @Override
         public boolean isCellEditable(int row, int column) {
             return false; // Hacer que todas las celdas no sean editables
         }
     };
- 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -146,6 +145,11 @@ public class altasreserva extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Titular:");
 
+        inputBuscarDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputBuscarDNIActionPerformed(evt);
+            }
+        });
         inputBuscarDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 inputBuscarDNIKeyTyped(evt);
@@ -205,6 +209,30 @@ public class altasreserva extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labelID)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelNombreApellido))
+                            .addComponent(inputBuscarDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buscarHuesped)
+                                .addGap(0, 556, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(372, 372, 372)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(totalReserva)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(valorTotalPesos))
+                                    .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(19, 19, 19)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(nroHuespedes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,30 +241,9 @@ public class altasreserva extends javax.swing.JInternalFrame {
                             .addComponent(fechaSalidaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(labelID)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelNombreApellido))
-                            .addComponent(inputBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscarHuesped)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(totalReserva)
-                        .addGap(18, 18, 18)
-                        .addComponent(valorTotalPesos))
-                    .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,17 +329,17 @@ public class altasreserva extends javax.swing.JInternalFrame {
         java.util.Calendar currentDate = java.util.GregorianCalendar.getInstance();
         if (fechaIngresoChooser.getDate().before(currentDate.getTime()) || fechaSalidaChooser.getDate().before(currentDate.getTime())) {
             LocalDate fechaAct = LocalDate.now();
-            JOptionPane.showMessageDialog(null,"Las fechas ingresadas no son válidas. Fecha minima: "+ fechaAct);
+            JOptionPane.showMessageDialog(null, "Las fechas ingresadas no son válidas. Fecha minima: " + fechaAct);
 
         } else {
             int idhab;
-            if(tablaHabitaciones.getSelectedRow() !=-1){
+            if (tablaHabitaciones.getSelectedRow() != -1) {
                 idhab = (Integer) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 0);
-                String sqlObtenerfechas="SELECT idReserva FROM reserva \n" +
-                "WHERE  ((FechaSalida BETWEEN ? AND ?) OR \n" +
-                "       (FechaIngreso BETWEEN ? AND ?) OR\n" +
-                "       (FechaIngreso <= ? AND FechaSalida >= ?)) AND\n" +
-                "       (idHabitacion=?) AND estado=1;";
+                String sqlObtenerfechas = "SELECT idReserva FROM reserva \n"
+                        + "WHERE  ((FechaSalida BETWEEN ? AND ?) OR \n"
+                        + "       (FechaIngreso BETWEEN ? AND ?) OR\n"
+                        + "       (FechaIngreso <= ? AND FechaSalida >= ?)) AND\n"
+                        + "       (idHabitacion=?) AND estado=1;";
                 //Agregamos Estado=1 para que tome las reservas activas
                 PreparedStatement psFechas;
                 LocalDate vFech1;
@@ -340,54 +347,54 @@ public class altasreserva extends javax.swing.JInternalFrame {
                 Date fechaEntradaSQL;
                 Date fechaSalidaSQL;
 
-                if(fechaIngresoChooser.getDate() != null && fechaSalidaChooser.getDate() != null ){
+                if (fechaIngresoChooser.getDate() != null && fechaSalidaChooser.getDate() != null) {
                     vFech1 = fechaIngresoChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                     vFech2 = fechaSalidaChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                     //            if(vFech1.compareTo(vFech2)==1){
-                        //            System.out.println("El ingreso es mayor a la salida. Mal");
-                        //        } else if(vFech1.compareTo(vFech2)==0){
-                        //            System.out.println("Las fechas son las mismas. Mal");
-                        //        } else {
-                        //            System.out.println("ingreso menor a salida. Bien");
-                        //        }
+                    //            System.out.println("El ingreso es mayor a la salida. Mal");
+                    //        } else if(vFech1.compareTo(vFech2)==0){
+                    //            System.out.println("Las fechas son las mismas. Mal");
+                    //        } else {
+                    //            System.out.println("ingreso menor a salida. Bien");
+                    //        }
 
                     fechaEntradaSQL = Date.valueOf(String.valueOf(vFech1));
                     fechaSalidaSQL = Date.valueOf(String.valueOf(vFech2));
-                    try{
+                    try {
                         psFechas = reservadata.getCon().prepareStatement(sqlObtenerfechas);
                         // psFechas.setInt(1,nrohab);
                         //PRIMERA COMPARACION
-                        psFechas.setDate(1,fechaEntradaSQL);
+                        psFechas.setDate(1, fechaEntradaSQL);
                         psFechas.setDate(2, fechaSalidaSQL);
                         //SEGUNDA COMPARACION
-                        psFechas.setDate(3,fechaEntradaSQL);
+                        psFechas.setDate(3, fechaEntradaSQL);
                         psFechas.setDate(4, fechaSalidaSQL);
                         //TERCERA COMPARACION
-                        psFechas.setDate(5,fechaEntradaSQL);
+                        psFechas.setDate(5, fechaEntradaSQL);
                         psFechas.setDate(6, fechaSalidaSQL);
-                        psFechas.setInt(7,idhab);
+                        psFechas.setInt(7, idhab);
                         ResultSet rsfechas = psFechas.executeQuery();
 
-                        if(rsfechas.next()){
+                        if (rsfechas.next()) {
                             System.out.println(rsfechas);
-                            JOptionPane.showMessageDialog(null,"El rango de fecha ya contiene reservas. Habitacion ocupada");
+                            JOptionPane.showMessageDialog(null, "El rango de fecha ya contiene reservas. Habitacion ocupada");
                         } else {
-                            JOptionPane.showMessageDialog(null,"Hay disponibilidad!");
-                            int diasTotales = (int) ChronoUnit.DAYS.between(vFech1,vFech2);
-                            double precioTotal= diasTotales* ((Double) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 5));
-                            valorTotalPesos.setText(precioTotal+"");
+                            JOptionPane.showMessageDialog(null, "Hay disponibilidad!");
+                            int diasTotales = (int) ChronoUnit.DAYS.between(vFech1, vFech2);
+                            double precioTotal = diasTotales * ((Double) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 5));
+                            valorTotalPesos.setText(precioTotal + "");
 
                         }
                         psFechas.close();
 
-                    } catch(SQLException ex) {
+                    } catch (SQLException ex) {
                         JOptionPane.showMessageDialog(null, "Error al cargar la tabla" + ex.getMessage());
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "No se seleccionaron fechas");
                 }
             } else {
-                JOptionPane.showMessageDialog(null,"Seleccione una habitacion");
+                JOptionPane.showMessageDialog(null, "Seleccione una habitacion");
             }
         }
 
@@ -403,7 +410,7 @@ public class altasreserva extends javax.swing.JInternalFrame {
 
     private void buscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarHuespedActionPerformed
         // TODO add your handling code here:
-        if(inputBuscarDNI.getText().isEmpty()){
+        if (inputBuscarDNI.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un DNI a buscar");
         } else {
 
@@ -411,16 +418,39 @@ public class altasreserva extends javax.swing.JInternalFrame {
             Huesped huesp = new Huesped();
             huesp = huespeddata.buscarHuespPorDni(dniString);
 
-            if(huesp!=null){
-                labelID.setText(huesp.getIdHuesp()+"");
-                labelNombreApellido.setText(huesp.getApellidoHuesp()+", "+huesp.getNombreHuesp());
+            if (huesp != null) {
+                labelID.setText(huesp.getIdHuesp() + "");
+                labelNombreApellido.setText(huesp.getApellidoHuesp() + ", " + huesp.getNombreHuesp());
                 btnConfirmar.setEnabled(true);
-            } else {
-                labelID.setText("00");
-                labelNombreApellido.setText("Huesped no encontrado");
-                btnConfirmar.setEnabled(false);
-            }
+                // Deshabilitar y ocultar el botón "Registrar Huésped"
 
+            } else {
+                int opcion = JOptionPane.showOptionDialog(
+                        null,
+                        "Huésped no encontrado. ¿Desea crear un nuevo huésped?",
+                        "Crear Nuevo Huésped",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        new String[]{"salir", "Crear Nuevo Huésped"},
+                        "Crear Nuevo Huésped"
+                );
+
+                if (opcion == JOptionPane.NO_OPTION) {
+                    // El usuario eligió "Crear Nuevo Huésped", abre el formulario formAltasHuesped
+                    formAltasHuesped form = new formAltasHuesped();
+                    JDesktopPane desktopPane = getDesktopPane(); // Obtén el JDesktopPane desde el formulario actual
+                    desktopPane.add(form); // Agrega el nuevo JInternalFrame al JDesktopPane
+                    form.setVisible(true);
+
+                } else {
+                    labelID.setText("00");
+                    labelNombreApellido.setText("Huesped no encontrado");
+                    btnConfirmar.setEnabled(false);
+                    // Habilitar y mostrar el botón "Registrar Huésped"
+                }
+
+            }
         }
     }//GEN-LAST:event_buscarHuespedActionPerformed
 
@@ -432,16 +462,20 @@ public class altasreserva extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Reserva res = new Reserva();
         res.setEstado(true);
-        LocalDate vFech1,vFech2;
+        LocalDate vFech1, vFech2;
         vFech1 = fechaIngresoChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         vFech2 = fechaSalidaChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         res.setFechaIngreso(vFech1);
         res.setFechaSalida(vFech2);
         res.setMontoTotal(Double.parseDouble(valorTotalPesos.getText()));
         res.setIdHuesped(Integer.parseInt(labelID.getText()));
-        res.setIdHabitacion((int) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(),0));
+        res.setIdHabitacion((int) tablaHabitaciones.getValueAt(tablaHabitaciones.getSelectedRow(), 0));
         reservadata.insertarReserva(res);
     }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void inputBuscarDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBuscarDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputBuscarDNIActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -465,15 +499,16 @@ public class altasreserva extends javax.swing.JInternalFrame {
     private javax.swing.JLabel valorTotalPesos;
     // End of variables declaration//GEN-END:variables
 public void borrarTabla() {
-    
+
         int filas = modeloTablaHabs.getRowCount() - 1;
-        
+
         for (; filas >= 0; filas--) {
             modeloTablaHabs.removeRow(filas);
         }
-        
+
     }
-public void crearCabeceras() {
+
+    public void crearCabeceras() {
 
         modeloTablaHabs.addColumn("ID");//0
         modeloTablaHabs.addColumn("Nro");//1
@@ -484,7 +519,8 @@ public void crearCabeceras() {
 
         tablaHabitaciones.setModel(modeloTablaHabs);
     }
-public void rellenarTabla() {
+
+    public void rellenarTabla() {
 
         String SQLPrimeraCarga = "SELECT\n"
                 + "    H.IdHabitacion,\n"
@@ -504,7 +540,7 @@ public void rellenarTabla() {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                modeloTablaHabs.addRow(new Object[]{rs.getInt("H.IdHabitacion"), "N°"+rs.getInt("H.nrohabitacion"), rs.getInt("H.piso"), rs.getString("T.letraTipo"), rs.getInt("T.maxHuespedes"), rs.getDouble("T.importepornoche")});
+                modeloTablaHabs.addRow(new Object[]{rs.getInt("H.IdHabitacion"), "N°" + rs.getInt("H.nrohabitacion"), rs.getInt("H.piso"), rs.getString("T.letraTipo"), rs.getInt("T.maxHuespedes"), rs.getDouble("T.importepornoche")});
             }
             ps.close();
         } catch (SQLException ex) {
@@ -512,7 +548,8 @@ public void rellenarTabla() {
         }
 
     }
- public void rellenarTablaSpinner() {
+
+    public void rellenarTablaSpinner() {
 
         String SQLPrimeraCarga = "SELECT\n"
                 + "    H.IdHabitacion,\n"
@@ -528,14 +565,14 @@ public void rellenarTabla() {
 
         PreparedStatement ps;
         int valorH = (int) nroHuespedes.getValue();
-            
+
         try {
             ps = reservadata.getCon().prepareStatement(SQLPrimeraCarga);
-            ps.setInt(1,valorH);
+            ps.setInt(1, valorH);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                modeloTablaHabs.addRow(new Object[]{rs.getInt("H.IdHabitacion"), "N°"+rs.getInt("H.nrohabitacion"), rs.getInt("H.piso"), rs.getString("T.letraTipo"), rs.getInt("T.maxHuespedes"), rs.getDouble("T.importepornoche")});
+                modeloTablaHabs.addRow(new Object[]{rs.getInt("H.IdHabitacion"), "N°" + rs.getInt("H.nrohabitacion"), rs.getInt("H.piso"), rs.getString("T.letraTipo"), rs.getInt("T.maxHuespedes"), rs.getDouble("T.importepornoche")});
             }
             ps.close();
         } catch (SQLException ex) {
