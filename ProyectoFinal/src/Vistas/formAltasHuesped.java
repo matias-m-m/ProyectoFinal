@@ -84,6 +84,11 @@ public class formAltasHuesped extends javax.swing.JInternalFrame {
 
         txtEma.setFocusTraversalPolicyProvider(true);
         txtEma.setNextFocusableComponent(txtTel);
+        txtEma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmaActionPerformed(evt);
+            }
+        });
 
         txtDni.setFocusTraversalPolicyProvider(true);
         txtDni.setNextFocusableComponent(txtDom);
@@ -205,7 +210,7 @@ public class formAltasHuesped extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if ((txtApe.getText().isEmpty() || txtNom.getText().isEmpty()
             || txtDni.getText().isEmpty() || txtDom.getText().isEmpty()
-                || txtEma.getText().isEmpty() || txtTel.getText().isEmpty()) || (!txtEma.getText().contains("@"))) {
+                || txtEma.getText().isEmpty() || txtTel.getText().isEmpty()) || (!txtEma.getText().contains("@")|| txtEma.getText().contains(" "))) {
             JOptionPane.showMessageDialog(null, "Faltan agregar datos o el email es inválido");
         } else {
        
@@ -248,6 +253,10 @@ public class formAltasHuesped extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_txtApeActionPerformed
+
+    private void txtEmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
