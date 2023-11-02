@@ -80,6 +80,7 @@ public class vistaPrncipal extends javax.swing.JFrame {
         menuHuesp = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        miReactiv = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -407,6 +408,19 @@ public class vistaPrncipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuHuesp);
 
+        miReactiv.setText("Reactivaciones");
+        miReactiv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miReactivMouseClicked(evt);
+            }
+        });
+        miReactiv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miReactivActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(miReactiv);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -711,6 +725,19 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnConsultas.setSize(new Dimension(200, 70)); // Restaura el tamaño original
     }//GEN-LAST:event_btnConsultasMouseExited
 
+    private void miReactivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miReactivActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_miReactivActionPerformed
+
+    private void miReactivMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miReactivMouseClicked
+        // TODO add your handling code here:
+        frmReactivar react = new frmReactivar();
+        react.setVisible(true);
+        jescritorio.add(react);
+        jescritorio.moveToFront(react);
+    }//GEN-LAST:event_miReactivMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -781,5 +808,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miAltaHabit;
     private javax.swing.JMenuItem miBajaEditHab;
     private javax.swing.JMenuItem miBajaEditTipoHab;
+    private javax.swing.JMenu miReactiv;
     // End of variables declaration//GEN-END:variables
 }
