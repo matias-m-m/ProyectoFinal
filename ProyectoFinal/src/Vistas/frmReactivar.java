@@ -64,8 +64,10 @@ public class frmReactivar extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(27, 27, 27));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Para reactivarlos seleccione un item y haga click en Reactivar");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Las siguientes tablas muestran elementos dados de baja, invisibles para el sistema.");
 
         jLabel3.setText("HABITACIONES");
