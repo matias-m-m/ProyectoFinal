@@ -264,11 +264,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
                 btnAltaHuespMouseClicked(evt);
             }
         });
-        btnAltaHuesp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAltaHuespActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnAltaHuesp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 762, 200, 50));
 
         btnEditHuesp.setBackground(new java.awt.Color(0, 0, 0));
@@ -715,10 +710,6 @@ public class vistaPrncipal extends javax.swing.JFrame {
         btnConsultas.setForeground(Color.WHITE);
         btnConsultas.setSize(new Dimension(200, 70)); // Restaura el tamaño original
     }//GEN-LAST:event_btnConsultasMouseExited
-
-    private void btnAltaHuespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaHuespActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAltaHuespActionPerformed
 
     /**
      * @param args the command line arguments
