@@ -23,6 +23,7 @@ import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
@@ -36,6 +37,8 @@ public class altasreserva extends javax.swing.JInternalFrame {
  
     private ReservaData reservadata = new ReservaData();
     private HuespedData huespeddata = new HuespedData();
+    
+    
     
     public altasreserva() {
         initComponents();
@@ -403,25 +406,47 @@ public class altasreserva extends javax.swing.JInternalFrame {
 
     private void buscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarHuespedActionPerformed
         // TODO add your handling code here:
-        if(inputBuscarDNI.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Ingrese un DNI a buscar");
+    if (inputBuscarDNI.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Ingrese un DNI a buscar");
+    } else {
+
+        String dniString = inputBuscarDNI.getText();
+        Huesped huesp = new Huesped();
+        huesp = huespeddata.buscarHuespPorDni(dniString);
+
+        if (huesp != null) {
+            labelID.setText(huesp.getIdHuesp() + "");
+            labelNombreApellido.setText(huesp.getApellidoHuesp() + ", " + huesp.getNombreHuesp());
+            btnConfirmar.setEnabled(true);
+            // Deshabilitar y ocultar el botón "Registrar Huésped"
         } else {
+            int opcion = JOptionPane.showOptionDialog(
+                null,
+                "Huésped no encontrado. ¿Desea crear un nuevo huésped?",
+                "Crear Nuevo Huésped",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                new String[] {"salir", "Crear Nuevo Huésped"},
+                "Crear Nuevo Huésped"
+            );
 
-            String dniString = inputBuscarDNI.getText();
-            Huesped huesp = new Huesped();
-            huesp = huespeddata.buscarHuespPorDni(dniString);
-
-            if(huesp!=null){
-                labelID.setText(huesp.getIdHuesp()+"");
-                labelNombreApellido.setText(huesp.getApellidoHuesp()+", "+huesp.getNombreHuesp());
-                btnConfirmar.setEnabled(true);
+            if (opcion == JOptionPane.NO_OPTION) {
+     
+                formAltasHuesped form = new formAltasHuesped();
+                           JDesktopPane desktopPane = getDesktopPane(); // Obtén el JDesktopPane desde el formulario actual
+    desktopPane.add(form); // Agrega el nuevo JInternalFrame al JDesktopPane
+                // El usuario eligió "Crear Nuevo Huésped", abre el formulario formAltasHuesped
+                form.setVisible(true);
             } else {
                 labelID.setText("00");
                 labelNombreApellido.setText("Huesped no encontrado");
                 btnConfirmar.setEnabled(false);
+                // Habilitar y mostrar el botón "Registrar Huésped"
             }
-
         }
+    }
+
     }//GEN-LAST:event_buscarHuespedActionPerformed
 
     private void tablaHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaHabitacionesMouseClicked
