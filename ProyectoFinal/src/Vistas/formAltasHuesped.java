@@ -3,6 +3,7 @@ package Vistas;
 import Entidades.*;
 import AccesoADatos.*;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class formAltasHuesped extends javax.swing.JInternalFrame {
 
@@ -59,6 +60,11 @@ public class formAltasHuesped extends javax.swing.JInternalFrame {
 
         txtApe.setFocusTraversalPolicyProvider(true);
         txtApe.setNextFocusableComponent(txtNom);
+        txtApe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApeActionPerformed(evt);
+            }
+        });
         txtApe.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtApeKeyTyped(evt);
@@ -197,8 +203,15 @@ public class formAltasHuesped extends javax.swing.JInternalFrame {
 
     private void txtInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInsertarActionPerformed
         // TODO add your handling code here:
+        if ((txtApe.getText().isEmpty() || txtNom.getText().isEmpty()
+            || txtDni.getText().isEmpty() || txtDom.getText().isEmpty()
+                || txtEma.getText().isEmpty() || txtTel.getText().isEmpty()) || (!txtEma.getText().contains("@"))) {
+            JOptionPane.showMessageDialog(null, "Faltan agregar datos o el email es inválido");
+        } else {
+       
         inserHuesped();
         limpiarTextFields();
+        }
     }//GEN-LAST:event_txtInsertarActionPerformed
 
     private void txtApeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApeKeyTyped
@@ -230,6 +243,11 @@ public class formAltasHuesped extends javax.swing.JInternalFrame {
 
     }                     
     }//GEN-LAST:event_txtTelKeyTyped
+
+    private void txtApeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApeActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtApeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
