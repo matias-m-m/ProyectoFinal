@@ -152,7 +152,7 @@ public class altasreserva extends javax.swing.JInternalFrame {
             }
         });
 
-        buscarHuesped.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8busqueda16.png"))); // NOI18N
+        buscarHuesped.setText("buscar");
         buscarHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarHuespedActionPerformed(evt);
